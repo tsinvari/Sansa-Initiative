@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Card Circle - Solid Color Backgrounds</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header-container">
+        <div class="title">Randomized Card Circle</div>
+        <div class="language-menu">
+            <select id="languageSelector">
+                <option value="pragmatic">Pragmatic (English)</option>
+                <option value="talmudic">Talmudic (Hebrew)</option>
+                <option value="zoharian">Zoharian (French)</option>
+                <option value="sephorian">Sephorian (Italian)</option>
+                <option value="experimental">Experimental (Spanish)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="speed-slider-container">
+        <label for="speedSlider">Rotation Speed</label>
+        <input type="range" id="speedSlider" min="12" max="20" value="12">
+        <span id="speedValueDisplay">12 seconds / rotation</span>
+    </div>
+
+    <div id="detailPageContainer">
+        <div id="detailPageContent">
+            <h2 id="detailPageTitle"></h2>
+            <blockquote id="detailPageQuote"></blockquote>
+            <button id="detailPageBackButton">Back to Circle</button>
+        </div>
+    </div>
+
+    <div class="card-circle-container" data-current-rotation="0">
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

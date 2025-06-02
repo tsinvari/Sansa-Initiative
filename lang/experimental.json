@@ -1,0 +1,35 @@
+{
+    "cardFrontTexts": [
+        "Percepción 1", 
+        "Guía 2", 
+        "Noción 3", 
+        "Práctica 4", 
+        "Técnica 5", 
+        "Maniobra 6", 
+        "Diseño 7"
+    ],
+    "cardBackContents": [
+        { "title": "Detalle 1", "p": "Información extendida para Percepción 1." },
+        { "title": "Detalle 2", "p": "Más sobre Guía 2 aquí." },
+        { "title": "Detalle 3", "p": "Noción 3 explicada más a fondo." },
+        { "title": "Detalle 4", "p": "La Práctica 4." },
+        { "title": "Detalle 5", "p": "Desglosando Técnica 5." },
+        { "title": "Detalle 6", "p": "Maniobra 6 en acción." },
+        { "title": "Detalle 7", "p": "Componentes de Diseño 7." }
+    ],
+    "learnMoreLinkText": "Aprende más",
+    "detailPageQuotes": [
+        "Solo con el corazón se puede ver bien; lo esencial es invisible a los ojos.",
+        "Todas las personas mayores fueron al principio niños... aunque pocas de ellas lo recuerdan.",
+        "Las cosas más bellas del mundo no se pueden ver ni tocar, se sienten con el corazón.",
+        "Te haces responsable para siempre de lo que has domesticado.",
+        "Fue el tiempo que pasaste con tu rosa lo que la hizo tan importante.",
+        "Las palabras son fuente de malentendidos.",
+        "Lo que embellece al desierto es que en alguna parte esconde un pozo."
+    ],
+    "detailPageBackButtonText": "Volver al Círculo",
+    "cardStyle": { 
+        "background": "#2A2A3A", 
+        "text": "#C0C8FF" 
+    }
+}

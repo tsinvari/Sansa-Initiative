@@ -1,0 +1,35 @@
+{
+    "cardFrontTexts": [
+        "Intuizione 1", 
+        "Norma 2", 
+        "Concetto 3", 
+        "Sistema 4", 
+        "Piano 5", 
+        "Tattica 6", 
+        "Schema 7"
+    ],
+    "cardBackContents": [
+        { "title": "Dettaglio 1", "p": "Informazioni estese per Intuizione 1." },
+        { "title": "Dettaglio 2", "p": "Più su Norma 2 qui." },
+        { "title": "Dettaglio 3", "p": "Concetto 3 spiegato ulteriormente." },
+        { "title": "Dettaglio 4", "p": "L'approccio Sistema 4." },
+        { "title": "Dettaglio 5", "p": "Analisi di Piano 5." },
+        { "title": "Dettaglio 6", "p": "Tattica 6 in azione." },
+        { "title": "Dettaglio 7", "p": "Componenti di Schema 7." }
+    ],
+    "learnMoreLinkText": "Scopri di più",
+    "detailPageQuotes": [
+        "Non si vede bene che col cuore. L'essenziale è invisibile agli occhi.",
+        "Tutti i grandi sono stati bambini una volta... ma pochi di essi se ne ricordano.",
+        "Le cose più belle del mondo non possono essere viste né toccate, si sentono col cuore.",
+        "Diventi responsabile per sempre di ciò che hai addomesticato.",
+        "È il tempo che hai perduto per la tua rosa che ha reso la tua rosa così importante.",
+        "Le parole sono fonte di malintesi.",
+        "Ciò che abbellisce il deserto è che nasconde un pozzo da qualche parte."
+    ],
+    "detailPageBackButtonText": "Torna al Cerchio",
+    "cardStyle": { 
+        "background": "#36454F", 
+        "text": "#ADD8E6" 
+    }
+}

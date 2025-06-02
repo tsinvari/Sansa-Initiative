@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Card Circle - Solid Color Backgrounds</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 20px;
+            overflow: hidden; 
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 10; 
+        }
+
+        .title { font-size: 2.5rem; font-weight: 700; color: #1e293b; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); text-align: center; margin: 0; margin-right: 20px; }
+        .language-menu select { padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; background-color: white; font-size: 1rem; color: #334155; cursor: pointer; outline: none; transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+        .language-menu select:hover { border-color: #94a3b8; }
+        .language-menu select:focus { border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3); }
+
+        .card-circle-container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            perspective: 1500px; 
+        }
+
+        .card {
+            width: 150px;
+            height: 220px;
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                        box-shadow 0.4s ease;
+            will-change: transform, box-shadow;
+            perspective: 1000px; 
+        }
+        
+        .card-flipper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        .card.is-flipped .card-flipper {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 1rem; 
+            font-weight: 600; 
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0,0,0,0.05);
+            padding: 10px;
+            box-sizing: border-box;
+            transition: background-color 0.4s ease, color 0.4s ease; /* Added background-color transition */
+        }
+
+        .card-front {
+            /* background-size, position, repeat removed */
+            /* text-shadow can remain for readability on colored backgrounds */
+            text-shadow: 0px 0px 4px rgba(0,0,0,0.5); 
+            /* background-color will be set by JS */
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background-color: #1e293b; 
+            color: #e2e8f0; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: space-around; 
+        }
+        .card-back h3 { font-size: 1.1em; margin-bottom: 5px; } 
+        .card-back p { font-size: 0.85em; padding: 0 5px; margin-bottom: 10px; flex-grow: 1; } 
+        .card-back .learn-more-link {
+            font-size: 0.8em;
+            font-weight: 600;
+            color: #60a5fa; 
+            text-decoration: underline;
+            cursor: pointer;
+            padding: 5px;
+            display: inline-block; 
+        }
+        .card-back .learn-more-link:hover { color: #3b82f6; }
+
+
+        .card.is-hovered:not(.card-focused) .card-face { 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card.card-focused {
+            z-index: 1100; 
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); 
+        }
+        .card.card-focused .card-face {
+             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45); 
+        }
+
+        .speed-slider-container { position: fixed; top: 120px; right: 20px; background-color: rgba(255, 255, 255, 0.9); padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000; width: 220px; }
+        .speed-slider-container label { display: block; margin-bottom: 8px; font-size: 0.9em; font-weight: 600; color: #334155; text-align: center; }
+        .speed-slider-container input[type="range"] { width: 100%; cursor: pointer; writing-mode: horizontal-tb; -webkit-appearance: none; appearance: none; height: 8px; background: #ddd; border-radius: 5px; outline: none; }
+        .speed-slider-container input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #3b82f6; border-radius: 50%; cursor: pointer; }
+        .speed-slider-container input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; background: #3b82f6; border-radius: 50%; cursor: pointer; border: none; }
+        .speed-slider-container span { display: block; text-align: center; font-size: 0.85em; margin-top: 8px; color: #475569; }
+
+        #detailPageContainer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #e2e8f0; z-index: 1200; display: none; flex-direction: column; align-items: center; justify-content: flex-start; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
+        #detailPageContent { background-color: white; padding: 30px 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); max-width: 700px; width: 100%; text-align: left; }
+        #detailPageContent h2 { font-size: 2em; color: #1e293b; margin-bottom: 20px; text-align: center; }
+        #detailPageContent blockquote { font-size: 1.2em; font-style: italic; color: #475569; margin: 20px 0; padding: 15px 20px; border-left: 4px solid #60a5fa; background-color: #f8fafc; border-radius: 4px; }
+        #detailPageBackButton { margin-top: 30px; padding: 10px 20px; font-size: 1em; font-weight: 600; color: white; background-color: #3b82f6; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.2s; display: block; margin-left: auto; margin-right: auto; }
+        #detailPageBackButton:hover { background-color: #2563eb; }
+
+        @media (max-width: 768px) { 
+            .header-container { flex-direction: column; margin-bottom: 40px; }
+            .title { font-size: 2rem; margin-right: 0; margin-bottom: 15px; }
+            .card-circle-container { width: 450px; height: 450px; }
+            .card { width: 120px; height: 180px; }
+            .card-face { font-size: 0.9rem; }
+            .speed-slider-container { top: auto; bottom: 15px; right: 50%; transform: translateX(50%); width: 90%; max-width: 280px; }
+            #detailPageContent { padding: 20px; }
+            #detailPageContent h2 { font-size: 1.8em; }
+            #detailPageContent blockquote { font-size: 1.1em; }
+        }
+        @media (max-width: 480px) { 
+            .title { font-size: 1.5rem; margin-bottom: 10px; }
+            .card-circle-container { width: 320px; height: 320px; }
+            .card { width: 80px; height: 120px; }
+            .card-face { font-size: 0.7rem; padding: 5px; }
+            .language-menu select { font-size: 0.9rem; }
+            #detailPageContent { padding: 15px; }
+            #detailPageContent h2 { font-size: 1.5em; }
+            #detailPageContent blockquote { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="title">Randomized Card Circle</div>
+        <div class="language-menu">
+            <select id="languageSelector">
+                <option value="pragmatic">Pragmatic (English)</option>
+                <option value="talmudic">Talmudic (Hebrew)</option>
+                <option value="zoharian">Zoharian (French)</option>
+                <option value="sephorian">Sephorian (Italian)</option>
+                <option value="experimental">Experimental (Spanish)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="speed-slider-container">
+        <label for="speedSlider">Rotation Speed</label>
+        <input type="range" id="speedSlider" min="12" max="20" value="12">
+        <span id="speedValueDisplay">12 seconds / rotation</span>
+    </div>
+
+    <div id="detailPageContainer">
+        <div id="detailPageContent">
+            <h2 id="detailPageTitle"></h2>
+            <blockquote id="detailPageQuote"></blockquote>
+            <button id="detailPageBackButton">Back to Circle</button>
+        </div>
+    </div>
+
+    <div class="card-circle-container" data-current-rotation="0">
+        </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.card-circle-container');
+            const languageSelector = document.getElementById('languageSelector');
+            const speedSlider = document.getElementById('speedSlider');
+            const speedValueDisplay = document.getElementById('speedValueDisplay');
+            const detailPageContainer = document.getElementById('detailPageContainer');
+            const detailPageTitle = document.getElementById('detailPageTitle');
+            const detailPageQuote = document.getElementById('detailPageQuote');
+            const detailPageBackButton = document.getElementById('detailPageBackButton');
+
+            let allCards = []; 
+            const numTotalCards = 7;
+
+            let currentRotationDurationMs = parseInt(speedSlider.value) * 1000;
+            let currentRadius = 250;
+            let slotTransforms = []; 
+            let cardHoverStates = new Map();
+            let isAnimationGloballyPaused = false;
+            let focusedCardElement = null;
+
+            const cardTexts = {}; 
+            const cardBackTexts = {}; 
+            const cardDetailQuotes = {};
+            
+            // Reverted to solid color backgrounds
+            const languageStyles = {
+                pragmatic:    { background: '#3F3C6A', text: '#F0F4F8' },
+                talmudic:     { background: '#4C2A4C', text: '#F0F4F8' },
+                zoharian:     { background: '#5C549A', text: '#F0F4F8' },
+                sephorian:    { background: '#36454F', text: '#ADD8E6' },
+                experimental: { background: '#2A2A3A', text: '#C0C8FF' }
+            };
+
+            Object.assign(cardTexts, { pragmatic: ["Insight 1", "Principle 2", "Concept 3", "Method 4", "Strategy 5", "Tactic 6", "Framework 7"], talmudic: ["תובנה 1", "עיקרון 2", "מושג 3", "שיטה 4", "אסטרטגיה 5", "טקטיקה 6", "מסגרת 7"], zoharian: ["Vision 1", "Règle 2", "Idée 3", "Voie 4", "Plan 5", "Artifice 6", "Structure 7"], sephorian: ["Intuizione 1", "Norma 2", "Concetto 3", "Sistema 4", "Piano 5", "Tattica 6", "Schema 7"], experimental: ["Percepción 1", "Guía 2", "Noción 3", "Práctica 4", "Técnica 5", "Maniobra 6", "Diseño 7"] });
+            Object.assign(cardBackTexts, { pragmatic: [ { title: "Detail 1", p: "Extended information for Insight 1." }, { title: "Detail 2", p: "More about Principle 2 here." }, { title: "Detail 3", p: "Concept 3 explained further." }, { title: "Detail 4", p: "The Method 4 approach." }, { title: "Detail 5", p: "Unpacking Strategy 5." }, { title: "Detail 6", p: "Tactic 6 in action." }, { title: "Detail 7", p: "Framework 7's components." } ], talmudic: [ { title: "פרט 1", p: "מידע מורחב על תובנה 1." }, { title: "פרט 2", p: "עוד על עיקרון 2 כאן." }, { title: "פרט 3", p: "מושג 3 מוסבר בהרחבה." }, { title: "פרט 4", p: "גישת שיטה 4." }, { title: "פרט 5", p: "פירוק אסטרטגיה 5." }, { title: "פרט 6", p: "טקטיקה 6 בפעולה." }, { title: "פרט 7", p: "מרכיבי מסגרת 7." } ], zoharian: [ { title: "Détail 1", p: "Informations étendues pour Vision 1." }, { title: "Détail 2", p: "Plus sur Règle 2 ici." }, { title: "Détail 3", p: "Idée 3 expliquée davantage." }, { title: "Détail 4", p: "L'approche Voie 4." }, { title: "Détail 5", p: "Déballage de Plan 5." }, { title: "Détail 6", p: "Artifice 6 en action." }, { title: "Détail 7", p: "Composants de Structure 7." } ], sephorian: [ { title: "Dettaglio 1", p: "Informazioni estese per Intuizione 1." }, { title: "Dettaglio 2", p: "Più su Norma 2 qui." }, { title: "Dettaglio 3", p: "Concetto 3 spiegato ulteriormente." }, { title: "Dettaglio 4", p: "L'approccio Sistema 4." }, { title: "Dettaglio 5", p: "Analisi di Piano 5." }, { title: "Dettaglio 6", p: "Tattica 6 in azione." }, { title: "Dettaglio 7", p: "Componenti di Schema 7." } ], experimental: [ { title: "Detalle 1", p: "Información extendida para Percepción 1." }, { title: "Detalle 2", p: "Más sobre Guía 2 aquí." }, { title: "Detalle 3", p: "Noción 3 explicada más a fondo." }, { title: "Detalle 4", p: "La Práctica 4." }, { title: "Detalle 5", p: "Desglosando Técnica 5." }, { title: "Detalle 6", p: "Maniobra 6 en acción." }, { title: "Detalle 7", p: "Componentes de Diseño 7." } ] });
+            Object.assign(cardDetailQuotes, { pragmatic: [ "It is only with the heart that one can see rightly; what is essential is invisible to the eye.", "All grown-ups were once children... but only few of them remember it.", "The most beautiful things in the world cannot be seen or touched, they are felt with the heart.", "You become responsible, forever, for what you have tamed.", "It is the time you have wasted for your rose that makes your rose so important.", "Words are the source of misunderstandings.", "What makes the desert beautiful is that somewhere it hides a well." ], talmudic: [ "רק בלב אפשר לראות היטב; מה שחשוב סמוי מן העין.", "כל המבוגרים היו פעם ילדים... אך רק מעטים מהם זוכרים זאת.", "הדברים היפים ביותר בעולם אינם נראים או ניתנים למגע, הם מורגשים בלב.", "אתה נעשה אחראי, לנצח, למה שאילפת.", "הזמן שבזבזת על הוורד שלך הוא שהופך את הוורד שלך לחשוב כל כך.", "מילים הן מקור לאי הבנות.", "מה שעושה את המדבר יפה הוא שבמקום כלשהו הוא מסתיר באר." ], zoharian: [ "On ne voit bien qu'avec le cœur. L'essentiel est invisible pour les yeux.", "Toutes les grandes personnes ont d'abord été des enfants... mais peu d'entre elles s'en souviennent.", "Les plus belles choses du monde ne peuvent être vues ni touchées, elles sont ressenties avec le cœur.", "Tu deviens responsable pour toujours de ce que tu as apprivoisé.", "C'est le temps que tu as perdu pour ta rose qui fait ta rose si importante.", "Les mots sont source de malentendus.", "Ce qui embellit le désert, c'est qu'il cache un puits quelque part." ], sephorian: [ "Non si vede bene che col cuore. L'essenziale è invisibile agli occhi.", "Tutti i grandi sono stati bambini una volta... ma pochi di essi se ne ricordano.", "Le cose più belle del mondo non possono essere viste né toccate, si sentono col cuore.", "Diventi responsabile per sempre di ciò che hai addomesticato.", "È il tempo che hai perduto per la tua rosa che ha reso la tua rosa così importante.", "Le parole sono fonte di malintesi.", "Ciò che abbellisce il deserto è che nasconde un pozzo da qualche parte." ], experimental: [ "Solo con el corazón se puede ver bien; lo esencial es invisible a los ojos.", "Todas las personas mayores fueron al principio niños... aunque pocas de ellas lo recuerdan.", "Las cosas más bellas del mundo no se pueden ver ni tocar, se sienten con el corazón.", "Te haces responsable para siempre de lo que has domesticado.", "Fue el tiempo que pasaste con tu rosa lo que la hizo tan importante.", "Las palabras son fuente de malentendidos.", "Lo que embellece al desierto es que en alguna parte esconde un pozo." ] });
+
+            // Removed fetchAndSetCardImage function
+
+            function createCards() {
+                for (let i = 1; i <= numTotalCards; i++) {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+                    card.dataset.id = i;
+                    const flipper = document.createElement('div');
+                    flipper.classList.add('card-flipper');
+                    const frontFace = document.createElement('div');
+                    frontFace.classList.add('card-face', 'card-front');
+                    const backFace = document.createElement('div');
+                    backFace.classList.add('card-face', 'card-back');
+                    
+                    const backH3 = document.createElement('h3');
+                    const backP = document.createElement('p');
+                    const learnMoreLink = document.createElement('a');
+                    learnMoreLink.classList.add('learn-more-link');
+                    learnMoreLink.href = "#"; 
+                    learnMoreLink.dataset.cardId = i; 
+
+                    backFace.appendChild(backH3);
+                    backFace.appendChild(backP);
+                    backFace.appendChild(learnMoreLink);
+
+                    flipper.appendChild(frontFace);
+                    flipper.appendChild(backFace);
+                    card.appendChild(flipper);
+                    container.appendChild(card);
+                    allCards.push(card);
+                    cardHoverStates.set(card, false);
+                    card.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('learn-more-link')) {
+                            e.stopPropagation(); 
+                            const cardId = e.target.dataset.cardId;
+                            const currentLang = languageSelector.value;
+                            showDetailPage(cardId, currentLang);
+                        } else {
+                            handleCardClick(card);
+                        }
+                    });
+                }
+            }
+
+            function updateCardAppearance(languageKey) {
+                const frontTexts = cardTexts[languageKey] || cardTexts.pragmatic;
+                const backContent = cardBackTexts[languageKey] || cardBackTexts.pragmatic;
+                const styles = languageStyles[languageKey] || languageStyles.pragmatic; // Now contains background and text colors
+                const learnMoreText = { pragmatic: "Learn More", talmudic: "למד עוד", zoharian: "En savoir plus", sephorian: "Scopri di più", experimental: "Aprende más" }[languageKey] || "Learn More";
+                
+                allCards.forEach(card => {
+                    const cardId = parseInt(card.dataset.id, 10);
+                    const frontFace = card.querySelector('.card-front');
+                    const backFace = card.querySelector('.card-back');
+                    const backH3 = backFace ? backFace.querySelector('h3') : null;
+                    const backP = backFace ? backFace.querySelector('p') : null;
+                    const link = backFace ? backFace.querySelector('.learn-more-link') : null;
+
+                    const cardIdText = frontTexts[cardId - 1] || `Card ${cardId}`;
+
+                    if (frontFace) {
+                        frontFace.textContent = cardIdText; // Set text content
+                        frontFace.style.color = styles.text; 
+                        frontFace.style.backgroundColor = styles.background; // Set background color
+                        frontFace.style.backgroundImage = 'none'; // Ensure no lingering background image
+                    }
+                    if (backH3 && backP && cardId > 0 && cardId <= backContent.length) {
+                        backH3.textContent = backContent[cardId - 1].title;
+                        backP.textContent = backContent[cardId - 1].p;
+                    }
+                    if (link) link.textContent = learnMoreText;
+                });
+            }
+
+            function updateSlotTransforms() { 
+                const screenWidth = window.innerWidth; 
+                if (screenWidth <= 480) { currentRadius = 120; } 
+                else if (screenWidth <= 768) { currentRadius = 180; } 
+                else { currentRadius = 250; } 
+                slotTransforms = [`translateX(0px) translateY(0px)`]; 
+                const numOuterSlots = 6; 
+                for (let i = 0; i < numOuterSlots; i++) { 
+                    const angle = (360 / numOuterSlots) * i; 
+                    slotTransforms.push(`rotate(${angle}deg) translateX(${currentRadius}px) rotate(-${angle}deg)`); 
+                } 
+            }
+
+            function applyCardBaseTransformsAndHover(containerCurrentAngle = 0) { 
+                if (isAnimationGloballyPaused && focusedCardElement && detailPageContainer.style.display === 'none') { 
+                    allCards.forEach(card => { 
+                        if (card === focusedCardElement) return; 
+                        const baseTransform = card.dataset.slotTransform || 'translateX(0px) translateY(0px)'; 
+                        card.classList.remove('is-hovered'); 
+                        card.style.transform = `${baseTransform} rotate(${-containerCurrentAngle}deg)`; 
+                    }); 
+                    return; 
+                } 
+                if (detailPageContainer.style.display === 'flex') return; 
+                allCards.forEach(card => { 
+                    const baseTransform = card.dataset.slotTransform || 'translateX(0px) translateY(0px)'; 
+                    let hoverEffectTransform = cardHoverStates.get(card) ? ' translateY(-15px) scale(1.05)' : ''; 
+                    if (cardHoverStates.get(card)) card.classList.add('is-hovered'); else card.classList.remove('is-hovered'); 
+                    card.style.transform = `${baseTransform} rotate(${-containerCurrentAngle}deg)${hoverEffectTransform}`; 
+                }); 
+            }
+
+            function initializeCardPositions() { 
+                updateSlotTransforms(); 
+                const currentContainerAngle = parseFloat(container.dataset.currentRotation) || 0; 
+                allCards.forEach((card, index) => { 
+                    card.dataset.slotTransform = slotTransforms[index % numTotalCards]; 
+                }); 
+                applyCardBaseTransformsAndHover(currentContainerAngle); 
+                updateCardAppearance(languageSelector.value); 
+            }
+
+            function shuffleArray(array) { 
+                for (let i = array.length - 1; i > 0; i--) { 
+                    const j = Math.floor(Math.random() * (i + 1)); 
+                    [array[i], array[j]] = [array[j], array[i]]; 
+                } 
+            }
+
+            function repositionAllCards() { 
+                return new Promise(resolve => { 
+                    shuffleArray(allCards); 
+                    allCards.forEach((card, index) => { 
+                        card.style.transition = 'transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55)'; 
+                        card.dataset.slotTransform = slotTransforms[index]; 
+                    }); 
+                    setTimeout(() => { 
+                        allCards.forEach(card => { 
+                            // Ensure background-color and color transition is part of the general card transition
+                            card.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease'; 
+                        }); 
+                        applyCardBaseTransformsAndHover(parseFloat(container.dataset.currentRotation || 0)); 
+                        resolve(); 
+                    }, 700); 
+                }); 
+            }
+            
+            languageSelector.addEventListener('change', (event) => { updateCardAppearance(event.target.value); });
+            speedSlider.addEventListener('input', (event) => { 
+                currentRotationDurationMs = parseInt(event.target.value) * 1000; 
+                speedValueDisplay.textContent = `${event.target.value} seconds / rotation`; 
+            });
+            
+            function showDetailPage(cardId, language) { 
+                if (!focusedCardElement) { return; }
+                const quotes = cardDetailQuotes[language] || cardDetailQuotes.pragmatic; 
+                const frontTexts = cardTexts[language] || cardTexts.pragmatic; 
+                const selectedQuote = quotes[cardId - 1]; 
+                const selectedCardTitle = frontTexts[cardId - 1]; 
+                detailPageTitle.textContent = selectedCardTitle || `Details for Card ${cardId}`; 
+                detailPageQuote.textContent = selectedQuote || "No quote available for this selection."; 
+                detailPageContainer.style.display = 'flex'; 
+                container.style.display = 'none'; 
+                if (focusedCardElement) focusedCardElement.style.display = 'none'; 
+                document.querySelector('.speed-slider-container').style.display = 'none'; 
+                document.querySelector('.language-menu').style.display = 'none'; 
+                isAnimationGloballyPaused = true; 
+            }
+            function hideDetailPage() { 
+                detailPageContainer.style.display = 'none'; 
+                container.style.display = 'flex'; 
+                if(focusedCardElement) focusedCardElement.style.display = 'flex'; 
+                document.querySelector('.speed-slider-container').style.display = 'block'; 
+                document.querySelector('.language-menu').style.display = 'block'; 
+                unfocusCard(); 
+            }
+            detailPageBackButton.addEventListener('click', hideDetailPage);
+
+            function handleCardClick(cardElement) { 
+                if (detailPageContainer.style.display === 'flex') return; 
+                if (focusedCardElement && focusedCardElement !== cardElement) return; 
+                if (focusedCardElement === cardElement) { 
+                    unfocusCard(); 
+                } else { 
+                    focusCard(cardElement); 
+                } 
+            }
+            function focusCard(cardElement) { 
+                if (isAnimationGloballyPaused && focusedCardElement) return; 
+                isAnimationGloballyPaused = true; 
+                focusedCardElement = cardElement; 
+                cardElement.classList.add('card-focused'); 
+                const currentContainerAngle = parseFloat(container.dataset.currentRotation) || 0; 
+                cardElement.style.transform = `rotateZ(${-currentContainerAngle}deg) translate(0px, 0px) scale(1.8) rotateY(0deg)`; 
+                setTimeout(() => { 
+                    if (focusedCardElement === cardElement) { 
+                       cardElement.classList.add('is-flipped'); 
+                    } 
+                }, 150); 
+            }
+            function unfocusCard() { 
+                if (!focusedCardElement) return; 
+                const cardToUnfocus = focusedCardElement; 
+                cardToUnfocus.classList.remove('is-flipped'); 
+                setTimeout(() => { 
+                    cardToUnfocus.classList.remove('card-focused'); 
+                    const currentContainerAngle = parseFloat(container.dataset.currentRotation) || 0; 
+                    const baseTransform = cardToUnfocus.dataset.slotTransform || 'translateX(0px) translateY(0px)'; 
+                    cardToUnfocus.style.transform = `${baseTransform} rotate(${-currentContainerAngle}deg)`; 
+                    if (focusedCardElement === cardToUnfocus) { 
+                       focusedCardElement = null; 
+                       isAnimationGloballyPaused = false; 
+                    } 
+                }, 600); 
+            }
+            
+            async function animateContainerRotation(targetRotationDegrees, durationMs) { 
+                return new Promise(resolve => { 
+                    const startAngle = parseFloat(container.dataset.currentRotation || 0); 
+                    const startTime = performance.now(); 
+                    function step(currentTime) { 
+                        if(isAnimationGloballyPaused && focusedCardElement && detailPageContainer.style.display === 'none') { resolve(); return; } 
+                        if(detailPageContainer.style.display === 'flex') {resolve(); return;} 
+                        const elapsedTime = currentTime - startTime; 
+                        const progress = Math.min(elapsedTime / durationMs, 1); 
+                        const currentAngle = startAngle + (targetRotationDegrees - startAngle) * progress; 
+                        container.style.transform = `rotate(${currentAngle}deg)`; 
+                        container.dataset.currentRotation = currentAngle; 
+                        applyCardBaseTransformsAndHover(currentAngle); 
+                        if (progress < 1) { 
+                            if (!isAnimationGloballyPaused || detailPageContainer.style.display === 'flex') { 
+                                requestAnimationFrame(step); 
+                            } else { resolve(); }
+                        } else { 
+                            container.style.transform = `rotate(${targetRotationDegrees}deg)`; 
+                            container.dataset.currentRotation = targetRotationDegrees % 360; 
+                            applyCardBaseTransformsAndHover(targetRotationDegrees); 
+                            resolve();
+                        }
+                    }
+                    requestAnimationFrame(step);
+                });
+            }
+            
+            async function animationSequence() {
+                createCards();
+                
+                allCards.forEach(card => { 
+                    card.addEventListener('mouseenter', () => {
+                        if (!isAnimationGloballyPaused) cardHoverStates.set(card, true);
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        if (!isAnimationGloballyPaused) cardHoverStates.set(card, false);
+                    });
+                });
+
+                initializeCardPositions();
+                await repositionAllCards(); 
+                await new Promise(r => setTimeout(r, 100)); 
+
+                while (true) {
+                    if (isAnimationGloballyPaused) {
+                        await new Promise(resolve => { 
+                            const interval = setInterval(() => {
+                                if (!isAnimationGloballyPaused) {
+                                    clearInterval(interval);
+                                    resolve();
+                                }
+                            }, 100);
+                        });
+                    }
+                    
+                    applyCardBaseTransformsAndHover(parseFloat(container.dataset.currentRotation || 0)); 
+
+                    const rotationDuration = currentRotationDurationMs; 
+                    const randomDirection = Math.random() < 0.5 ? 1 : -1;
+                    let currentAngle = parseFloat(container.dataset.currentRotation || 0);
+                    const targetAngle = currentAngle + (360 * randomDirection);
+                    
+                    await animateContainerRotation(targetAngle, rotationDuration);
+
+                    if (isAnimationGloballyPaused) continue; 
+
+                    container.style.transition = 'none'; 
+                    container.style.transform = 'rotate(0deg)'; 
+                    container.dataset.currentRotation = "0"; 
+                    applyCardBaseTransformsAndHover(0); 
+                    await new Promise(r => setTimeout(r, 50));
+
+                    if (isAnimationGloballyPaused) continue;
+
+                    await repositionAllCards();
+                    await new Promise(r => setTimeout(r, 500));
+                }
+            }
+            
+            window.addEventListener('resize', () => { 
+                initializeCardPositions(); 
+                repositionAllCards(); 
+            });
+
+            animationSequence();
+        });
+    </script>
+</body>
+</html>

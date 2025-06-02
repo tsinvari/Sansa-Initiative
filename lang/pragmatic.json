@@ -1,0 +1,35 @@
+{
+    "cardFrontTexts": [
+        "Insight 1", 
+        "Principle 2", 
+        "Concept 3", 
+        "Method 4", 
+        "Strategy 5", 
+        "Tactic 6", 
+        "Framework 7"
+    ],
+    "cardBackContents": [
+        { "title": "Detail 1", "p": "Extended information for Insight 1." },
+        { "title": "Detail 2", "p": "More about Principle 2 here." },
+        { "title": "Detail 3", "p": "Concept 3 explained further." },
+        { "title": "Detail 4", "p": "The Method 4 approach." },
+        { "title": "Detail 5", "p": "Unpacking Strategy 5." },
+        { "title": "Detail 6", "p": "Tactic 6 in action." },
+        { "title": "Detail 7", "p": "Framework 7's components." }
+    ],
+    "learnMoreLinkText": "Learn More",
+    "detailPageQuotes": [
+        "It is only with the heart that one can see rightly; what is essential is invisible to the eye.",
+        "All grown-ups were once children... but only few of them remember it.",
+        "The most beautiful things in the world cannot be seen or touched, they are felt with the heart.",
+        "You become responsible, forever, for what you have tamed.",
+        "It is the time you have wasted for your rose that makes your rose so important.",
+        "Words are the source of misunderstandings.",
+        "What makes the desert beautiful is that somewhere it hides a well."
+    ],
+    "detailPageBackButtonText": "Back to Circle",
+    "cardStyle": { 
+        "background": "#3F3C6A", 
+        "text": "#F0F4F8" 
+    }
+}

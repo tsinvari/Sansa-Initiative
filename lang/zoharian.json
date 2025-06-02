@@ -1,0 +1,35 @@
+{
+    "cardFrontTexts": [
+        "Vision 1", 
+        "Règle 2", 
+        "Idée 3", 
+        "Voie 4", 
+        "Plan 5", 
+        "Artifice 6", 
+        "Structure 7"
+    ],
+    "cardBackContents": [
+        { "title": "Détail 1", "p": "Informations étendues pour Vision 1." },
+        { "title": "Détail 2", "p": "Plus sur Règle 2 ici." },
+        { "title": "Détail 3", "p": "Idée 3 expliquée davantage." },
+        { "title": "Détail 4", "p": "L'approche Voie 4." },
+        { "title": "Détail 5", "p": "Déballage de Plan 5." },
+        { "title": "Détail 6", "p": "Artifice 6 en action." },
+        { "title": "Détail 7", "p": "Composants de Structure 7." }
+    ],
+    "learnMoreLinkText": "En savoir plus",
+    "detailPageQuotes": [
+        "On ne voit bien qu'avec le cœur. L'essentiel est invisible pour les yeux.",
+        "Toutes les grandes personnes ont d'abord été des enfants... mais peu d'entre elles s'en souviennent.",
+        "Les plus belles choses du monde ne peuvent être vues ni touchées, elles sont ressenties avec le cœur.",
+        "Tu deviens responsable pour toujours de ce que tu as apprivoisé.",
+        "C'est le temps que tu as perdu pour ta rose qui fait ta rose si importante.",
+        "Les mots sont source de malentendus.",
+        "Ce qui embellit le désert, c'est qu'il cache un puits quelque part."
+    ],
+    "detailPageBackButtonText": "Retour au Cercle",
+    "cardStyle": { 
+        "background": "#5C549A", 
+        "text": "#F0F4F8" 
+    }
+}
