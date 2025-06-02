@@ -151,45 +151,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function updateCardAppearance(langKey) { // No languageKey param needed, uses currentLangData
-        if (!currentLangData || !currentLangData.cardFrontTexts) return; // Ensure data is loaded
-
-        const frontTexts = currentLangData.cardFrontTexts;
-        const backContent = currentLangData.cardBackContents;
-        const imageStyleInfo = languageImageStyles[langKey] || languageImageStyles.pragmatic; // Use new object for imagess
-        const learnMoreText = currentLangData.learnMoreLinkText;
-        
-        allCards.forEach(card => {
-            const cardId = parseInt(card.dataset.id, 10);
-            const frontFace = card.querySelector('.card-front');
-            const backFace = card.querySelector('.card-back');
-            const backH3 = backFace ? backFace.querySelector('h3') : null;
-            const backP = backFace ? backFace.querySelector('p') : null;
-            const link = backFace ? backFace.querySelector('.learn-more-link') : null;
-
-            const cardIdText = frontTexts[cardId - 1] || `Card ${cardId}`;
-
-            if (frontFace) {
-                frontFace.textContent = cardIdText;
-                if (imageStyleInfo) {
-                    frontFace.style.color = imageStyleInfo.text; 
-                    if (imageStyleInfo.imagePaths && imageStyleInfo.imagePaths[index]) {
-                        frontFace.style.backgroundImage = `url('${imageStyleInfo.imagePaths[index]}')`;
-                        frontFace.style.backgroundColor = 'transparent'; // Ensure no solid color behind image
-                    } else {
-                        frontFace.style.backgroundImage = 'none'; 
-                        frontFace.style.backgroundColor = '#4A5568'; // Fallback color if image path is missing
-                    }
-                }
-                frontFace.style.backgroundImage = 'none'; 
-            }
-            if (backH3 && backP && cardId > 0 && cardId <= backContent.length) {
-                backH3.textContent = backContent[cardId - 1].title;
-                backP.textContent = backContent[cardId - 1].p;
-            }
-            if (link) link.textContent = learnMoreText;
-        });
+    // Option for consistent naming:
+function updateCardAppearance(langKey) { // Parameter is now 'langKey'
+    if (!currentLangData || !currentLangData.cardFrontTexts) {
+        console.warn("Language text data not ready for updateCardAppearance for key:", langKey); // Using langKey
+        return;
     }
+
+    const frontTexts = currentLangData.cardFrontTexts;
+    const backContent = currentLangData.cardBackContents;
+    // Use the langKey parameter here
+    const imageStyleInfo = languageImageStyles[langKey] || languageImageStyles.pragmatic; 
+    const learnMoreText = currentLangData.learnMoreLinkText;
+    
+    allCards.forEach((card, index) => {
+        const cardId = parseInt(card.dataset.id, 10);
+        const frontFace = card.querySelector('.card-front');
+        // ... (rest of the function) ...
+        const cardIdText = frontTexts[cardId - 1] || `Card ${cardId}`;
+
+        if (frontFace) {
+            frontFace.textContent = cardIdText;
+            if (imageStyleInfo) {
+                frontFace.style.color = imageStyleInfo.text; 
+                if (imageStyleInfo.imagePaths && imageStyleInfo.imagePaths[index]) {
+                    frontFace.style.backgroundImage = `url('${imageStyleInfo.imagePaths[index]}')`;
+                    frontFace.style.backgroundColor = 'transparent'; 
+                } else {
+                    console.warn(`Image path not found for ${langKey}, card index ${index}`); // Using langKey
+                    frontFace.style.backgroundImage = 'none'; 
+                    frontFace.style.backgroundColor = '#4A5568'; 
+                }
+            } else {
+                 console.warn(`No imageStyleInfo for languageKey: ${langKey}`); // Using langKey (or should be imageStyleInfo was undefined)
+                 frontFace.style.backgroundImage = 'none'; 
+                 frontFace.style.backgroundColor = '#333333';
+            }
+        }
+        // ...
+    });
+}
 
     function updateSlotTransforms() { 
         const screenWidth = window.innerWidth; 
