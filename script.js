@@ -27,36 +27,36 @@ document.addEventListener('DOMContentLoaded', () => {
         pragmatic: { 
             text: '#FFFFFF', 
             imagePaths: [
-                'images/pragmatic/card1.jpg', 'images/pragmatic/card2.jpg', 'images/pragmatic/card3.jpg',
-                'images/pragmatic/card4.jpg', 'images/pragmatic/card5.jpg', 'images/pragmatic/card6.jpg', 'images/pragmatic/card7.jpg'
+                'images/pragmatic/card1.png', 'images/pragmatic/card2.png', 'images/pragmatic/card3.png',
+                'images/pragmatic/card4.png', 'images/pragmatic/card5.png', 'images/pragmatic/card6.png', 'images/pragmatic/card7.png'
             ]
         },
         talmudic: { 
             text: '#FFFFFF',
             imagePaths: [
-                'images/talmudic/card1.jpg', 'images/talmudic/card2.jpg', 'images/talmudic/card3.jpg',
-                'images/talmudic/card4.jpg', 'images/talmudic/card5.jpg', 'images/talmudic/card6.jpg', 'images/talmudic/card7.jpg'
+                'images/talmudic/card1.png', 'images/talmudic/card2.png', 'images/talmudic/card3.png',
+                'images/talmudic/card4.png', 'images/talmudic/card5.png', 'images/talmudic/card6.png', 'images/talmudic/card7.png'
             ]
         },
         zoharian: { 
             text: '#FFFFFF',
             imagePaths: [
-                'images/zoharian/card1.jpg', 'images/zoharian/card2.jpg', 'images/zoharian/card3.jpg',
-                'images/zoharian/card4.jpg', 'images/zoharian/card5.jpg', 'images/zoharian/card6.jpg', 'images/zoharian/card7.jpg'
+                'images/zoharian/card1.png', 'images/zoharian/card2.png', 'images/zoharian/card3.png',
+                'images/zoharian/card4.png', 'images/zoharian/card5.png', 'images/zoharian/card6.png', 'images/zoharian/card7.png'
             ]
         },
         sephorian: { 
             text: '#000000', // Example: Black text if images are very light
             imagePaths: [
-                'images/sephorian/card1.jpg', 'images/sephorian/card2.jpg', 'images/sephorian/card3.jpg',
-                'images/sephorian/card4.jpg', 'images/sephorian/card5.jpg', 'images/sephorian/card6.jpg', 'images/sephorian/card7.jpg'
+                'images/sephorian/card1.png', 'images/sephorian/card2.png', 'images/sephorian/card3.png',
+                'images/sephorian/card4.png', 'images/sephorian/card5.png', 'images/sephorian/card6.png', 'images/sephorian/card7.png'
             ]
         },
         experimental: { 
             text: '#FFFFFF', 
             imagePaths: [
-                'images/experimental/card1.jpg', 'images/experimental/card2.jpg', 'images/experimental/card3.jpg',
-                'images/experimental/card4.jpg', 'images/experimental/card5.jpg', 'images/experimental/card6.jpg', 'images/experimental/card7.jpg'
+                'images/experimental/card1.png', 'images/experimental/card2.png', 'images/experimental/card3.png',
+                'images/experimental/card4.png', 'images/experimental/card5.png', 'images/experimental/card6.png', 'images/experimental/card7.png'
             ]
         }
     };
