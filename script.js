@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const imageStyleInfo = languageImageStyles[langKey] || languageImageStyles.pragmatic; // Use new object for imagess
         const learnMoreText = currentLangData.learnMoreLinkText;
         
-        allCards.forEach(card => {
+        allCards.forEach((card, index) => {
             const cardId = parseInt(card.dataset.id, 10);
             const frontFace = card.querySelector('.card-front');
             const backFace = card.querySelector('.card-back');
