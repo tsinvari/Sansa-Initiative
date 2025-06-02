@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function updateCardAppearance() { // No languageKey param needed, uses currentLangData
+    function updateCardAppearance(langKey) { // No languageKey param needed, uses currentLangData
         if (!currentLangData || !currentLangData.cardFrontTexts) return; // Ensure data is loaded
 
         const frontTexts = currentLangData.cardFrontTexts;
