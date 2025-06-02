@@ -21,6 +21,46 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLangData = {}; // To store loaded language JSON
     const loadedLanguages = {}; // Cache for loaded language files
 
+    // --- Image Paths and Text Colors (Defined directly in script.js for local image setup) ---
+    // IMPORTANT: Update these paths to match your actual image files and extensions.
+    const languageImageStyles = {
+        pragmatic: { 
+            text: '#FFFFFF', 
+            imagePaths: [
+                'images/pragmatic/card1.jpg', 'images/pragmatic/card2.jpg', 'images/pragmatic/card3.jpg',
+                'images/pragmatic/card4.jpg', 'images/pragmatic/card5.jpg', 'images/pragmatic/card6.jpg', 'images/pragmatic/card7.jpg'
+            ]
+        },
+        talmudic: { 
+            text: '#FFFFFF',
+            imagePaths: [
+                'images/talmudic/card1.jpg', 'images/talmudic/card2.jpg', 'images/talmudic/card3.jpg',
+                'images/talmudic/card4.jpg', 'images/talmudic/card5.jpg', 'images/talmudic/card6.jpg', 'images/talmudic/card7.jpg'
+            ]
+        },
+        zoharian: { 
+            text: '#FFFFFF',
+            imagePaths: [
+                'images/zoharian/card1.jpg', 'images/zoharian/card2.jpg', 'images/zoharian/card3.jpg',
+                'images/zoharian/card4.jpg', 'images/zoharian/card5.jpg', 'images/zoharian/card6.jpg', 'images/zoharian/card7.jpg'
+            ]
+        },
+        sephorian: { 
+            text: '#000000', // Example: Black text if images are very light
+            imagePaths: [
+                'images/sephorian/card1.jpg', 'images/sephorian/card2.jpg', 'images/sephorian/card3.jpg',
+                'images/sephorian/card4.jpg', 'images/sephorian/card5.jpg', 'images/sephorian/card6.jpg', 'images/sephorian/card7.jpg'
+            ]
+        },
+        experimental: { 
+            text: '#FFFFFF', 
+            imagePaths: [
+                'images/experimental/card1.jpg', 'images/experimental/card2.jpg', 'images/experimental/card3.jpg',
+                'images/experimental/card4.jpg', 'images/experimental/card5.jpg', 'images/experimental/card6.jpg', 'images/experimental/card7.jpg'
+            ]
+        }
+    };
+
     // --- Language Data Loading ---
     async function loadLanguage(langKey) {
         if (loadedLanguages[langKey]) {
@@ -116,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const frontTexts = currentLangData.cardFrontTexts;
         const backContent = currentLangData.cardBackContents;
-        const styles = currentLangData.cardStyle; // Assumes cardStyle: { background: '...', text: '...' }
+        const imageStyleInfo = languageImageStyles[languageKey] || languageImageStyles.pragmatic; // Use new object for imagess
         const learnMoreText = currentLangData.learnMoreLinkText;
         
         allCards.forEach(card => {
@@ -131,9 +171,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (frontFace) {
                 frontFace.textContent = cardIdText;
-                if (styles) {
-                    frontFace.style.color = styles.text; 
-                    frontFace.style.backgroundColor = styles.background;
+                if (imageStyleInfo) {
+                    frontFace.style.color = imageStyleInfo.text; 
+                    if (imageStyleInfo.imagePaths && imageStyleInfo.imagePaths[index]) {
+                        frontFace.style.backgroundImage = `url('${imageStyleInfo.imagePaths[index]}')`;
+                        frontFace.style.backgroundColor = 'transparent'; // Ensure no solid color behind image
+                    } else {
+                        frontFace.style.backgroundImage = 'none'; 
+                        frontFace.style.backgroundColor = '#4A5568'; // Fallback color if image path is missing
+                    }
                 }
                 frontFace.style.backgroundImage = 'none'; 
             }
