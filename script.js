@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const frontTexts = currentLangData.cardFrontTexts;
         const backContent = currentLangData.cardBackContents;
-        const imageStyleInfo = languageImageStyles[languageKey] || languageImageStyles.pragmatic; // Use new object for imagess
+        const imageStyleInfo = languageImageStyles[langKey] || languageImageStyles.pragmatic; // Use new object for imagess
         const learnMoreText = currentLangData.learnMoreLinkText;
         
         allCards.forEach(card => {
