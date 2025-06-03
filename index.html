@@ -3,40 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floating Card Circle - Solid Color Backgrounds</title>
+    <title>Sansa Initiative</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="header-container">
+        <div class="speed-slider-container">
+        <input type="range" id="speedSlider" min="12" max="20" value="12">
+        </div>
+
         <div class="title">The Sansa Initiative</div>
         <div class="language-menu">
             <select id="languageSelector">
-                <option value="pragmatic">Pragmatic (English)</option>
-                <option value="talmudic">Talmudic (Hebrew)</option>
-                <option value="zoharian">Zoharian (French)</option>
-                <option value="sephorian">Sephorian (Italian)</option>
-                <option value="experimental">Experimental (Spanish)</option>
+                <option value="pragmatic">Pragmatic</option>
+                <option value="talmudic">Talmudic</option>
+                <option value="zoharian">Zoharian</option>
+                <option value="sephorian">Sephorian</option>
+                <option value="experimental">Experimental</option>
             </select>
         </div>
     </div>
 
-    <div class="speed-slider-container">
-        <label for="speedSlider">Rotation Speed</label>
-        <input type="range" id="speedSlider" min="12" max="20" value="12">
-        <span id="speedValueDisplay">12 seconds / rotation</span>
-    </div>
 
-    <div id="detailPageContainer">
+    <div class="card-circle-container" data-current-rotation="0">
+        </div>
+
+    <div id="detailPageContainer" class="hidden">
         <div id="detailPageContent">
             <h2 id="detailPageTitle"></h2>
-            <blockquote id="detailPageQuote"></blockquote>
+            <p id="detailPageParagraph" class="hidden mb-4"></p> 
+            
+            <div id="detailPageTableContent" class="hidden">
+                <table class="w-full border-collapse border border-gray-300 my-4">
+                    <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2 text-left">Header 1</th>
+                            <th class="border border-gray-300 p-2 text-left">Header 2</th>
+                            <th class="border border-gray-300 p-2 text-left">Header 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Row 1, Cell 1</td>
+                            <td class="border border-gray-300 p-2">Row 1, Cell 2</td>
+                            <td class="border border-gray-300 p-2">Row 1, Cell 3</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Row 2, Cell 1</td>
+                            <td class="border border-gray-300 p-2">Row 2, Cell 2</td>
+                            <td class="border border-gray-300 p-2">Row 2, Cell 3</td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+
+            <div id="detailPageListContent" class="hidden">
+                <ul class="list-disc list-inside my-4 text-left">
+                    <li>List Item 1</li>
+                    <li>List Item 2</li>
+                    <li>List Item 3</li>
+                </ul>
+            </div>
+
             <button id="detailPageBackButton">Back to Circle</button>
         </div>
     </div>
 
-    <div class="card-circle-container" data-current-rotation="0">
-        </div>
+    
 
     <script src="script.js"></script>
 </body>

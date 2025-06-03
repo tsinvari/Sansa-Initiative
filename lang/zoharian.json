@@ -1,35 +1,112 @@
 {
-    "cardFrontTexts": [
-        "Vision 1", 
-        "Règle 2", 
-        "Idée 3", 
-        "Voie 4", 
-        "Plan 5", 
-        "Artifice 6", 
-        "Structure 7"
-    ],
-    "cardBackContents": [
-        { "title": "Détail 1", "p": "Informations étendues pour Vision 1." },
-        { "title": "Détail 2", "p": "Plus sur Règle 2 ici." },
-        { "title": "Détail 3", "p": "Idée 3 expliquée davantage." },
-        { "title": "Détail 4", "p": "L'approche Voie 4." },
-        { "title": "Détail 5", "p": "Déballage de Plan 5." },
-        { "title": "Détail 6", "p": "Artifice 6 en action." },
-        { "title": "Détail 7", "p": "Composants de Structure 7." }
-    ],
-    "learnMoreLinkText": "En savoir plus",
-    "detailPageQuotes": [
-        "On ne voit bien qu'avec le cœur. L'essentiel est invisible pour les yeux.",
-        "Toutes les grandes personnes ont d'abord été des enfants... mais peu d'entre elles s'en souviennent.",
-        "Les plus belles choses du monde ne peuvent être vues ni touchées, elles sont ressenties avec le cœur.",
-        "Tu deviens responsable pour toujours de ce que tu as apprivoisé.",
-        "C'est le temps que tu as perdu pour ta rose qui fait ta rose si importante.",
-        "Les mots sont source de malentendus.",
-        "Ce qui embellit le désert, c'est qu'il cache un puits quelque part."
-    ],
-    "detailPageBackButtonText": "Retour au Cercle",
-    "cardStyle": { 
-        "background": "#5C549A", 
-        "text": "#F0F4F8" 
+  "learnMoreLinkText": "Uncover More",
+  "detailPageBackButtonText": "Return to Sphere",
+  "cardFrontTexts": [
+    "Mission",
+    "Vision",
+    "Types of Organizations",
+    "Goals",
+    "Strategies",
+    "Why's?",
+    "Where From?"
+  ],
+  "cardBackContents": [
+    { "title": "The Inner Path", "p": "Our spiritual journey and ultimate objective." },
+    { "title": "Revealed Future", "p": "Glimpsing the unfolding of divine potential." },
+    { "title": "Cosmic Structures", "p": "Understanding formations in the spiritual realms." },
+    { "title": "Kabalistic Intentions", "p": "The higher purposes of our spiritual work." },
+    { "title": "Paths of Emanation", "p": "The methods by which divine influence flows." },
+    { "title": "Soul's Yearning", "p": "The deep spiritual drives behind our actions." },
+    { "title": "Ancient Sparks", "p": "Tracing our lineage to primordial light." }
+  ],
+  "detailPageContent": [
+    {
+      "type": "text",
+      "title": "Our Mission: Illuminating the Hidden",
+      "paragraph": "The Sansa Initiative's mission, through a Zoharian lens, is to reveal the interconnectedness of all existence and the hidden spiritual dimensions of reality. We seek to guide seekers towards an experiential understanding of divine emanation and cosmic harmony."
+    },
+    {
+      "type": "text",
+      "title": "Our Vision: A World Transfigured by Light",
+      "paragraph": "We envision a world where every action is understood as a Tikkun (rectification), bringing forth divine light and elevating consciousness. Through mystical contemplation and ethical living, we aspire to contribute to the ultimate redemption and spiritual flourishing of humanity."
+    },
+    {
+      "type": "table",
+      "title": "Types of Organizations: Zoharian Archetypes",
+      "paragraph": "Exploring organizational structures through the archetypal lens of the Sefirot and spiritual formations.",
+      "tableData": {
+        "headers": ["Archetype", "Kabalistic Principle", "Sansa Application"],
+        "rows": [
+          ["Keter (Crown)", "Will, transcendent unity.", "Visionary leadership, foundational principles."],
+          ["Chokhmah (Wisdom)", "Pure insight, creative spark.", "Brainstorming, intuitive leaps in research."],
+          ["Binah (Understanding)", "Differentiated understanding, structure.", "Structured learning, analytical frameworks."],
+          ["Malkhut (Kingdom)", "Manifestation, collective embodiment.", "Community building, practical implementation."]
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "title": "Goals: Pathways to Divine Union",
+      "paragraph": "Our spiritual objectives are aligned with the ascending and descending flow of divine energy, aiming for self-transformation and cosmic harmony.",
+      "tableData": {
+        "headers": ["Sefirah/Pathway", "Spiritual Objective", "Practice"],
+        "rows": [
+          ["Gevurah (Severity)", "Cultivate discipline and discernment.", "Ethical contemplation, self-restraint."],
+          ["Tiferet (Beauty)", "Integrate compassion and justice.", "Harmonious community relations, balanced study."],
+          ["Yesod (Foundation)", "Strengthen connection to vital life force.", "Mindfulness, physical well-being practices."],
+          ["Shekhinah (Divine Presence)", "Experience immanent divinity.", "Meditation, prayer, sacred music."]
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "title": "Strategies: Mystical Paths and Practices",
+      "paragraph": "The methods by which we engage with spiritual knowledge and strive for personal and collective elevation.",
+      "tableData": {
+        "headers": ["Strategy", "Description", "Focus"],
+        "rows": [
+          ["Hitbodedut", "Solitary meditation and prayer.", "Inner contemplation, personal connection."],
+          ["Hevraya", "Fellowship and communal study.", "Shared revelation, mutual support."],
+          ["Tikkun Olam", "Rectification of the world through action.", "Social justice, environmental stewardship."],
+          ["Giluy Shekhinah", "Revealing Divine Presence in daily life.", "Mindful living, gratitude practices."]
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "title": "The 'Why's': The Soul's Imperative",
+      "paragraph": "Our deepest motivations spring from a yearning for spiritual connection and a desire to contribute to the rectification of the cosmos.",
+      "listItems": [
+        "To mend the vessels of creation (Tikkun HaKelim).",
+        "To unite the divine names (Yihudim).",
+        "To awaken the hidden sparks within.",
+        "To experience ecstatic union with the Infinite (Deveikut).",
+        "To bring healing and harmony to fragmented existence.",
+        "To prepare the world for the ultimate redemption."
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Where From?: Echoes of Primordial Light",
+      "paragraph": "Our Zoharian path draws from a lineage of mystical revelation, reaching back to ancient wisdom traditions and the very fabric of creation.",
+      "listItems": [
+        "**Sefer Yetzirah:** The Book of Formation, foundational text on creation through letters and numbers.",
+        "**Heikhalot Literature:** Early Jewish mystical texts describing heavenly ascents.",
+        "**Kabbalah (Medieval & Lurianic):** The Zohar, Isaac Luria's teachings on Tzimtzum, Shevirat HaKelim, and Tikkun.",
+        "**Hasidism:** Emphasizing spiritual joy, divine immanence, and the role of the Tzaddik.",
+        "**Neoplatonism:** Concepts of emanation and the One (parallels explored in Jewish mysticism).",
+        "**Ancient Wisdom Traditions:** Shared archetypes and universal spiritual principles."
+      ]
     }
+  ],
+    "themeConfig": {
+    "fontFamily": "'Inter', sans-serif",
+    "backgroundColor": "#f0f4f8",
+    "primaryColor": "#3b82f6",  
+    "secondaryColor": "#ddd",   
+    "textColor": "#1e293b",
+    "headerColor": "#1e293b",
+    "backgroundImage": "url('images/Zoharian/background.jpg')"
+
+  }
 }

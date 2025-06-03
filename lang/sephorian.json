@@ -1,35 +1,112 @@
 {
-    "cardFrontTexts": [
-        "Intuizione 1", 
-        "Norma 2", 
-        "Concetto 3", 
-        "Sistema 4", 
-        "Piano 5", 
-        "Tattica 6", 
-        "Schema 7"
-    ],
-    "cardBackContents": [
-        { "title": "Dettaglio 1", "p": "Informazioni estese per Intuizione 1." },
-        { "title": "Dettaglio 2", "p": "Più su Norma 2 qui." },
-        { "title": "Dettaglio 3", "p": "Concetto 3 spiegato ulteriormente." },
-        { "title": "Dettaglio 4", "p": "L'approccio Sistema 4." },
-        { "title": "Dettaglio 5", "p": "Analisi di Piano 5." },
-        { "title": "Dettaglio 6", "p": "Tattica 6 in azione." },
-        { "title": "Dettaglio 7", "p": "Componenti di Schema 7." }
-    ],
-    "learnMoreLinkText": "Scopri di più",
-    "detailPageQuotes": [
-        "Non si vede bene che col cuore. L'essenziale è invisibile agli occhi.",
-        "Tutti i grandi sono stati bambini una volta... ma pochi di essi se ne ricordano.",
-        "Le cose più belle del mondo non possono essere viste né toccate, si sentono col cuore.",
-        "Diventi responsabile per sempre di ciò che hai addomesticato.",
-        "È il tempo che hai perduto per la tua rosa che ha reso la tua rosa così importante.",
-        "Le parole sono fonte di malintesi.",
-        "Ciò che abbellisce il deserto è che nasconde un pozzo da qualche parte."
-    ],
-    "detailPageBackButtonText": "Torna al Cerchio",
-    "cardStyle": { 
-        "background": "#36454F", 
-        "text": "#ADD8E6" 
+  "learnMoreLinkText": "Explore More",
+  "detailPageBackButtonText": "Return to Circle",
+  "cardFrontTexts": [
+    "Mission",
+    "Vision",
+    "Types of Organizations",
+    "Goals",
+    "Strategies",
+    "Why's?",
+    "Where From?"
+  ],
+  "cardBackContents": [
+    { "title": "Our Central Aim", "p": "The purpose guiding our intellectual and cultural pursuits." },
+    { "title": "Desired Horizon", "p": "The future we envision, rich in culture and knowledge." },
+    { "title": "Community Structures", "p": "How Sephardic thought shaped social organization." },
+    { "title": "Aspirations", "p": "The objectives for flourishing of intellect and spirit." },
+    { "title": "Methods of Wisdom", "p": "The approaches to synthesize diverse knowledge." },
+    { "title": "Root Causes", "p": "The deep reasons driving our intellectual endeavors." },
+    { "title": "Our Heritage", "p": "Tracing the historical and cultural origins of our thought." }
+  ],
+  "detailPageContent": [
+    {
+      "type": "text",
+      "title": "Our Mission: Synthesis & Cultural Flourishing",
+      "paragraph": "The Sansa Initiative, through a Sephorian lens, seeks to embody the intellectual and cultural synthesis characteristic of the Golden Age of Sepharad. Our mission is to integrate diverse fields of knowledge, fostering intellectual curiosity, ethical wisdom, and poetic expression."
+    },
+    {
+      "type": "text",
+      "title": "Our Vision: A Renaissance of Thought",
+      "paragraph": "We envision a future where rational inquiry coexists harmoniously with spiritual depth and artistic beauty. Our aim is to inspire a new generation of polymaths who can draw from various traditions to build bridges of understanding and cultivate a richer human experience."
+    },
+    {
+      "type": "table",
+      "title": "Types of Organizations: Sephardic Models",
+      "paragraph": "Examining historical and philosophical organizational structures from the Sephardic tradition.",
+      "tableData": {
+        "headers": ["Type", "Key Feature", "Sansa Application"],
+        "rows": [
+          ["Academies (Yeshivot)", "Centers of intense study and intellectual debate.", "Research hubs, advanced study groups."],
+          ["Poetic Salons", "Gatherings for artistic and philosophical discourse.", "Cultural events, interfaith dialogues."],
+          ["Court Philosophers", "Advising leadership with wisdom and ethics.", "Policy recommendations, ethical frameworks."],
+          ["Community Councils", "Democratic decision-making, social welfare.", "Advisory boards, community outreach."]
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "title": "Goals: Pursuits of Knowledge & Harmony",
+      "paragraph": "Our objectives reflect the Sephardic emphasis on intellectual rigor, spiritual profundity, and societal harmony.",
+      "tableData": {
+        "headers": ["Aspect", "Objective", "Outcome"],
+        "rows": [
+          ["Intellectual", "Promote philosophical inquiry.", "New publications, scholarly articles."],
+          ["Spiritual", "Deepen mystical understanding.", "Workshops on Kabbalah, contemplative practices."],
+          ["Cultural", "Celebrate diverse heritage.", "Music events, art exhibitions."],
+          ["Ethical", "Integrate moral reasoning.", "Applied ethics case studies, leadership training."]
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "title": "Strategies: Paths of Integration",
+      "paragraph": "The methodologies employed to achieve our goals, reflecting the cross-cultural and interdisciplinary approach of Sephardic thought.",
+      "tableData": {
+        "headers": ["Strategy", "Description", "Tool/Method"],
+        "rows": [
+          ["Comparative Study", "Analyze texts across traditions.", "Interdisciplinary seminars, collaborative research."],
+          ["Translation & Dissemination", "Make texts accessible to new audiences.", "Digital archives, modern translations."],
+          ["Patronage of Arts & Letters", "Support creative and scholarly work.", "Grants, artist residencies."],
+          ["Interfaith Dialogue", "Foster understanding between cultures.", "Conferences, community forums."]
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "title": "The 'Why's': The Soul of Sephardic Endeavor",
+      "paragraph": "The underlying motivations that propelled the Golden Age of Sephardic thought and continue to inspire our initiative.",
+      "listItems": [
+        "To reconcile faith and reason.",
+        "To foster intellectual and spiritual curiosity.",
+        "To achieve perfection in both knowledge and conduct.",
+        "To express divine truths through poetry and philosophy.",
+        "To build bridges between different cultural and religious spheres.",
+        "To preserve and transmit a rich intellectual heritage."
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Where From?: Pillars of Sephardic Wisdom",
+      "paragraph": "Our Sephorian perspective draws from the rich historical and intellectual landscape of Jewish communities in the Iberian Peninsula and North Africa.",
+      "listItems": [
+        "**Maimonides:** Integration of Aristotelian philosophy with Jewish law.",
+        "**Solomon ibn Gabirol:** Neoplatonic poetry and philosophical ethics.",
+        "**Judah Halevi:** Defense of revealed religion, philosophical poetry.",
+        "**Nahmanides (Ramban):** Synthesis of Talmud, Kabbalah, and philosophy.",
+        "**Ibn Ezra:** Rationalist biblical commentary, astronomy, poetry.",
+        "**The Golden Age of Al-Andalus:** Arabic philosophy, science, and poetry."
+      ]
     }
+  ],
+    "themeConfig": {
+    "fontFamily": "'Georgia', sans-serif",
+    "backgroundColor": "#f0f4f8",
+    "primaryColor": "#3b82f6",  
+    "secondaryColor": "#ddd",   
+    "textColor": "#1e293b",
+    "headerColor": "#1e293b",
+    "backgroundImage": "url('images/sephorian/background.jpg')"
+
+  }
 }

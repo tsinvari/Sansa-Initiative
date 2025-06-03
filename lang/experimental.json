@@ -1,35 +1,111 @@
 {
-    "cardFrontTexts": [
-        "Percepción 1", 
-        "Guía 2", 
-        "Noción 3", 
-        "Práctica 4", 
-        "Técnica 5", 
-        "Maniobra 6", 
-        "Diseño 7"
-    ],
-    "cardBackContents": [
-        { "title": "Detalle 1", "p": "Información extendida para Percepción 1." },
-        { "title": "Detalle 2", "p": "Más sobre Guía 2 aquí." },
-        { "title": "Detalle 3", "p": "Noción 3 explicada más a fondo." },
-        { "title": "Detalle 4", "p": "La Práctica 4." },
-        { "title": "Detalle 5", "p": "Desglosando Técnica 5." },
-        { "title": "Detalle 6", "p": "Maniobra 6 en acción." },
-        { "title": "Detalle 7", "p": "Componentes de Diseño 7." }
-    ],
-    "learnMoreLinkText": "Aprende más",
-    "detailPageQuotes": [
-        "Solo con el corazón se puede ver bien; lo esencial es invisible a los ojos.",
-        "Todas las personas mayores fueron al principio niños... aunque pocas de ellas lo recuerdan.",
-        "Las cosas más bellas del mundo no se pueden ver ni tocar, se sienten con el corazón.",
-        "Te haces responsable para siempre de lo que has domesticado.",
-        "Fue el tiempo que pasaste con tu rosa lo que la hizo tan importante.",
-        "Las palabras son fuente de malentendidos.",
-        "Lo que embellece al desierto es que en alguna parte esconde un pozo."
-    ],
-    "detailPageBackButtonText": "Volver al Círculo",
-    "cardStyle": { 
-        "background": "#2A2A3A", 
-        "text": "#C0C8FF" 
+  "learnMoreLinkText": "Discover More",
+  "detailPageBackButtonText": "Return to Loop",
+  "cardFrontTexts": [
+    "Mission",
+    "Vision",
+    "Types of Organizations",
+    "Goals",
+    "Strategies",
+    "Why's?",
+    "Where From?"
+  ],
+  "cardBackContents": [
+    { "title": "Our Dynamic Aim", "p": "A purpose open to constant re-evaluation and adaptation." },
+    { "title": "Evolving Future", "p": "Imagining possibilities beyond current paradigms." },
+    { "title": "Emergent Structures", "p": "Exploring new ways to organize and collaborate." },
+    { "title": "Adaptive Targets", "p": "Objectives that shift with new insights and data." },
+    { "title": "Unconventional Methods", "p": "Embracing novel and untested approaches." },
+    { "title": "The Edge Case", "p": "Questioning foundational assumptions." },
+    { "title": "Synthetic Origins", "p": "Tracing our roots to interdisciplinary fusion." }
+  ],
+  "detailPageContent": [
+    {
+      "type": "text",
+      "title": "Our Mission: Probing New Frontiers",
+      "paragraph": "The Sansa Initiative's experimental mission is to continuously test the boundaries of knowledge and practice. We aim to incubate novel ideas, challenge established paradigms, and iterate rapidly to discover emergent truths and effective solutions for complex future scenarios."
+    },
+    {
+      "type": "text",
+      "title": "Our Vision: A Landscape of Continuous Discovery",
+      "paragraph": "We envision a fluid and adaptive intellectual ecosystem where learning is an ongoing experiment, failures are celebrated as data points, and innovation is a constant. Our aspiration is to foster resilient thinkers capable of thriving in uncertainty and shaping unforeseen futures."
+    },
+    {
+      "type": "table",
+      "title": "Types of Organizations: Future-Forward Models",
+      "paragraph": "Exploring cutting-edge and speculative organizational models designed for agility, decentralization, and rapid learning.",
+      "tableData": {
+        "headers": ["Model", "Core Principle", "Sansa Application"],
+        "rows": [
+          ["DAO (Decentralized Autonomous Org)", "Blockchain-governed, community-driven.", "Decentralized research funding, community governance."],
+          ["Liquid Democracy", "Delegation of vote/authority, revocable.", "Dynamic task forces, fluid project leadership."],
+          ["Generative AI Teams", "Human-AI collaboration for ideation.", "Automated content generation, AI-assisted research."],
+          ["Swarm Intelligence", "Self-organizing, emergent behavior.", "Distributed problem-solving, collective forecasting."]
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "title": "Goals: Uncharted Objectives",
+      "paragraph": "Our goals are less about fixed destinations and more about developing adaptive capacities and exploring the unknown.",
+      "tableData": {
+        "headers": ["Dimension", "Objective", "Metric (Adaptive)"],
+        "rows": [
+          ["Innovation", "Generate 5 breakthrough concepts/year.", "Number of peer-reviewed radical proposals."],
+          ["Resilience", "Successfully adapt to 2 major paradigm shifts.", "Speed of pivot, adoption of new tools."],
+          ["Collaboration", "Foster 10 cross-domain partnerships.", "Diversity of expertise in joint projects."],
+          ["Learning", "Implement continuous feedback loops.", "Frequency of retrospectives, iteration speed."]
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "title": "Strategies: Iteration & Exploration",
+      "paragraph": "Our strategies are rooted in agile methodologies, scientific experimentation, and a willingness to embrace ambiguity.",
+      "tableData": {
+        "headers": ["Strategy", "Approach", "Expected Outcome"],
+        "rows": [
+          ["Rapid Prototyping", "Build, test, learn, repeat.", "Fast validation/invalidation of ideas."],
+          ["A/B Testing Philosophies", "Compare different intellectual frameworks.", "Data-driven insights on conceptual efficacy."],
+          ["Scenario Planning", "Anticipate multiple futures, prepare for contingencies.", "Robustness of strategies under uncertainty."],
+          ["Transdisciplinary Fusion", "Combine disparate fields for novel insights.", "Emergent intellectual breakthroughs."]
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "title": "The 'Why's': The Drive to Uncover",
+      "paragraph": "The fundamental drivers behind our experimental approach, pushing us beyond conventional boundaries.",
+      "listItems": [
+        "To explore the unknown and embrace intellectual adventure.",
+        "To develop robust methodologies for future-proofing knowledge.",
+        "To foster creative problem-solving in complex systems.",
+        "To challenge assumptions and prevent cognitive stagnation.",
+        "To build adaptive intelligence for unforeseen challenges.",
+        "To contribute to a living, evolving body of wisdom."
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Where From?: Confluence of Cutting-Edge Thought",
+      "paragraph": "Our experimental framework draws from a synthesis of modern scientific, philosophical, and technological advancements.",
+      "listItems": [
+        "**Complexity Science:** Chaos theory, emergent properties, self-organization.",
+        "**Agile Methodologies:** Scrum, Kanban, Lean startup principles.",
+        "**Futures Studies:** Foresight, scenario planning, trend analysis.",
+        "**Cognitive Science:** Heuristics, biases, decision-making under uncertainty.",
+        "**Artificial Intelligence:** Machine learning, neural networks, computational creativity.",
+        "**Post-Structuralism & Deconstruction:** Challenging grand narratives and fixed meanings."
+      ]
     }
+  ],
+    "themeConfig": {
+    "fontFamily": "'Arial', sans-serif",
+    "backgroundColor": "#f0f4f8",
+    "primaryColor": "#3b82f6",  
+    "secondaryColor": "#ddd",   
+    "textColor": "#1e293b",
+    "headerColor": "#1e293b",
+    "backgroundImage": "url('images/experimental/background.jpg')"
+  }
 }

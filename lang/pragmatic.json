@@ -1,35 +1,112 @@
 {
-    "cardFrontTexts": [
-        "Insight 1", 
-        "Principle 2", 
-        "Concept 3", 
-        "Method 4", 
-        "Strategy 5", 
-        "Tactic 6", 
-        "Framework 7"
-    ],
-    "cardBackContents": [
-        { "title": "Detail 1", "p": "Extended information for Insight 1." },
-        { "title": "Detail 2", "p": "More about Principle 2 here." },
-        { "title": "Detail 3", "p": "Concept 3 explained further." },
-        { "title": "Detail 4", "p": "The Method 4 approach." },
-        { "title": "Detail 5", "p": "Unpacking Strategy 5." },
-        { "title": "Detail 6", "p": "Tactic 6 in action." },
-        { "title": "Detail 7", "p": "Framework 7's components." }
-    ],
-    "learnMoreLinkText": "Learn More",
-    "detailPageQuotes": [
-        "It is only with the heart that one can see rightly; what is essential is invisible to the eye.",
-        "All grown-ups were once children... but only few of them remember it.",
-        "The most beautiful things in the world cannot be seen or touched, they are felt with the heart.",
-        "You become responsible, forever, for what you have tamed.",
-        "It is the time you have wasted for your rose that makes your rose so important.",
-        "Words are the source of misunderstandings.",
-        "What makes the desert beautiful is that somewhere it hides a well."
-    ],
-    "detailPageBackButtonText": "Back to Circle",
-    "cardStyle": { 
-        "background": "#3F3C6A", 
-        "text": "#F0F4F8" 
+  "learnMoreLinkText": "Learn More",
+  "detailPageBackButtonText": "Back to Circle",
+  "cardFrontTexts": [
+    "Mission",
+    "Vision",
+    "Types of Organizations",
+    "Goals",
+    "Strategies",
+    "Why's?",
+    "Where From?"
+  ],
+  "cardBackContents": [
+    { "title": "What We Aim For", "p": "Our driving purpose and core reason for existence." },
+    { "title": "Our Future State", "p": "The inspiring picture of what we aspire to become." },
+    { "title": "Org Structures", "p": "Exploring various forms organizations can take." },
+    { "title": "Our Objectives", "p": "The targets we set to achieve our broader aims." },
+    { "title": "How We Get There", "p": "The detailed plans and methods for reaching our goals." },
+    { "title": "Core Motivations", "p": "Unpacking the fundamental reasons behind our actions." },
+    { "title": "Our Roots", "p": "Understanding our origins and foundational influences." }
+  ],
+  "detailPageContent": [
+    {
+      "type": "text",
+      "title": "Our Mission: Our Core Purpose",
+      "paragraph": "The Sansa Initiative's mission is to foster holistic understanding and actionable wisdom by bridging diverse philosophical and spiritual traditions. We aim to provide frameworks for individuals and organizations to navigate complex challenges with clarity and purpose."
+    },
+    {
+      "type": "text",
+      "title": "Our Vision: A Future of Integrated Wisdom",
+      "paragraph": "We envision a world where fragmented knowledge gives way to integrated wisdom, empowering communities to make harmonious decisions. Through accessible insights, we strive to cultivate a global ecosystem of informed, compassionate, and resilient thought leaders."
+    },
+    {
+      "type": "table",
+      "title": "Types of Organizations: A Framework",
+      "paragraph": "Understanding different organizational structures helps us contextualize various approaches to problem-solving and community building.",
+      "tableData": {
+        "headers": ["Type", "Key Characteristic", "Sansa Application"],
+        "rows": [
+          ["Hierarchical", "Clear chain of command, defined roles.", "Structured learning paths, defined research roles."],
+          ["Networked", "Decentralized, interconnected nodes.", "Collaborative research groups, global partner initiatives."],
+          ["Holacratic", "Self-organizing circles, distributed authority.", "Autonomous project teams, emergent insights."],
+          ["Community-Based", "Shared values, voluntary participation.", "Engagement programs, local outreach efforts."]
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "title": "Our Goals: Strategic Objectives",
+      "paragraph": "Our goals are designed to translate our mission and vision into measurable and achievable outcomes, driving continuous progress.",
+      "tableData": {
+        "headers": ["Category", "Objective", "Key Result"],
+        "rows": [
+          ["Impact", "Increase global reach by 20%", "5000+ active users by 2026"],
+          ["Content", "Develop 3 new cross-disciplinary frameworks", "Launch of 'Sansa Synthesis' series"],
+          ["Community", "Establish 5 regional study groups", "Active participation in 3 continents"],
+          ["Sustainability", "Secure diversified funding streams", "Grant funding increase by 15% annually"]
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "title": "Strategies: Our Path Forward",
+      "paragraph": "These are the core methodologies and approaches we employ to achieve our strategic goals effectively and sustainably.",
+      "tableData": {
+        "headers": ["Strategy", "Description", "Focus Area"],
+        "rows": [
+          ["Content Curation", "Synthesizing ancient texts with modern thought.", "Knowledge Hub, Publications"],
+          ["Experiential Learning", "Workshops, retreats, and interactive exercises.", "Community Engagement, Education"],
+          ["Technology Integration", "Utilizing digital platforms for global access.", "Online Learning, Virtual Communities"],
+          ["Partnership Building", "Collaborating with academic and spiritual institutions.", "Research, Outreach"]
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "title": "The 'Why's': Our Foundational Drivers",
+      "paragraph": "Exploring the deeper motivations that compel 'The Sansa Initiative' forward, inspiring our work and guiding our every step.",
+      "listItems": [
+        "To address societal fragmentation through integrated thought.",
+        "To unlock ancient wisdom for contemporary challenges.",
+        "To foster interdisciplinary dialogue and collaboration.",
+        "To empower individuals to find deeper meaning and purpose.",
+        "To contribute to a more balanced and enlightened global discourse.",
+        "To cultivate intellectual humility and open-mindedness."
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Where From?: Our Intellectual Heritage",
+      "paragraph": "Our work is built upon a rich tapestry of historical and philosophical traditions, drawing inspiration from diverse sources to create a unique synthesis.",
+      "listItems": [
+        "**Ancient Hellenic Philosophy:** Socratic method, Platonic ideals, Stoicism.",
+        "**Talmudic Scholarship:** Dialectical reasoning, legal exegesis, ethical discourse.",
+        "**Zoharic Mysticism:** Esoteric interpretations, spiritual symbolism, cosmic interconnectedness.",
+        "**Sephardic Intellectual Tradition:** Synthesis of rationalism, poetry, and Kabbalah.",
+        "**Modern Systems Thinking:** Interconnectedness, complexity, emergent properties.",
+        "**Contemporary Psychology:** Cognitive science, existentialism, positive psychology."
+      ]
     }
+  ],
+    "themeConfig": {
+    "fontFamily": "'Verdana', sans-serif",
+    "backgroundColor": "#f0f4f8",
+    "primaryColor": "#3b82f6",  
+    "secondaryColor": "#ddd",   
+    "textColor": "#1e293b",
+    "headerColor": "#1e293b",
+    "backgroundImage": "url('images/pragmatic/pragmatic.png')"
+
+  }
 }
