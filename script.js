@@ -37,29 +37,29 @@ document.addEventListener('DOMContentLoaded', () => {
         talmudic: {
             text: '#FFFFFF',
             imagePaths: [
-                'images/talmudic/card1.jpeg', 'images/talmudic/card2.jpeg', 'images/talmudic/card3.jpeg',
-                'images/talmudic/card4.jpeg', 'images/talmudic/card5.jpeg', 'images/talmudic/card6.jpeg', 'images/talmudic/card7.jpeg'
+                'images/talmudic/card7.jpeg', 'images/talmudic/card4.jpeg', 'images/talmudic/card7.jpeg',
+                'images/talmudic/card4.jpeg', 'images/talmudic/card7.jpeg', 'images/talmudic/card4.jpeg', 'images/talmudic/card7.jpeg'
             ]
         },
         zoharian: {
             text: '#FFFFFF',
             imagePaths: [
-                'images/zoharian/card1.jpeg', 'images/zoharian/card2.jpeg', 'images/zoharian/card3.jpeg',
-                'images/zoharian/card4.jpeg', 'images/zoharian/card5.jpeg', 'images/zoharian/card6.jpeg', 'images/zoharian/card7.jpeg'
+                'images/zoharian/card7.jpeg', 'images/zoharian/card4.jpeg', 'images/zoharian/card7.jpeg',
+                'images/zoharian/card4.jpeg', 'images/zoharian/card7.jpeg', 'images/zoharian/card4.jpeg', 'images/zoharian/card7.jpeg'
             ]
         },
         sephorian: {
             text: '#000000', // Example: Black text if images are very light
             imagePaths: [
-                'images/sephorian/card1.jpeg', 'images/sephorian/card2.jpeg', 'images/sephorian/card3.jpeg',
-                'images/sephorian/card4.jpeg', 'images/sephorian/card5.jpeg', 'images/sephorian/card6.jpeg', 'images/sephorian/card7.jpeg'
+                'images/sephorian/card7.jpeg', 'images/sephorian/card4.jpeg', 'images/sephorian/card7.jpeg',
+                'images/sephorian/card4.jpeg', 'images/sephorian/card7.jpeg', 'images/sephorian/card4.jpeg', 'images/sephorian/card7.jpeg'
             ]
         },
         experimental: {
             text: '#FFFFFF',
             imagePaths: [
-                'images/experimental/card1.jpeg', 'images/experimental/card2.jpeg', 'images/experimental/card3.jpeg',
-                'images/experimental/card4.jpeg', 'images/experimental/card5.jpeg', 'images/experimental/card6.jpeg', 'images/experimental/card7.jpeg'
+                'images/experimental/card7.jpeg', 'images/experimental/card4.jpeg', 'images/experimental/card7.jpeg',
+                'images/experimental/card4.jpeg', 'images/experimental/card7.jpeg', 'images/experimental/card4.jpeg', 'images/experimental/card7.jpeg'
             ]
         }
     };
