@@ -100,12 +100,13 @@
     }
   ],
     "themeConfig": {
-    "fontFamily": "'Georgia', sans-serif",
-    "backgroundColor": "#f0f4f8",
-    "primaryColor": "#3b82f6",  
-    "secondaryColor": "#ddd",   
-    "textColor": "#1e293b",
-    "headerColor": "#1e293b",
+    "fontFamily": "'Inter', sans-serif",
+    "backgroundColor": "#fdf5e6",
+    "primaryColor": "#a0522d", 
+    "secondaryColor": "#f5deb3", 
+    "textColor": "#5a2d0a",
+    "headerColor": "#7a3e14",
+    "movementType": "mosaicFlow",
     "backgroundImage": "url('images/sephorian/sephorian2.jpeg')"
 
   }

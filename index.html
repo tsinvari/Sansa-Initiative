@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sansa Initiative</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts import for Noto Serif Hebrew (example, add others if needed) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="header-container">
-        <div class="speed-slider-container">
-        <input type="range" id="speedSlider" min="12" max="20" value="12">
-        </div>
-
         <div class="title">The Sansa Initiative</div>
         <div class="language-menu">
             <select id="languageSelector">
@@ -25,15 +23,14 @@
         </div>
     </div>
 
-
-    <div class="card-circle-container" data-current-rotation="0">
-        </div>
-
+    <!-- Detail Page Container (initially hidden/empty by default) -->
     <div id="detailPageContainer" class="hidden">
         <div id="detailPageContent">
             <h2 id="detailPageTitle"></h2>
-            <p id="detailPageParagraph" class="hidden mb-4"></p> 
-            
+            <!-- Ensure this P tag has 'hidden' class -->
+            <p id="detailPageParagraph" class="hidden mb-4"></p>
+
+            <!-- Content for Cards 3, 4, 5 (Types of Organizations, Goals, Strategies) -->
             <div id="detailPageTableContent" class="hidden">
                 <table class="w-full border-collapse border border-gray-300 my-4">
                     <thead>
@@ -49,20 +46,15 @@
                             <td class="border border-gray-300 p-2">Row 1, Cell 2</td>
                             <td class="border border-gray-300 p-2">Row 1, Cell 3</td>
                         </tr>
-                        <tr>
-                            <td class="border border-gray-300 p-2">Row 2, Cell 1</td>
-                            <td class="border border-gray-300 p-2">Row 2, Cell 2</td>
-                            <td class="border border-gray-300 p-2">Row 2, Cell 3</td>
-                        </tr>
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
 
+            <!-- Content for Cards 6 & 7 (Why's?, Where From?) -->
             <div id="detailPageListContent" class="hidden">
                 <ul class="list-disc list-inside my-4 text-left">
                     <li>List Item 1</li>
                     <li>List Item 2</li>
-                    <li>List Item 3</li>
                 </ul>
             </div>
 
@@ -70,7 +62,9 @@
         </div>
     </div>
 
-    
+    <div class="card-circle-container" data-current-rotation="0">
+        <!-- Cards will be dynamically added here by JavaScript -->
+    </div>
 
     <script src="script.js"></script>
 </body>

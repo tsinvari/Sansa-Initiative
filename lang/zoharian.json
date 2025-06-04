@@ -100,12 +100,13 @@
     }
   ],
     "themeConfig": {
-    "fontFamily": "'Inter', sans-serif",
-    "backgroundColor": "#f0f4f8",
-    "primaryColor": "#3b82f6",  
-    "secondaryColor": "#ddd",   
-    "textColor": "#1e293b",
-    "headerColor": "#1e293b",
+    "fontFamily": "'Noto Serif Hebrew', serif", 
+    "backgroundColor": "#f0f0f0",
+    "primaryColor": "#800080", 
+    "secondaryColor": "#e6e6fa", 
+    "textColor": "#300030",
+    "headerColor": "#600060",
+    "movementType": "centralCircle",
     "backgroundImage": "url('images/zoharian/zoharian.jpeg')"
 
   }

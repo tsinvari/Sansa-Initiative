@@ -2,21 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const root = document.documentElement;
     const container = document.querySelector('.card-circle-container');
     const languageSelector = document.getElementById('languageSelector');
-    const speedSlider = document.getElementById('speedSlider');
-    const speedValueDisplay = document.getElementById('speedValueDisplay');
+
     const detailPageContainer = document.getElementById('detailPageContainer');
     const detailPageTitle = document.getElementById('detailPageTitle');
-    const detailPageParagraph = document.getElementById('detailPageParagraph'); // Renamed from detailPageQuote
-    const detailPageTableContent = document.getElementById('detailPageTableContent'); // New ref
-    const detailPageListContent = document.getElementById('detailPageListContent');   // New ref
+    const detailPageParagraph = document.getElementById('detailPageParagraph');
+    const detailPageTableContent = document.getElementById('detailPageTableContent');
+    const detailPageListContent = document.getElementById('detailPageListContent');
     const detailPageBackButton = document.getElementById('detailPageBackButton');
 
     let allCards = [];
     const numTotalCards = 7;
 
-    let currentRotationDurationMs = parseInt(speedSlider.value) * 1000;
+    let currentRotationDurationMs = 12 * 1000; // Default to 12 seconds per rotation
     let currentRadius = 250;
-    let slotTransforms = [];
+    let slotTransforms = []; // Stores the base CSS transforms for each card's position
     let cardHoverStates = new Map();
     let isAnimationGloballyPaused = false;
     let focusedCardElement = null;
@@ -24,45 +23,97 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLangData = {}; // To store loaded language JSON
     const loadedLanguages = {}; // Cache for loaded language files
 
+    let currentMovementType = 'centralCircle'; // Default movement type
+
+    // --- Variables for Heartbeat Animation (Experimental) ---
+    let heartbeatAnimationFrameId = null;
+    let heartbeatStartTime = 0;
+    const heartbeatAmplitude = 25;
+    const heartbeatFrequency = 0.004;
+    const heartbeatPhaseOffset = 0.5;
+
+    // --- Variables for Grid Oscillation (Pragmatic - if it were just oscillation) ---
+    let gridOscillationAnimationFrameId = null;
+    let gridOscillationStartTime = 0;
+    const gridOscillationAmplitude = 5;
+    const gridOscillationFrequency = 0.0005;
+    const gridOscillationPhaseOffset = 0.2;
+
+    // --- Variables for Twinkle Animation (Pragmatic) ---
+    let twinkleAnimationFrameId = null;
+    let twinkleStartTime = 0;
+    const twinkleMinOpacity = 0.2;
+    const twinkleMaxOpacity = 1.0;
+    const twinkleDurationMs = 2000;
+    const twinklePhaseOffset = 0.3;
+
+    // --- Variables for Mosaic Flow Animation (Sephorian) ---
+    let mosaicFlowAnimationFrameId = null;
+    let mosaicFlowStartTime = 0;
+    const mosaicFlowTranslateAmplitude = 8;
+    const mosaicFlowRotateAmplitude = 2;
+    const mosaicFlowFrequency = 0.0003;
+    const mosaicFlowPhaseOffset = 0.7;
+
+    // --- NEW: Variable for Container Inclination ---
+    let containerInclinationTransform = ''; // Stores the base X-rotation for the container
+    // --- END NEW ---
+
     // --- Image Paths and Text Colors (Defined directly in script.js for local image setup) ---
-    // IMPORTANT: Update these paths to match your actual image files and extensions.
     const languageImageStyles = {
         pragmatic: {
-            text: '#FFFFFF',
+            text: '#FFFFFF', // Text color over image
             imagePaths: [
-                'images/pragmatic/card7.jpeg', 'images/pragmatic/card4.jpeg', 'images/pragmatic/card7.jpeg',
-                'images/pragmatic/card4.jpeg', 'images/pragmatic/card7.jpeg', 'images/pragmatic/card4.jpeg', 'images/pragmatic/card7.jpeg'
+                'images/pragmatic/card1.jpeg', 'images/pragmatic/card2.jpeg', 'images/pragmatic/card1.jpeg',
+                'images/pragmatic/card2.jpeg', 'images/pragmatic/card1.jpeg', 'images/pragmatic/card2.jpeg', 'images/pragmatic/card1.jpeg'
             ]
         },
         talmudic: {
             text: '#FFFFFF',
             imagePaths: [
-                'images/talmudic/card7.jpeg', 'images/talmudic/card4.jpeg', 'images/talmudic/card7.jpeg',
-                'images/talmudic/card4.jpeg', 'images/talmudic/card7.jpeg', 'images/talmudic/card4.jpeg', 'images/talmudic/card7.jpeg'
+                'images/talmudic/card1.jpeg', 'images/talmudic/card2.jpeg', 'images/talmudic/card1.jpeg',
+                'images/talmudic/card2.jpeg', 'images/talmudic/card1.jpeg', 'images/talmudic/card2.jpeg', 'images/talmudic/card1.jpeg'
             ]
         },
         zoharian: {
             text: '#FFFFFF',
             imagePaths: [
-                'images/zoharian/card7.jpeg', 'images/zoharian/card4.jpeg', 'images/zoharian/card7.jpeg',
-                'images/zoharian/card4.jpeg', 'images/zoharian/card7.jpeg', 'images/zoharian/card4.jpeg', 'images/zoharian/card7.jpeg'
+                'images/zoharian/card1.jpeg', 'images/zoharian/card2.jpeg', 'images/zoharian/card1.jpeg',
+                'images/zoharian/card2.jpeg', 'images/zoharian/card1.jpeg', 'images/zoharian/card2.jpeg', 'images/zoharian/card1.jpeg'
             ]
         },
         sephorian: {
             text: '#000000', // Example: Black text if images are very light
             imagePaths: [
-                'images/sephorian/card7.jpeg', 'images/sephorian/card4.jpeg', 'images/sephorian/card7.jpeg',
-                'images/sephorian/card4.jpeg', 'images/sephorian/card7.jpeg', 'images/sephorian/card4.jpeg', 'images/sephorian/card7.jpeg'
+                'images/sephorian/card1.jpeg', 'images/sephorian/card2.jpeg', 'images/sephorian/card1.jpeg',
+                'images/sephorian/card2.jpeg', 'images/sephorian/card1.jpeg', 'images/sephorian/card2.jpeg', 'images/sephorian/card1.jpeg'
             ]
         },
         experimental: {
             text: '#FFFFFF',
             imagePaths: [
-                'images/experimental/card7.jpeg', 'images/experimental/card4.jpeg', 'images/experimental/card7.jpeg',
-                'images/experimental/card4.jpeg', 'images/experimental/card7.jpeg', 'images/experimental/card4.jpeg', 'images/experimental/card7.jpeg'
+                'images/experimental/card1.jpeg', 'images/experimental/card2.jpeg', 'images/experimental/card1.jpeg',
+                'images/experimental/card2.jpeg', 'images/experimental/card1.jpeg', 'images/experimental/card2.jpeg', 'images/experimental/card1.jpeg'
             ]
         }
     };
+
+    // --- Helper function to convert Hex to RGB for rgba() CSS properties ---
+    function hexToRgb(hex) {
+        if (!hex || typeof hex !== 'string') return null;
+        let r = 0, g = 0, b = 0;
+        // Handle #RRGGBB or #RGB
+        if (hex.length === 7) { // #RRGGBB
+            r = parseInt(hex.substring(1, 3), 16);
+            g = parseInt(hex.substring(3, 5), 16);
+            b = parseInt(hex.substring(5, 7), 16);
+        } else if (hex.length === 4) { // #RGB
+            r = parseInt(hex[1] + hex[1], 16);
+            g = parseInt(hex[2] + hex[2], 16);
+            b = parseInt(hex[3] + hex[3], 16);
+        }
+        return { r, g, b };
+    }
 
     // --- Language Data Loading ---
     async function loadLanguage(langKey) {
@@ -73,12 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            // Show some loading state if necessary, e.g., on cards
-            allCards.forEach(card => {
-                const front = card.querySelector('.card-front');
-                if (front) front.textContent = 'Loading...';
-            });
-
             const response = await fetch(`lang/${langKey}.json`);
             if (!response.ok) {
                 throw new Error(`Failed to load language file: ${langKey}.json (status: ${response.status})`);
@@ -87,16 +132,15 @@ document.addEventListener('DOMContentLoaded', () => {
             currentLangData = data;
             loadedLanguages[langKey] = data; // Cache it
             updateUIWithLanguageData();
-        } catch (error) {
+        }
+        catch (error) {
             console.error("Error loading language data:", error);
-            // Fallback to English or show error message
-            if (langKey !== 'pragmatic') { // Avoid infinite loop if pragmatic itself fails
+            if (langKey !== 'pragmatic') {
                 await loadLanguage('pragmatic'); // Try loading default
             } else {
-                // Display a more prominent error if default fails
                 allCards.forEach(card => {
                     const front = card.querySelector('.card-front');
-                    if (front) front.textContent = 'Language Error';
+                    if (front) front.textContent = 'Language Error'; // Display error on card front if default fails
                 });
             }
         }
@@ -108,11 +152,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-         // --- NEW: Apply Theme Styles ---
+        const oldMovementType = currentMovementType; // Store old type before updating
+
+        // --- Apply Theme Styles ---
         const themeConfig = currentLangData.themeConfig;
         if (themeConfig) {
             document.body.style.fontFamily = themeConfig.fontFamily;
-            // Use backgroundImage if available, otherwise fallback to backgroundColor
             if (themeConfig.backgroundImage) {
                 document.body.style.backgroundImage = themeConfig.backgroundImage;
                 document.body.style.backgroundColor = 'transparent'; // Ensure background color doesn't interfere
@@ -121,18 +166,57 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.backgroundImage = ''; // Clear any existing background image
             }
 
-            // Set CSS Variables for colors
+            // Set CSS Variables for colors (hex values)
             root.style.setProperty('--theme-primary-color', themeConfig.primaryColor);
             root.style.setProperty('--theme-secondary-color', themeConfig.secondaryColor);
             root.style.setProperty('--theme-text-color', themeConfig.textColor);
             root.style.setProperty('--theme-header-color', themeConfig.headerColor);
             root.style.setProperty('--theme-card-back-color', themeConfig.cardBackColor || '#1e293b');
-        }
-        // --- END NEW THEME APPLICATION ---f
-        updateCardAppearance(languageSelector.value); // Pass the current language key
-        // Update other potential UI elements if they were moved to JSON
-    }
 
+            // Set RGB variables for use with rgba()
+            const primaryRgb = hexToRgb(themeConfig.primaryColor);
+            const secondaryRgb = hexToRgb(themeConfig.secondaryColor);
+            if (primaryRgb) root.style.setProperty('--theme-primary-color-rgb', `${primaryRgb.r}, ${primaryRgb.g}, ${primaryRgb.b}`);
+            if (secondaryRgb) root.style.setProperty('--theme-secondary-color-rgb', `${secondaryRgb.r}, ${secondaryRgb.g}, ${secondaryRgb.b}`);
+
+            currentMovementType = themeConfig.movementType || 'centralCircle'; // Default to centralCircle
+        }
+
+        updateCardAppearance(languageSelector.value); // Pass the current language key
+        initializeCardPositions(); // Re-initialize card positions to apply new movement type
+
+        // --- Manage continuous animations start/stop on theme change ---
+        // Stop all continuous animations first
+        if (heartbeatAnimationFrameId) { cancelAnimationFrame(heartbeatAnimationFrameId); heartbeatAnimationFrameId = null; }
+        if (gridOscillationAnimationFrameId) { cancelAnimationFrame(gridOscillationAnimationFrameId); gridOscillationAnimationFrameId = null; }
+        if (twinkleAnimationFrameId) { cancelAnimationFrame(twinkleAnimationFrameId); twinkleAnimationFrameId = null; }
+        if (mosaicFlowAnimationFrameId) { cancelAnimationFrame(mosaicFlowAnimationFrameId); mosaicFlowAnimationFrameId = null; }
+
+        // Start the new continuous animation if applicable
+        if (currentMovementType === 'horizontalHeartbeat') {
+            heartbeatStartTime = performance.now();
+            startHeartbeatAnimation();
+        } else if (currentMovementType === 'structuredGrid') {
+            gridOscillationStartTime = performance.now();
+            startGridOscillationAnimation();
+        } else if (currentMovementType === 'twinkle') {
+            twinkleStartTime = performance.now();
+            startTwinkleAnimation();
+        } else if (currentMovementType === 'mosaicFlow') {
+            mosaicFlowStartTime = performance.now();
+            startMosaicFlowAnimation();
+        }
+
+        // --- NEW: Set container inclination based on movement type ---
+        if (currentMovementType === 'circularOrbit') {
+            containerInclinationTransform = 'rotateX(45deg)'; // Apply 45-degree tilt for orbit
+        } else {
+            containerInclinationTransform = ''; // No tilt for other types
+        }
+        // Apply initial container transform (combining inclination and current rotation)
+        container.style.transform = `${containerInclinationTransform} rotate(${parseFloat(container.dataset.currentRotation || 0)}deg)`;
+        // --- END NEW ---
+    }
 
     function createCards() {
         for (let i = 1; i <= numTotalCards; i++) {
@@ -176,60 +260,190 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function updateCardAppearance(languageKey) { // Added languageKey param to select image styles
-        if (!currentLangData || !currentLangData.cardFrontTexts || !currentLangData.cardBackContents) return;
+    function updateCardAppearance(languageKey) {
+        if (!currentLangData || Object.keys(currentLangData).length === 0 || !currentLangData.cardFrontTexts || !currentLangData.cardBackContents) {
+             console.warn("Missing language data for card appearance update.");
+             return;
+        }
 
         const frontTexts = currentLangData.cardFrontTexts;
         const backContent = currentLangData.cardBackContents;
-        const imageStyleInfo = languageImageStyles[languageKey] || languageImageStyles.pragmatic; // Use new object for images
+        const imageStyleInfo = languageImageStyles[languageKey] || languageImageStyles.pragmatic;
         const learnMoreText = currentLangData.learnMoreLinkText;
 
         allCards.forEach((card, index) => {
             const cardId = parseInt(card.dataset.id, 10);
             const frontFace = card.querySelector('.card-front');
-            const frontTextContainer = frontFace ? frontFace.querySelector('.card-front-text-overlay') : null; // <--- NEW: Get reference to the new div
             const backFace = card.querySelector('.card-back');
-
-            const backH3 = backFace ? backFace.querySelector('h3') : null;
-            const backP = backFace ? backFace.querySelector('p') : null;
-            const link = backFace ? backFace.querySelector('.learn-more-link') : null;
+            // --- FIX START ---
+            // Corrected variable queries for backH3, backP, link
+            const actualBackH3 = backFace ? backFace.querySelector('h3') : null;
+            const actualBackP = backFace ? backFace.querySelector('p') : null;
+            const actualLink = backFace ? backFace.querySelector('.learn-more-link') : null;
+            // --- FIX END ---
 
             const cardIdText = frontTexts[cardId - 1] || `Card ${cardId}`;
 
             if (frontFace) {
                 frontFace.textContent = cardIdText;
-                if (imageStyleInfo) {
-                    frontFace.style.color = imageStyleInfo.text;
-                    if (imageStyleInfo.imagePaths && imageStyleInfo.imagePaths[index]) {
-                        frontFace.style.backgroundImage = `url('${imageStyleInfo.imagePaths[index]}')`;
-                        frontFace.style.backgroundColor = 'transparent'; // Ensure no solid color behind image
-                        frontFace.style.backgroundSize = 'cover';
-                        frontFace.style.backgroundRepeat = 'no-repeat';
-                        frontFace.style.backgroundPosition = 'center';
-                    } else {
-                        frontFace.style.backgroundImage = 'none';
-                        frontFace.style.backgroundColor = '#4A5568'; // Fallback color if image path is missing
-                    }
+                frontFace.style.color = imageStyleInfo.text;
+
+                if (imageStyleInfo.imagePaths && imageStyleInfo.imagePaths[index]) {
+                    frontFace.style.backgroundImage = `url('${imageStyleInfo.imagePaths[index]}')`;
+                    frontFace.style.backgroundColor = 'transparent';
+                    frontFace.style.backgroundSize = 'cover';
+                    frontFace.style.backgroundPosition = 'center';
+                    frontFace.style.backgroundRepeat = 'no-repeat';
+                } else {
+                    frontFace.style.backgroundImage = 'none';
+                    frontFace.style.backgroundColor = '#4A5568';
                 }
             }
-            if (backH3 && backP && cardId > 0 && cardId <= backContent.length) {
-                backH3.textContent = backContent[cardId - 1].title;
-                backP.textContent = backContent[cardId - 1].p;
+            // --- FIX START ---
+            // Use the actual queried elements here
+            if (actualBackH3 && actualBackP && cardId > 0 && cardId <= backContent.length) {
+                actualBackH3.textContent = backContent[cardId - 1].title;
+                actualBackP.textContent = backContent[cardId - 1].p;
             }
-            if (link) link.textContent = learnMoreText;
+            if (actualLink) actualLink.textContent = learnMoreText;
+            // --- FIX END ---
         });
     }
 
+    // --- Movement Type Layout Functions ---
+    function layoutCentralCircle(radius) {
+        const transforms = [`translateX(0px) translateY(0px)`];
+        const numOuterSlots = 6;
+        for (let i = 0; i < numOuterSlots; i++) {
+            const angle = (360 / numOuterSlots) * i;
+            transforms.push(`rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`);
+        }
+        return transforms;
+    }
+
+    function layoutHorizontalHeartbeat(radius) {
+        const transforms = [];
+        const cardWidth = 150;
+        const spacing = 30;
+        const totalWidth = (numTotalCards * cardWidth) + ((numTotalCards - 1) * spacing);
+        const startX = -totalWidth / 2 + cardWidth / 2;
+
+        for (let i = 0; i < numTotalCards; i++) {
+            const x = startX + (i * (cardWidth + spacing));
+            transforms.push(`translateX(${x}px) translateY(0px)`);
+        }
+        return transforms;
+    }
+
+    function layoutCircularOrbit(radius) {
+        const transforms = [];
+        for (let i = 0; i < numTotalCards; i++) {
+            const angle = (360 / numTotalCards) * i;
+            transforms.push(`rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`);
+        }
+        return transforms;
+    }
+
+    function layoutStructuredGrid(radius) {
+        const transforms = [];
+        const cardWidth = 150;
+        const cardHeight = 220;
+        const gapX = 40;
+        const gapY = 40;
+
+        const gridPositions = [
+            `translateX(-${cardWidth + gapX}px) translateY(-${cardHeight + gapY}px)`,
+            `translateX(0px) translateY(-${cardHeight + gapY}px)`,
+            `translateX(${cardWidth + gapX}px) translateY(-${cardHeight + gapY}px)`,
+
+            `translateX(-${cardWidth + gapX}px) translateY(0px)`,
+            `translateX(0px) translateY(0px)`,
+            `translateX(${cardWidth + gapX}px) translateY(0px)`,
+
+            `translateX(0px) translateY(${cardHeight + gapY}px)`
+        ];
+
+        for (let i = 0; i < numTotalCards; i++) {
+            transforms.push(gridPositions[i] || `translateX(0px) translateY(0px)`);
+        }
+        return transforms;
+    }
+
+    function layoutUnfoldingScroll(radius) {
+        const transforms = [];
+        const cardHeight = 220;
+        const overlap = 80;
+        const totalStackHeight = numTotalCards * (cardHeight - overlap) + overlap;
+        const startY = -totalStackHeight / 2 + cardHeight / 2;
+
+        for (let i = 0; i < numTotalCards; i++) {
+            const y = startY + i * (cardHeight - overlap);
+            transforms.push(`translateX(0px) translateY(${y}px)`);
+        }
+        return transforms;
+    }
+
+    function layoutMosaicFlow(radius) {
+        const transforms = [];
+        const cardWidth = 150;
+        const cardHeight = 220;
+        const baseOffset = 100;
+
+        const mosaicPositions = [
+            `translateX(-${baseOffset * 1.5}px) translateY(-${baseOffset}px)`,
+            `translateX(${baseOffset * 0.5}px) translateY(-${baseOffset * 1.8}px)`,
+            `translateX(${baseOffset * 1.5}px) translateY(-${baseOffset * 0.5}px)`,
+            `translateX(-${baseOffset * 0.8}px) translateY(${baseOffset * 0.7}px)`,
+            `translateX(${baseOffset * 0.8}px) translateY(${baseOffset * 0.7}px)`,
+            `translateX(-${baseOffset * 0.5}px) translateY(${baseOffset * 1.5}px)`,
+            `translateX(${baseOffset * 1.5}px) translateY(${baseOffset * 1.5}px)`
+        ];
+
+        for (let i = 0; i < numTotalCards; i++) {
+            transforms.push(mosaicPositions[i] || `translateX(0px) translateY(0px)`);
+        }
+        return transforms;
+    }
+
+    // --- MODIFIED: updateSlotTransforms to dispatch based on currentMovementType ---
     function updateSlotTransforms() {
         const screenWidth = window.innerWidth;
         if (screenWidth <= 480) { currentRadius = 120; }
         else if (screenWidth <= 768) { currentRadius = 180; }
         else { currentRadius = 250; }
-        slotTransforms = [`translateX(0px) translateY(0px)`];
-        const numOuterSlots = 6;
-        for (let i = 0; i < numOuterSlots; i++) {
-            const angle = (360 / numOuterSlots) * i;
-            slotTransforms.push(`rotate(${angle}deg) translateX(${currentRadius}px) rotate(-${angle}deg)`);
+
+        let effectiveRadius = currentRadius;
+        if (currentMovementType === 'circularOrbit') {
+            effectiveRadius = currentRadius + 50;
+        }
+
+        switch (currentMovementType) {
+            case 'centralCircle':
+                slotTransforms = layoutCentralCircle(effectiveRadius);
+                break;
+            case 'horizontalHeartbeat':
+                slotTransforms = layoutHorizontalHeartbeat(effectiveRadius);
+                break;
+            case 'circularOrbit':
+                slotTransforms = layoutCircularOrbit(effectiveRadius);
+                break;
+            case 'structuredGrid':
+                slotTransforms = layoutStructuredGrid(effectiveRadius);
+                break;
+            case 'unfoldingScroll':
+                slotTransforms = layoutUnfoldingScroll(effectiveRadius);
+                break;
+            case 'mosaicFlow':
+                slotTransforms = layoutMosaicFlow(effectiveRadius);
+                break;
+            default:
+                console.warn(`Unknown movement type: ${currentMovementType}. Falling back to centralCircle.`);
+                slotTransforms = layoutCentralCircle(effectiveRadius);
+                break;
+        }
+        if (currentMovementType !== 'centralCircle' && currentMovementType !== 'circularOrbit') {
+            container.style.transform = 'rotate(0deg)';
+            container.dataset.currentRotation = "0";
         }
     }
 
@@ -243,13 +457,46 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             return;
         }
-        // Use classList.contains('hidden') instead of style.display
         if (!detailPageContainer.classList.contains('hidden')) return;
-        allCards.forEach(card => {
+        allCards.forEach((card, index) => {
             const baseTransform = card.dataset.slotTransform || 'translateX(0px) translateY(0px)';
             let hoverEffectTransform = cardHoverStates.get(card) ? ' translateY(-15px) scale(1.05)' : '';
-            if (cardHoverStates.get(card)) card.classList.add('is-hovered'); else card.classList.remove('is-hovered');
-            card.style.transform = `${baseTransform} rotate(${-containerCurrentAngle}deg)${hoverEffectTransform}`;
+            const rotationTransform = (currentMovementType === 'centralCircle' || currentMovementType === 'circularOrbit') ? `rotate(${-containerCurrentAngle}deg)` : '';
+
+            let heartbeatOffset = 0;
+            if (currentMovementType === 'horizontalHeartbeat') {
+                const time = (performance.now() - heartbeatStartTime) * heartbeatFrequency;
+                heartbeatOffset = heartbeatAmplitude * Math.sin(time + index * heartbeatPhaseOffset);
+            }
+            let gridOscillationOffset = 0;
+            if (currentMovementType === 'structuredGrid') {
+                const time = (performance.now() - gridOscillationStartTime) * gridOscillationFrequency;
+                gridOscillationOffset = gridOscillationAmplitude * Math.sin(time + index * gridOscillationPhaseOffset);
+            }
+            let twinkleOpacityOffset = 0;
+            if (currentMovementType === 'twinkle') {
+                const time = (performance.now() - twinkleStartTime) / twinkleDurationMs * Math.PI * 2;
+                const normalizedOscillation = (Math.cos(time + index * twinklePhaseOffset) + 1) / 2;
+                twinkleOpacityOffset = twinkleMinOpacity + (twinkleMaxOpacity - twinkleMinOpacity) * normalizedOscillation;
+            }
+            let mosaicFlowTranslateOffset = { x: 0, y: 0 };
+            let mosaicFlowRotateOffset = 0;
+            if (currentMovementType === 'mosaicFlow') {
+                const time = (performance.now() - mosaicFlowStartTime) * mosaicFlowFrequency;
+                mosaicFlowTranslateOffset.x = mosaicFlowTranslateAmplitude * Math.sin(time + index * mosaicFlowPhaseOffset);
+                mosaicFlowTranslateOffset.y = mosaicFlowTranslateAmplitude * Math.cos(time + index * mosaicFlowPhaseOffset);
+                mosaicFlowRotateOffset = mosaicFlowRotateAmplitude * Math.sin(time + index * mosaicFlowPhaseOffset * 1.5);
+            }
+
+            card.classList.remove('is-hovered');
+            if (cardHoverStates.get(card)) card.classList.add('is-hovered');
+
+            card.style.transform = `${baseTransform} ${rotationTransform} translateY(${heartbeatOffset + gridOscillationOffset + mosaicFlowTranslateOffset.y}px) translateX(${mosaicFlowTranslateOffset.x}px) rotate(${mosaicFlowRotateOffset}deg) ${hoverEffectTransform}`;
+            if (currentMovementType === 'twinkle') {
+                card.style.opacity = twinkleOpacityOffset;
+            } else {
+                card.style.opacity = 1;
+            }
         });
     }
 
@@ -260,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.dataset.slotTransform = slotTransforms[index % numTotalCards];
         });
         applyCardBaseTransformsAndHover(currentContainerAngle);
-        await loadLanguage(languageSelector.value); // Load initial language
+        await loadLanguage(languageSelector.value);
     }
 
     function shuffleArray(array) {
@@ -291,17 +538,10 @@ document.addEventListener('DOMContentLoaded', () => {
         await loadLanguage(event.target.value);
     });
 
-    speedSlider.addEventListener('input', (event) => {
-        currentRotationDurationMs = parseInt(event.target.value) * 1000;
-        speedValueDisplay.textContent = `${event.target.value} seconds / rotation`;
-    });
-
-    // --- NEW / MODIFIED: showDetailPage Function ---
     function showDetailPage(cardId) {
-        if (!focusedCardElement) { return; } // Ensure a card was focused before showing detail
+        if (!focusedCardElement) { return; }
 
-        // Hide all specific content blocks first
-        detailPageParagraph.classList.add('hidden'); // Ensure it's hidden if not used
+        detailPageParagraph.classList.add('hidden');
         detailPageTableContent.classList.add('hidden');
         detailPageListContent.classList.add('hidden');
         detailPageContainer.style.display = 'flex';
@@ -316,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             detailPageTitle.textContent = cardDetail.title || `Details for Card ${cardId}`;
             detailPageParagraph.textContent = cardDetail.paragraph || "No detailed paragraph available.";
-            detailPageParagraph.classList.remove('hidden'); // Always show paragraph
+            detailPageParagraph.classList.remove('hidden');
 
             switch (cardDetail.type) {
                 case 'table':
@@ -328,8 +568,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     populateList(cardDetail.listItems);
                     break;
                 case 'text':
-                    // Just title and paragraph are shown, which are handled above.
-                    // No other specific elements to show.
                     break;
                 default:
                     console.warn(`Unknown detail page type: ${cardDetail.type} for card ID: ${cardId}`);
@@ -341,15 +579,18 @@ document.addEventListener('DOMContentLoaded', () => {
             detailPageBackButton.textContent = currentLangData.detailPageBackButtonText;
         }
 
-        detailPageContainer.classList.remove('hidden'); // Show the detail page
-        container.style.display = 'none'; // Hide card circle container
-        if (focusedCardElement) focusedCardElement.style.display = 'none'; // Hide the focused card itself
-        document.querySelector('.speed-slider-container').style.display = 'none';
+        detailPageContainer.classList.remove('hidden');
+        container.style.display = 'none';
+        if (focusedCardElement) focusedCardElement.style.display = 'none';
         document.querySelector('.language-menu').style.display = 'none';
         isAnimationGloballyPaused = true;
+        // Stop all continuous animations if active
+        if (heartbeatAnimationFrameId) { cancelAnimationFrame(heartbeatAnimationFrameId); heartbeatAnimationFrameId = null; }
+        if (gridOscillationAnimationFrameId) { cancelAnimationFrame(gridOscillationAnimationFrameId); gridOscillationAnimationFrameId = null; }
+        if (twinkleAnimationFrameId) { cancelAnimationFrame(twinkleAnimationFrameId); twinkleAnimationFrameId = null; }
+        if (mosaicFlowAnimationFrameId) { cancelAnimationFrame(mosaicFlowAnimationFrameId); mosaicFlowAnimationFrameId = null; }
     }
 
-    // --- NEW: Helper function to populate table ---
     function populateTable(tableData) {
         const table = detailPageTableContent.querySelector('table');
         if (!table) return;
@@ -357,11 +598,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const thead = table.querySelector('thead');
         const tbody = table.querySelector('tbody');
 
-        // Clear existing content
         thead.innerHTML = '';
         tbody.innerHTML = '';
 
-        // Populate headers
         if (tableData.headers && tableData.headers.length > 0) {
             const headerRow = document.createElement('tr');
             tableData.headers.forEach(headerText => {
@@ -373,7 +612,6 @@ document.addEventListener('DOMContentLoaded', () => {
             thead.appendChild(headerRow);
         }
 
-        // Populate rows
         if (tableData.rows && tableData.rows.length > 0) {
             tableData.rows.forEach(rowData => {
                 const tr = document.createElement('tr');
@@ -388,15 +626,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- NEW: Helper function to populate list ---
     function populateList(listItems) {
         const ul = detailPageListContent.querySelector('ul');
         if (!ul) return;
 
-        // Clear existing items
         ul.innerHTML = '';
 
-        // Add new items
         if (listItems && listItems.length > 0) {
             listItems.forEach(itemText => {
                 const li = document.createElement('li');
@@ -407,24 +642,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function hideDetailPage() {
-        detailPageContainer.classList.add('hidden'); // Hide the detail page
-        container.style.display = 'flex'; // Show card circle container
-        if (focusedCardElement) focusedCardElement.style.display = 'flex'; // Show the focused card itself
-        document.querySelector('.speed-slider-container').style.display = 'block';
+        detailPageContainer.classList.add('hidden');
+        detailPageContainer.style.display = '';
+
+        container.style.display = 'flex';
+        if (focusedCardElement) focusedCardElement.style.display = 'flex';
         document.querySelector('.language-menu').style.display = 'block';
         unfocusCard();
 
-        // Ensure all specific content blocks are hidden when closing
         detailPageParagraph.classList.add('hidden');
         detailPageTableContent.classList.add('hidden');
         detailPageListContent.classList.add('hidden');
-        detailPageContainer.style.display = '';
-        
+
+        detailPageTitle.textContent = '';
+        detailPageParagraph.textContent = '';
+        detailPageTableContent.querySelector('thead').innerHTML = '';
+        detailPageTableContent.querySelector('tbody').innerHTML = '';
+        detailPageListContent.querySelector('ul').innerHTML = '';
+
+        // Restart continuous animations if applicable
+        if (currentMovementType === 'horizontalHeartbeat' && !heartbeatAnimationFrameId) {
+            heartbeatStartTime = performance.now();
+            startHeartbeatAnimation();
+        }
+        if (currentMovementType === 'structuredGrid' && !gridOscillationAnimationFrameId) {
+            gridOscillationStartTime = performance.now();
+            startGridOscillationAnimation();
+        }
+        if (currentMovementType === 'twinkle' && !twinkleAnimationFrameId) {
+            twinkleStartTime = performance.now();
+            startTwinkleAnimation();
+        }
+        if (currentMovementType === 'mosaicFlow' && !mosaicFlowAnimationFrameId) {
+            mosaicFlowStartTime = performance.now();
+            startMosaicFlowAnimation();
+        }
     }
     detailPageBackButton.addEventListener('click', hideDetailPage);
 
     function handleCardClick(cardElement) {
-        if (!detailPageContainer.classList.contains('hidden')) return; // If detail page is open, ignore card clicks
+        if (!detailPageContainer.classList.contains('hidden')) return;
         if (focusedCardElement && focusedCardElement !== cardElement) return;
         if (focusedCardElement === cardElement) {
             unfocusCard();
@@ -438,12 +695,13 @@ document.addEventListener('DOMContentLoaded', () => {
         focusedCardElement = cardElement;
         cardElement.classList.add('card-focused');
         const currentContainerAngle = parseFloat(container.dataset.currentRotation) || 0;
-        cardElement.style.transform = `rotateZ(${-currentContainerAngle}deg) translate(0px, 0px) scale(1.8) rotateY(0deg)`;
+        const rotationZ = (currentMovementType === 'centralCircle' || currentMovementType === 'circularOrbit') ? `rotateZ(${-currentContainerAngle}deg)` : '';
+        cardElement.style.transform = `${rotationZ} translate(0px, 0px) scale(1.8) rotateY(0deg)`;
         setTimeout(() => {
             if (focusedCardElement === cardElement) {
                cardElement.classList.add('is-flipped');
             }
-        }, 150);
+        }, 50);
     }
     function unfocusCard() {
         if (!focusedCardElement) return;
@@ -453,39 +711,109 @@ document.addEventListener('DOMContentLoaded', () => {
             cardToUnfocus.classList.remove('card-focused');
             const currentContainerAngle = parseFloat(container.dataset.currentRotation) || 0;
             const baseTransform = cardToUnfocus.dataset.slotTransform || 'translateX(0px) translateY(0px)';
-            cardToUnfocus.style.transform = `${baseTransform} rotate(${-currentContainerAngle}deg)`;
+            const rotationTransform = (currentMovementType === 'centralCircle' || currentMovementType === 'circularOrbit') ? `rotate(${-currentContainerAngle}deg)` : '';
+            cardToUnfocus.style.transform = `${baseTransform} ${rotationTransform}`;
             if (focusedCardElement === cardToUnfocus) {
                focusedCardElement = null;
                isAnimationGloballyPaused = false;
             }
-        }, 600);
+        }, 300);
+    }
+
+    function startTwinkleAnimation() {
+        if (twinkleAnimationFrameId) cancelAnimationFrame(twinkleAnimationFrameId);
+        twinkleStartTime = performance.now();
+        function animateTwinkle(currentTime) {
+            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || currentMovementType !== 'twinkle') {
+                twinkleAnimationFrameId = null;
+                allCards.forEach(card => card.style.opacity = 1);
+                return;
+            }
+            applyCardBaseTransformsAndHover(0);
+            twinkleAnimationFrameId = requestAnimationFrame(animateTwinkle);
+        }
+        twinkleAnimationFrameId = requestAnimationFrame(animateTwinkle);
+    }
+
+    function startHeartbeatAnimation() {
+        if (heartbeatAnimationFrameId) cancelAnimationFrame(heartbeatAnimationFrameId);
+        heartbeatStartTime = performance.now();
+        function animateHeartbeat(currentTime) {
+            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || currentMovementType !== 'horizontalHeartbeat') {
+                heartbeatAnimationFrameId = null;
+                return;
+            }
+            applyCardBaseTransformsAndHover(0);
+            heartbeatAnimationFrameId = requestAnimationFrame(animateHeartbeat);
+        }
+        heartbeatAnimationFrameId = requestAnimationFrame(animateHeartbeat);
+    }
+    function startGridOscillationAnimation() {
+        if (gridOscillationAnimationFrameId) cancelAnimationFrame(gridOscillationAnimationFrameId);
+        gridOscillationStartTime = performance.now();
+        function animateGridOscillation(currentTime) {
+            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || currentMovementType !== 'structuredGrid') {
+                gridOscillationAnimationFrameId = null;
+                return;
+            }
+            applyCardBaseTransformsAndHover(0);
+            gridOscillationAnimationFrameId = requestAnimationFrame(animateGridOscillation);
+        }
+        gridOscillationAnimationFrameId = requestAnimationFrame(animateGridOscillation);
+    }
+    function startMosaicFlowAnimation() {
+        if (mosaicFlowAnimationFrameId) cancelAnimationFrame(mosaicFlowAnimationFrameId);
+        mosaicFlowStartTime = performance.now();
+        function animateMosaicFlow(currentTime) {
+            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || currentMovementType !== 'mosaicFlow') {
+                mosaicFlowAnimationFrameId = null;
+                return;
+            }
+            applyCardBaseTransformsAndHover(0);
+            mosaicFlowAnimationFrameId = requestAnimationFrame(animateMosaicFlow);
+        }
+        mosaicFlowAnimationFrameId = requestAnimationFrame(animateMosaicFlow);
     }
 
     async function animateContainerRotation(targetRotationDegrees, durationMs) {
         return new Promise(resolve => {
             const startAngle = parseFloat(container.dataset.currentRotation || 0);
             const startTime = performance.now();
+            let animationFrameId;
+
             function step(currentTime) {
-                if(isAnimationGloballyPaused && focusedCardElement && detailPageContainer.classList.contains('hidden')) { resolve(); return; }
-                if(!detailPageContainer.classList.contains('hidden')) {resolve(); return;} // Check for 'hidden' class
+                if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden')) {
+                    cancelAnimationFrame(animationFrameId);
+                    resolve();
+                    return;
+                }
+
                 const elapsedTime = currentTime - startTime;
                 const progress = Math.min(elapsedTime / durationMs, 1);
-                const currentAngle = startAngle + (targetRotationDegrees - startAngle) * progress;
-                container.style.transform = `rotate(${currentAngle}deg)`;
-                container.dataset.currentRotation = currentAngle;
-                applyCardBaseTransformsAndHover(currentAngle);
-                if (progress < 1) {
-                    if (!isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden')) { // Check for 'hidden' class
-                        requestAnimationFrame(step);
-                    } else { resolve(); }
+
+                if (currentMovementType === 'centralCircle' || currentMovementType === 'circularOrbit') {
+                    const currentAngle = startAngle + (targetRotationDegrees - startAngle) * progress;
+                    container.style.transform = `${containerInclinationTransform} rotate(${currentAngle}deg)`;
+                    container.dataset.currentRotation = currentAngle;
+                    applyCardBaseTransformsAndHover(currentAngle);
                 } else {
-                    container.style.transform = `rotate(${targetRotationDegrees}deg)`;
-                    container.dataset.currentRotation = targetRotationDegrees % 360;
-                    applyCardBaseTransformsAndHover(targetRotationDegrees);
+                    applyCardBaseTransformsAndHover(0);
+                }
+
+                if (progress < 1) {
+                    animationFrameId = requestAnimationFrame(step);
+                } else {
+                    if (currentMovementType === 'centralCircle' || currentMovementType === 'circularOrbit') {
+                        container.style.transform = `${containerInclinationTransform} rotate(${targetRotationDegrees}deg)`;
+                        container.dataset.currentRotation = targetRotationDegrees % 360;
+                        applyCardBaseTransformsAndHover(targetRotationDegrees);
+                    } else {
+                        applyCardBaseTransformsAndHover(0);
+                    }
                     resolve();
                 }
             }
-            requestAnimationFrame(step);
+            animationFrameId = requestAnimationFrame(step);
         });
     }
 
@@ -505,8 +833,42 @@ document.addEventListener('DOMContentLoaded', () => {
         await repositionAllCards();
         await new Promise(r => setTimeout(r, 100));
 
+        // --- Start initial continuous animation if applicable ---
+        if (currentMovementType === 'horizontalHeartbeat') {
+            heartbeatStartTime = performance.now();
+            startHeartbeatAnimation();
+        } else if (currentMovementType === 'structuredGrid') {
+            gridOscillationStartTime = performance.now();
+            startGridOscillationAnimation();
+        } else if (currentMovementType === 'twinkle') {
+            twinkleStartTime = performance.now();
+            startTwinkleAnimation();
+        } else if (currentMovementType === 'mosaicFlow') {
+            mosaicFlowStartTime = performance.now();
+            startMosaicFlowAnimation();
+        }
+        // --- END NEW ---
+
         while (true) {
             if (isAnimationGloballyPaused) {
+                // Stop all continuous animations if paused
+                if (heartbeatAnimationFrameId) {
+                    cancelAnimationFrame(heartbeatAnimationFrameId);
+                    heartbeatAnimationFrameId = null;
+                }
+                if (gridOscillationAnimationFrameId) {
+                    cancelAnimationFrame(gridOscillationAnimationFrameId);
+                    gridOscillationAnimationFrameId = null;
+                }
+                if (twinkleAnimationFrameId) {
+                    cancelAnimationFrame(twinkleAnimationFrameId);
+                    twinkleAnimationFrameId = null;
+                    allCards.forEach(card => card.style.opacity = 1);
+                }
+                if (mosaicFlowAnimationFrameId) {
+                    cancelAnimationFrame(mosaicFlowAnimationFrameId);
+                    mosaicFlowAnimationFrameId = null;
+                }
                 await new Promise(resolve => {
                     const interval = setInterval(() => {
                         if (!isAnimationGloballyPaused) {
@@ -515,24 +877,71 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }, 100);
                 });
+                // Restart continuous animations if they were active and we just unpaused
+                if (currentMovementType === 'horizontalHeartbeat' && !heartbeatAnimationFrameId) {
+                    heartbeatStartTime = performance.now();
+                    startHeartbeatAnimation();
+                } else if (currentMovementType === 'structuredGrid' && !gridOscillationAnimationFrameId) {
+                    gridOscillationStartTime = performance.now();
+                    startGridOscillationAnimation();
+                } else if (currentMovementType === 'twinkle' && !twinkleAnimationFrameId) {
+                    twinkleStartTime = performance.now();
+                    startTwinkleAnimation();
+                } else if (currentMovementType === 'mosaicFlow' && !mosaicFlowAnimationFrameId) {
+                    mosaicFlowStartTime = performance.now();
+                    startMosaicFlowAnimation();
+                }
             }
 
             applyCardBaseTransformsAndHover(parseFloat(container.dataset.currentRotation || 0));
 
-            const rotationDuration = currentRotationDurationMs;
-            const randomDirection = Math.random() < 0.5 ? 1 : -1;
-            let currentAngle = parseFloat(container.dataset.currentRotation || 0);
-            const targetAngle = currentAngle + (360 * randomDirection);
+            const cycleDuration = currentRotationDurationMs;
 
-            await animateContainerRotation(targetAngle, rotationDuration);
+            if (currentMovementType === 'centralCircle' || currentMovementType === 'circularOrbit') {
+                const randomDirection = Math.random() < 0.5 ? 1 : -1;
+                let currentAngle = parseFloat(container.dataset.currentRotation || 0);
+                const targetAngle = currentAngle + (360 * randomDirection);
+                await animateContainerRotation(targetAngle, cycleDuration);
+            } else if (currentMovementType === 'horizontalHeartbeat') {
+                await new Promise(r => setTimeout(r, cycleDuration));
+                if (heartbeatAnimationFrameId) {
+                    cancelAnimationFrame(heartbeatAnimationFrameId);
+                    heartbeatAnimationFrameId = null;
+                }
+            } else if (currentMovementType === 'structuredGrid') {
+                await new Promise(r => setTimeout(r, cycleDuration));
+                if (gridOscillationAnimationFrameId) {
+                    cancelAnimationFrame(gridOscillationAnimationFrameId);
+                    gridOscillationAnimationFrameId = null;
+                }
+            } else if (currentMovementType === 'twinkle') {
+                await new Promise(r => setTimeout(r, cycleDuration));
+                if (twinkleAnimationFrameId) {
+                    cancelAnimationFrame(twinkleAnimationFrameId);
+                    twinkleAnimationFrameId = null;
+                    allCards.forEach(card => card.style.opacity = 1);
+                }
+            } else if (currentMovementType === 'mosaicFlow') {
+                mosaicFlowStartTime = performance.now();
+                startMosaicFlowAnimation();
+                await new Promise(r => setTimeout(r, cycleDuration));
+                if (mosaicFlowAnimationFrameId) {
+                    cancelAnimationFrame(mosaicFlowAnimationFrameId);
+                    mosaicFlowAnimationFrameId = null;
+                }
+            } else {
+                await new Promise(r => setTimeout(r, cycleDuration));
+            }
 
             if (isAnimationGloballyPaused) continue;
 
-            container.style.transition = 'none';
-            container.style.transform = 'rotate(0deg)';
-            container.dataset.currentRotation = "0";
-            applyCardBaseTransformsAndHover(0);
-            await new Promise(r => setTimeout(r, 50));
+            if (currentMovementType === 'centralCircle' || currentMovementType === 'circularOrbit') {
+                container.style.transition = 'none';
+                container.style.transform = `${containerInclinationTransform} rotate(0deg)`; // Apply inclination on reset
+                container.dataset.currentRotation = "0";
+                applyCardBaseTransformsAndHover(0);
+                await new Promise(r => setTimeout(r, 50));
+            }
 
             if (isAnimationGloballyPaused) continue;
 

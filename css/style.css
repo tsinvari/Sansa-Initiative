@@ -1,3 +1,7 @@
+/* Add Google Fonts import if you're using custom fonts from there */
+/* Example: @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;700&display=swap'); */
+
+/* Define default CSS variables (fallbacks if JS doesn't set them immediately) */
 :root {
     --theme-primary-color: #3b82f6;
     --theme-secondary-color: #ddd;
@@ -7,77 +11,81 @@
 }
 
 body {
-    font-family: var(--theme-text-color); /* This will be overridden by JS for font-family directly, but good to have fallback */
-    background-color: var(--theme-background-color); /* This will be overridden by JS for background-color directly, but good to have fallback */
-    background-image: var(--theme-background-image); /* This will be set by JS */
-    background-size: cover; /* Cover the entire background */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent tiling */
+    font-family: var(--theme-text-color);
+    background-color: var(--theme-background-color);
+    background-image: var(--theme-background-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */ /* Keep this commented out for manual vertical spacing */
+    align-items: center; /* <--- ADD THIS BACK: This centers content horizontally */
     min-height: 100vh;
     margin: 0;
     padding-top: 20px;
-    overflow: hidden; 
+    overflow: auto;
+
 }
 
 .header-container {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centers the whole header group */
     align-items: center;
     margin-bottom: 60px;
     width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
     position: relative;
-    z-index: 10; 
+    z-index: 10;
+    /* Removed flex-direction: column from media query to keep it row */
 }
 
 .title {
+    font-size: 2.5rem;
+    font-weight: 700;
     color: var(--theme-header-color);
-    font-size: 2.5rem; 
-    font-weight: 700; 
-    color: #1e293b; 
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
-    text-align: center; 
-    margin: 0; 
-    margin-right: 30px;
-    margin-left: 30px;
-
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    text-align: center;
+    margin: 0;
+    margin-right: 30px; /* Fixed padding between title and language menu */
 }
 
 .language-menu select {
-   background-color: rgba(128, 128, 128, 0.3); /* Semi-transparent grey */
+    /* CHANGE background-color to use a theme variable with transparency */
+    background-color: rgba(var(--theme-secondary-color-rgb), 0.5); /* Semi-transparent secondary color */
     color: var(--theme-text-color); /* Use your theme's text color */
-    border: none; /* No border */
-    border-radius: 5px; /* Keep a slight radius, or change to 0 for sharp corners */
-    padding: 5px 25px 5px 10px; /* Top/Bottom: 5px, Right: 25px (for arrow space), Left: 10px */
-    outline: none; /* Remove default browser outline on focus */
+    border: none;
+    border-radius: 5px;
+    padding: 5px 25px 5px 10px;
+    outline: none;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out; 
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Keep subtle shadow */
 }
-.language-menu select:hover { 
-    background-color: rgba(128, 128, 128, 0.5); /* Slightly darker grey on hover */
-    border-color: transparent; }
-
-.language-menu select:focus { 
-     background-color: rgba(128, 128, 128, 0.5); /* Consistency for focus */
-    box-shadow: none; /* Remove default browser focus shadow */
-    border-color: transparent; 
+.language-menu select:hover {
+    /* Slightly more opaque on hover */
+    background-color: rgba(var(--theme-secondary-color-rgb), 0.7);
+    border-color: transparent;
+}
+.language-menu select:focus {
+    /* Use primary color for focus ring, slightly more opaque */
+    background-color: rgba(var(--theme-secondary-color-rgb), 0.7);
+    box-shadow: 0 0 0 2px var(--theme-primary-color);
+    border-color: transparent;
 }
 
 .card-circle-container {
     position: relative;
     width: 600px;
     height: 600px;
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1500px; 
+    perspective: 1500px;
+    margin-top: 50px; /* <--- ADD THIS: Adjust as needed for space from header */
 }
 
 .card {
@@ -85,10 +93,10 @@ body {
     height: 220px;
     position: absolute;
     cursor: pointer;
-    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), 
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
                 box-shadow 0.4s ease;
     will-change: transform, box-shadow;
-    perspective: 1000px; 
+    perspective: 1000px;
 }
 
 .card-flipper {
@@ -96,7 +104,7 @@ body {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .card.is-flipped .card-flipper {
@@ -109,282 +117,210 @@ body {
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 1rem; 
-    font-weight: 600; 
+    /* display: flex; */ /* This was removed to allow text to position directly */
+    /* flex-direction: column; */
+    /* justify-content: flex-end; */
+    /* align-items: center; */
+    text-align: center; /* Center text horizontally */
+    font-size: 1rem;
+    font-weight: 600;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0,0,0,0.05);
-    padding: 10px;
+    padding: 0;
     box-sizing: border-box;
-    transition: background-color 0.4s ease, color 0.4s ease; 
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .card-front {
     background-size: cover; /* Ensures the image covers the card area */
     background-position: center; /* Centers the image in the card */
     background-repeat: no-repeat; /* Prevents the image from tiling */
-    display: flex;
+
+    /* Text styling for readability over images */
+    color: #FFFFFF; /* White text for readability over dark images */
+    text-shadow: 0px 0px 5px rgba(0,0,0,0.7), 0px 0px 8px rgba(0,0,0,0.6); /* Helps text readability */
+
+    /* Positioning text */
+    display: flex; /* Use flex to position text */
     flex-direction: column; /* Stack content vertically */
-    justify-content: flex-end; /* Push content to the bottom */
-    align-items: center;
-    position: relative;
-    padding-bottom: 50px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0,0,0,0.05);
-    padding: 0; /* Remove padding from frontFace, text-overlay will have it */
-    box-sizing: border-box; /* Ensure padding is included in dimensions */
-    transition: background-color 0.4s ease, color 0.4s ease;
+    justify-content: flex-end; /* Push text to the bottom */
+    align-items: center; /* Center text horizontally within the column */
+    padding-bottom: 15px; /* Pushes text up from the bottom. Adjust value as needed. */
 }
 
 .card-back {
     transform: rotateY(180deg);
-    background-color: #8b8f97; 
-    color: #e2e8f0; 
-    display: flex; 
+    background-color: var(--theme-card-back-color);
+    color: var(--theme-secondary-color);
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 15px;
-    box-sizing: border-box;
-    
+    padding: 15px; /* Ensure there's enough internal padding */
+    box-sizing: border-box; /* Important: ensures padding is included in card's total width/height */
+    overflow-y: auto; /* Allows vertical scrolling if content overflows */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling smoothness on iOS */
 }
-.card-back h3 { 
-    font-size: 1.1em; 
+.card-back h3 {
+    font-size: 1.1em;
     margin-bottom: 5px;
-    color: var(--theme-text-color); 
-} 
-.card-back p { 
-    font-size: 0.85em; 
-    padding: 0 5px; 
-    margin-bottom: 10px; 
+}
+.card-back p {
+    font-size: 0.85em;
+    padding: 0 5px;
+    margin-bottom: 10px;
     flex-grow: 1;
-    color: var(--theme-text-color); 
-} 
+}
 .card-back .learn-more-link {
     font-size: 0.8em;
     font-weight: 600;
-    color: #60a5fa; 
+    color: var(--theme-primary-color);
     text-decoration: underline;
     cursor: pointer;
     padding: 5px;
-    display: inline-block; 
+    display: inline-block;
+}
+.card-back .learn-more-link:hover {
     color: var(--theme-primary-color);
-
-}
-.card-back .learn-more-link:hover { 
-    color: #3b82f6;
-    color: var(--theme-primary-color); 
 }
 
-.card.is-hovered:not(.card-focused) .card-face { 
+.card.is-hovered:not(.card-focused) .card-face {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 10px 20px rgba(0,0,0,0.15);
 }
 
 .card.card-focused {
-    z-index: 1100; 
-    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); 
+    z-index: 1100;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .card.card-focused .card-face {
-     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45); 
+     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
 }
 
-.speed-slider-container { 
-    background-color: rgba(255, 255, 255, 0.9); 
-    padding: 15px 20px; 
-    border-radius: 10px; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
-    background-color: rgba(255, 255, 255, 0.9);
-    width: auto; /* Allow content to dictate width, or set a max-width */
-    max-width: 180px; /* Example: make it a bit smaller than before */
-    padding: 10px 15px; /* Adjust padding to make it more compact inline */
-    background-color: rgba(255, 255, 255, 0.9); /* Keep existing background */
-    border-radius: 10px; /* Keep existing border-radius */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Keep existing shadow */
-    margin-right: 30px; /* Add margin to the right to create space from the title */
-    display: flex;
-    flex-direction: column; /* Stack label, input, span vertically inside the slider box */
-    align-items: center; /* Center content within the slider box horizontally */
-    justify-content: center;
-
-}
-.speed-slider-container label { 
-    display: block; 
-    margin-bottom: 8px; 
-    font-size: 0.9em; 
-    font-weight: 600; 
-    color: #334155; 
-    text-align: center; 
-    color: var(--theme-text-color);
-
-}
-.speed-slider-container input[type="range"] { 
-    width: 100%; 
-    cursor: pointer; 
-    writing-mode: horizontal-tb; 
-    -webkit-appearance: none; 
-    appearance: none; 
-    height: 8px; 
-    background: #ddd; 
-    border-radius: 5px; 
-    outline: none; 
-    background: var(--theme-secondary-color); /* Track color */
-
-}
-.speed-slider-container input[type="range"]::-webkit-slider-thumb { 
-    -webkit-appearance: none; 
-    appearance: none; 
-    width: 20px; 
-    height: 20px; 
-    background: #3b82f6; 
-    border-radius: 50%; 
-    cursor: pointer; 
-    background: var(--theme-primary-color); /* Thumb color */
-
-}
-.speed-slider-container input[type="range"]::-moz-range-thumb { 
-    width: 20px; 
-    height: 20px; 
-    background: #3b82f6; 
-    border-radius: 50%; 
-    cursor: pointer; 
-    border: none; 
-    background: var(--theme-primary-color); /* Thumb color */
-
-}
-.speed-slider-container span { 
-    display: block; 
-    text-align: center; 
-    font-size: 0.85em; 
-    margin-top: 8px; 
-    color: #475569;
-    color: var(--theme-text-color);
-}
-
-#detailPageContainer { 
-    background-color: var(--theme-backgroundColor-light);
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-color: #e2e8f0; 
+#detailPageContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* CHANGE THESE BACKGROUND PROPERTIES */
+    background-color: var(--theme-background-color); /* Use theme background color */
+    background-image: var(--theme-background-image); /* Use theme background image */
+    background-size: cover; /* Ensure it covers */
+    background-position: center; /* Center it */
+    background-repeat: no-repeat; /* No repeat */
+    background-attachment: fixed; /* Fixed if main body is fixed */
+    /* background-color: #e2e8f0; */ /* REMOVE THIS LINE */
     z-index: 1200;
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    padding: 40px 20px; 
-    box-sizing: border-box; 
-    overflow-y: auto; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
 }
-
-#detailPageContent { 
-    background-color: white; 
-    padding: 30px 40px; 
-    border-radius: 12px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
-    max-width: 700px; 
-    width: 100%; 
-    text-align: left;
-    
+#detailPageContent {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    max-width: 700px;
+    width: 100%;
+    text-align: left; /* Keep text left-aligned within the content box */
+    display: block;
 }
-#detailPageContent h2 { 
-    font-size: 2em; 
-    color: var(--theme-header-color);    
-    margin-bottom: 20px; 
-    text-align: center; 
+#detailPageContent h2 {
+    font-size: 2em;
+    color: var(--theme-header-color);
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 #detailPageParagraph {
     font-size: 1.1em;
-    color: #334155;
+    color: var(--theme-text-color);
     margin-bottom: 20px;
     line-height: 1.6;
     text-align: left;
-    /* IMPORTANT: Ensure it explicitly displays as a block when not hidden */
-    display: block; 
+    display: block;
 }
 
+#detailPageTableContent table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+#detailPageTableContent th,
+#detailPageTableContent td {
+    border: 1px solid #e2e8f0;
+    padding: 12px 15px;
+    text-align: left;
+}
+#detailPageTableContent th {
+    background-color: var(--theme-secondary-color);
+    color: var(--theme-text-color);
+    font-weight: 600;
+}
+#detailPageTableContent tr:nth-child(even) {
+    background-color: #f8fafc; /* Subtle stripe for readability */
+}
 
-/* You can remove the old blockquote rule entirely if you're not using blockquotes elsewhere on the detail page */
-/* #detailPageContent blockquote { ... } */
-#detailPageBackButton { 
-    margin-top: 30px; 
-    padding: 10px 20px; 
-    font-size: 1em; 
-    font-weight: 600; 
-    color: white; 
-    background-color: #3b82f6; 
-    border: none; 
-    border-radius: 8px; 
-    cursor: pointer; 
-    transition: background-color 0.2s; 
-    display: block; 
-    margin-left: auto; 
-    margin-right: auto; 
+#detailPageListContent ul {
+    list-style: disc;
+    padding-left: 25px;
+    margin: 20px 0;
+    color: var(--theme-text-color);
+}
+#detailPageListContent li {
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    line-height: 1.5;
 }
 
 #detailPageBackButton {
-    background-color: var(--theme-primary-color); /* Button background */
-    /* ... existing styles ... */
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    color: white;
+    background-color: var(--theme-primary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 #detailPageBackButton:hover {
-    background-color: var(--theme-header-color); /* Darker shade on hover */
+    background-color: var(--theme-header-color);
 }
 
-/* Example for transparent background */
-#detailPageContent blockquote {
-    background-color: rgba(var(--theme-secondary-color-rgb), 0.2); /* Semi-transparent secondary color */
-    border-left-color: var(--theme-primary-color);
-    color: var(--theme-text-color);
-}
-
-#detailPageContent p {
-    color: var(--theme-text-color);
-    /* ... existing styles ... */
-}
-#detailPageContent table th {
-    background-color: var(--theme-secondary-color); /* Table header background */
-    color: var(--theme-text-color);
-    /* ... existing styles ... */
-}
-#detailPageContent table tr:nth-child(even) {
-    background-color: var(--theme-background-color-even-row); /* If you want a subtle stripe */
-}
-#detailPageContent table td {
-    color: var(--theme-text-color);
-}
-#detailPageContent ul {
-    color: var(--theme-text-color);
-    /* ... existing styles ... */
-}
-#detailPageContent ul li {
-    color: var(--theme-text-color);
-    /* ... existing styles ... */
-}
-#detailPageBackButton:hover { 
-    background-color: #2563eb; 
-}
-
-@media (max-width: 768px) { 
-    .title { font-size: 2rem; margin-right: 0; margin-bottom: 15px; }
+@media (max-width: 768px) {
+    /* .header-container { flex-direction: column; margin-bottom: 40px; } */ /* Removed to keep row layout */
+    .title { font-size: 2rem; margin-right: 0; margin-bottom: 0; } /* Adjusted for row layout */
     .card-circle-container { width: 450px; height: 450px; }
     .card { width: 120px; height: 180px; }
     .card-face { font-size: 0.9rem; }
-    .speed-slider-container { top: auto; bottom: 15px; right: 50%; transform: translateX(50%); width: 90%; max-width: 280px; }
+    .speed-slider-container { margin-right: 15px; max-width: 120px; padding: 6px 10px; } /* Adjusted for smaller screens */
+    .card-front {
+        padding-bottom: 10px; /* Adjust for smaller cards */
+        font-size: 0.9rem;
+    }
     #detailPageContent { padding: 20px; }
     #detailPageContent h2 { font-size: 1.8em; }
-    #detailPageContent blockquote { font-size: 1.1em; }
+    #detailPageContent blockquote { font-size: 1.1em; } /* This rule is likely unused now */
 }
-@media (max-width: 480px) { 
-    .title { font-size: 1.5rem; margin-bottom: 10px; }
+@media (max-width: 480px) {
+    .title { font-size: 1.5rem; margin-bottom: 0; } /* Adjusted for row layout */
     .card-circle-container { width: 320px; height: 320px; }
     .card { width: 80px; height: 120px; }
-    .card-face { font-size: 0.7rem; padding: 5px; }
+    .card-face { font-size: 0.7rem; padding: 0; } /* Removed padding from card-face */
     .language-menu select { font-size: 0.9rem; }
+    .speed-slider-container { margin-right: 10px; max-width: 90px; padding: 5px 8px; } /* Adjusted for smallest screens */
+    .card-front {
+        padding-bottom: 8px; /* Adjust for smallest cards */
+        font-size: 0.7rem;
+    }
     #detailPageContent { padding: 15px; }
     #detailPageContent h2 { font-size: 1.5em; }
-    #detailPageContent blockquote { font-size: 1em; }
+    #detailPageContent blockquote { font-size: 1em; } /* This rule is likely unused now */
 }

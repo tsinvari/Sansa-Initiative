@@ -99,12 +99,13 @@
     }
   ],
     "themeConfig": {
-    "fontFamily": "'Roboto', sans-serif",
-    "backgroundColor": "#f0f4f8",
-    "primaryColor": "#3b82f6",  
-    "secondaryColor": "#ddd",   
-    "textColor": "#1e293b",
-    "headerColor": "#1e293b",
+"fontFamily": "'Noto Serif Hebrew', serif",
+    "backgroundColor": "#f8f0e0",
+    "primaryColor": "#8b4513",
+    "secondaryColor": "#e0c090",
+    "textColor": "#2f1f00",
+    "headerColor": "#5C3A10",
+    "movementType": "circularOrbit",
     "backgroundImage": "url('images/talmudic/talmudic.webp')"
 
   }

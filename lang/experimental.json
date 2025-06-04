@@ -100,12 +100,13 @@
     }
   ],
     "themeConfig": {
-    "fontFamily": "'Arial', sans-serif",
-    "backgroundColor": "#f0f4f8",
-    "primaryColor": "#3b82f6",  
-    "secondaryColor": "#ddd",   
-    "textColor": "#1e293b",
-    "headerColor": "#1e293b",
+    "fontFamily": "'Inter', sans-serif", 
+    "backgroundColor": "#e0f2f7", 
+    "primaryColor": "#00bcd4", 
+    "secondaryColor": "#b2ebf2", 
+    "textColor": "#006064",
+    "headerColor": "#00838f",
+    "movementType": "horizontalHeartbeat",
     "backgroundImage": "url('images/experimental/experimental.jpeg')"
   }
 }
