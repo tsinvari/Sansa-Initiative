@@ -8,10 +8,17 @@
     --theme-text-color: #1e293b;
     --theme-header-color: #1e293b;
     --theme-card-back-color: #1e293b;
+    --theme-font-family: 'Inter', sans-serif; /* Default font, ensure it's loaded or a common fallback */
 }
 
+/* --- FIX: Ensure 'hidden' class always hides elements --- */
+.hidden {
+    display: none !important;
+}
+/* --- END FIX --- */
+
 body {
-    font-family: var(--theme-text-color);
+    font-family: var(--theme-font-family); /* FIX: Correctly use font-family variable */
     background-color: var(--theme-background-color);
     background-image: var(--theme-background-image);
     background-size: cover;
@@ -20,18 +27,83 @@ body {
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */ /* Keep this commented out for manual vertical spacing */
-    align-items: center; /* <--- ADD THIS BACK: This centers content horizontally */
+    align-items: center;
     min-height: 100vh;
     margin: 0;
     padding-top: 20px;
-    overflow: auto;
-
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
 }
+
+/* --- Initial Dialog Styles --- */
+#initialDialogOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1500; /* Ensure it's on top of everything */
+}
+
+#initialDialogContent {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    max-width: 500px;
+    width: 90%; /* Responsive width */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between elements */
+}
+
+#initialDialogContent h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--theme-header-color);
+    margin-bottom: 10px;
+}
+
+#initialDialogContent p {
+    font-size: 1.1rem;
+    color: var(--theme-text-color);
+    margin-bottom: 15px;
+}
+
+#initialDialogContent #enterButton {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: white;
+    background-color: var(--theme-primary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 10px rgba(var(--theme-primary-color-rgb), 0.3);
+}
+
+#initialDialogContent #enterButton:hover {
+    background-color: var(--theme-header-color);
+    transform: translateY(-2px);
+}
+
+#initialDialogContent #enterButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(var(--theme-primary-color-rgb), 0.2);
+}
+/* --- END Initial Dialog Styles --- */
+
 
 .header-container {
     display: flex;
-    justify-content: center; /* Centers the whole header group */
+    justify-content: center;
     align-items: center;
     margin-bottom: 60px;
     width: 100%;
@@ -39,7 +111,6 @@ body {
     box-sizing: border-box;
     position: relative;
     z-index: 10;
-    /* Removed flex-direction: column from media query to keep it row */
 }
 
 .title {
@@ -49,13 +120,13 @@ body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     text-align: center;
     margin: 0;
-    margin-right: 30px; /* Fixed padding between title and language menu */
+    margin-right: 30px;
 }
 
+/* Language menu select styling, now applies to both language selectors */
 .language-menu select {
-    /* CHANGE background-color to use a theme variable with transparency */
-    background-color: rgba(var(--theme-secondary-color-rgb), 0.5); /* Semi-transparent secondary color */
-    color: var(--theme-text-color); /* Use your theme's text color */
+    background-color: rgba(var(--theme-secondary-color-rgb), 0.5);
+    color: var(--theme-text-color);
     border: none;
     border-radius: 5px;
     padding: 5px 25px 5px 10px;
@@ -63,19 +134,24 @@ body {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Keep subtle shadow */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 .language-menu select:hover {
-    /* Slightly more opaque on hover */
     background-color: rgba(var(--theme-secondary-color-rgb), 0.7);
     border-color: transparent;
 }
 .language-menu select:focus {
-    /* Use primary color for focus ring, slightly more opaque */
     background-color: rgba(var(--theme-secondary-color-rgb), 0.7);
     box-shadow: 0 0 0 2px var(--theme-primary-color);
     border-color: transparent;
 }
+
+/* Specific styling for the language menu inside the initial dialog if needed */
+.language-menu-initial select {
+    font-size: 1.1rem; /* Slightly larger in the dialog */
+    padding: 8px 30px 8px 15px;
+}
+
 
 .card-circle-container {
     position: relative;
@@ -85,7 +161,7 @@ body {
     justify-content: center;
     align-items: center;
     perspective: 1500px;
-    margin-top: 50px; /* <--- ADD THIS: Adjust as needed for space from header */
+    margin-top: 50px;
 }
 
 .card {
@@ -117,11 +193,7 @@ body {
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    /* display: flex; */ /* This was removed to allow text to position directly */
-    /* flex-direction: column; */
-    /* justify-content: flex-end; */
-    /* align-items: center; */
-    text-align: center; /* Center text horizontally */
+    text-align: center;
     font-size: 1rem;
     font-weight: 600;
     border-radius: 16px;
@@ -132,20 +204,18 @@ body {
 }
 
 .card-front {
-    background-size: cover; /* Ensures the image covers the card area */
-    background-position: center; /* Centers the image in the card */
-    background-repeat: no-repeat; /* Prevents the image from tiling */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-    /* Text styling for readability over images */
-    color: #FFFFFF; /* White text for readability over dark images */
-    text-shadow: 0px 0px 5px rgba(0,0,0,0.7), 0px 0px 8px rgba(0,0,0,0.6); /* Helps text readability */
+    color: #FFFFFF;
+    text-shadow: 0px 0px 5px rgba(0,0,0,0.7), 0px 0px 8px rgba(0,0,0,0.6);
 
-    /* Positioning text */
-    display: flex; /* Use flex to position text */
-    flex-direction: column; /* Stack content vertically */
-    justify-content: flex-end; /* Push text to the bottom */
-    align-items: center; /* Center text horizontally within the column */
-    padding-bottom: 15px; /* Pushes text up from the bottom. Adjust value as needed. */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 15px;
 }
 
 .card-back {
@@ -155,10 +225,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 15px; /* Ensure there's enough internal padding */
-    box-sizing: border-box; /* Important: ensures padding is included in card's total width/height */
-    overflow-y: auto; /* Allows vertical scrolling if content overflows */
-    -webkit-overflow-scrolling: touch; /* Improves scrolling smoothness on iOS */
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 .card-back h3 {
     font-size: 1.1em;
@@ -201,14 +271,12 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* CHANGE THESE BACKGROUND PROPERTIES */
-    background-color: var(--theme-background-color); /* Use theme background color */
-    background-image: var(--theme-background-image); /* Use theme background image */
-    background-size: cover; /* Ensure it covers */
-    background-position: center; /* Center it */
-    background-repeat: no-repeat; /* No repeat */
-    background-attachment: fixed; /* Fixed if main body is fixed */
-    /* background-color: #e2e8f0; */ /* REMOVE THIS LINE */
+    background-color: var(--theme-background-color);
+    background-image: var(--theme-background-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     z-index: 1200;
     flex-direction: column;
     align-items: center;
@@ -224,7 +292,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     max-width: 700px;
     width: 100%;
-    text-align: left; /* Keep text left-aligned within the content box */
+    text-align: left;
     display: block;
 }
 #detailPageContent h2 {
@@ -260,7 +328,7 @@ body {
     font-weight: 600;
 }
 #detailPageTableContent tr:nth-child(even) {
-    background-color: #f8fafc; /* Subtle stripe for readability */
+    background-color: #f8fafc;
 }
 
 #detailPageListContent ul {
@@ -295,32 +363,42 @@ body {
 }
 
 @media (max-width: 768px) {
-    /* .header-container { flex-direction: column; margin-bottom: 40px; } */ /* Removed to keep row layout */
-    .title { font-size: 2rem; margin-right: 0; margin-bottom: 0; } /* Adjusted for row layout */
+    .title { font-size: 2rem; margin-right: 0; margin-bottom: 0; }
     .card-circle-container { width: 450px; height: 450px; }
     .card { width: 120px; height: 180px; }
     .card-face { font-size: 0.9rem; }
-    .speed-slider-container { margin-right: 15px; max-width: 120px; padding: 6px 10px; } /* Adjusted for smaller screens */
     .card-front {
-        padding-bottom: 10px; /* Adjust for smaller cards */
+        padding-bottom: 10px;
         font-size: 0.9rem;
     }
     #detailPageContent { padding: 20px; }
     #detailPageContent h2 { font-size: 1.8em; }
-    #detailPageContent blockquote { font-size: 1.1em; } /* This rule is likely unused now */
 }
 @media (max-width: 480px) {
-    .title { font-size: 1.5rem; margin-bottom: 0; } /* Adjusted for row layout */
+    .title { font-size: 1.5rem; margin-bottom: 0; }
     .card-circle-container { width: 320px; height: 320px; }
     .card { width: 80px; height: 120px; }
-    .card-face { font-size: 0.7rem; padding: 0; } /* Removed padding from card-face */
+    .card-face { font-size: 0.7rem; padding: 0; }
     .language-menu select { font-size: 0.9rem; }
-    .speed-slider-container { margin-right: 10px; max-width: 90px; padding: 5px 8px; } /* Adjusted for smallest screens */
     .card-front {
-        padding-bottom: 8px; /* Adjust for smallest cards */
+        padding-bottom: 8px;
         font-size: 0.7rem;
     }
     #detailPageContent { padding: 15px; }
     #detailPageContent h2 { font-size: 1.5em; }
-    #detailPageContent blockquote { font-size: 1em; } /* This rule is likely unused now */
+
+    #initialDialogContent {
+        padding: 25px;
+        gap: 15px;
+    }
+    #initialDialogContent h1 {
+        font-size: 1.8rem;
+    }
+    #initialDialogContent p {
+        font-size: 1rem;
+    }
+    #initialDialogContent #enterButton {
+        padding: 10px 25px;
+        font-size: 1em;
+    }
 }

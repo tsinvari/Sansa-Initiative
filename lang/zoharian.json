@@ -106,8 +106,13 @@
     "secondaryColor": "#e6e6fa", 
     "textColor": "#300030",
     "headerColor": "#600060",
-    "movementType": "centralCircle",
-    "backgroundImage": "url('images/zoharian/zoharian.jpeg')"
+    "movementType": "spiraling",
+    "backgroundImage": "url('images/zoharian/zoharian.jpeg')",
+    "initialDialog": {
+      "title": "Welcome to The Sansa Initiative",
+      "paragraph": "Please select your preferred language to continue:",
+      "enterButtonText": "Start Your Journey"
+    }
 
   }
 }

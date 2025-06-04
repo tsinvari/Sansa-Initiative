@@ -10,9 +10,24 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="header-container">
+    <!-- Initial Dialog Overlay (Visible on load) -->
+    <div id="initialDialogOverlay">
+        <div id="initialDialogContent">
+            <h1>Welcome to The Sansa Initiative</h1>
+            <p>Please select your preferred language to continue:</p>
+            <div class="language-menu language-menu-initial"> <!-- Added a class for specific dialog styling if needed -->
+                <select id="initialLanguageSelector">
+                    <!-- Options will be dynamically populated by JavaScript -->
+                </select>
+            </div>
+            <button id="enterButton">Enter</button>
+        </div>
+    </div>
+
+    <!-- Main Header (Initially Hidden) -->
+    <div class="header-container hidden">
         <div class="title">The Sansa Initiative</div>
-        <div class="language-menu">
+        <div class="language-menu"> <!-- Language selector is back in the header -->
             <select id="languageSelector">
                 <option value="pragmatic">Pragmatic</option>
                 <option value="talmudic">Talmudic</option>
@@ -23,14 +38,12 @@
         </div>
     </div>
 
-    <!-- Detail Page Container (initially hidden/empty by default) -->
+    <!-- Detail Page Container (Initially Hidden) -->
     <div id="detailPageContainer" class="hidden">
         <div id="detailPageContent">
             <h2 id="detailPageTitle"></h2>
-            <!-- Ensure this P tag has 'hidden' class -->
             <p id="detailPageParagraph" class="hidden mb-4"></p>
 
-            <!-- Content for Cards 3, 4, 5 (Types of Organizations, Goals, Strategies) -->
             <div id="detailPageTableContent" class="hidden">
                 <table class="w-full border-collapse border border-gray-300 my-4">
                     <thead>
@@ -50,7 +63,6 @@
                 </table>
             </div>
 
-            <!-- Content for Cards 6 & 7 (Why's?, Where From?) -->
             <div id="detailPageListContent" class="hidden">
                 <ul class="list-disc list-inside my-4 text-left">
                     <li>List Item 1</li>
@@ -62,7 +74,8 @@
         </div>
     </div>
 
-    <div class="card-circle-container" data-current-rotation="0">
+    <!-- Card Circle Container (Initially Hidden) -->
+    <div class="card-circle-container hidden" data-current-rotation="0">
         <!-- Cards will be dynamically added here by JavaScript -->
     </div>
 

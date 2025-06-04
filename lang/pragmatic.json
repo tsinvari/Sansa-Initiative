@@ -107,7 +107,11 @@
     "textColor": "#1e293b",
     "headerColor": "#1e293b",
     "movementType": "twinkle",
-    "backgroundImage": "url('images/pragmatic/pragmatic.png')"
-  
+    "backgroundImage": "url('images/pragmatic/pragmatic.png')",
+    "initialDialog": {
+      "title": "Welcome to The Sansa Initiative",
+      "paragraph": "Please select your preferred language to continue:",
+      "enterButtonText": "Start Your Journey"
+    }
   }
 }

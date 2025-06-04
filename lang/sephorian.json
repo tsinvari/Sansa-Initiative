@@ -106,8 +106,13 @@
     "secondaryColor": "#f5deb3", 
     "textColor": "#5a2d0a",
     "headerColor": "#7a3e14",
-    "movementType": "mosaicFlow",
-    "backgroundImage": "url('images/sephorian/sephorian2.jpeg')"
+    "movementType": "randomWiggle",
+    "backgroundImage": "url('images/sephorian/sephorian2.jpeg')",
+    "initialDialog": {
+      "title": "Welcome to The Sansa Initiative",
+      "paragraph": "Please select your preferred language to continue:",
+      "enterButtonText": "Start Your Journey"
+    }
 
   }
 }

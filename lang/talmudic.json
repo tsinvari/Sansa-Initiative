@@ -105,8 +105,13 @@
     "secondaryColor": "#e0c090",
     "textColor": "#2f1f00",
     "headerColor": "#5C3A10",
-    "movementType": "circularOrbit",
-    "backgroundImage": "url('images/talmudic/talmudic.webp')"
+    "movementType": "centralCircle",
+    "backgroundImage": "url('images/talmudic/talmudic.webp')",
+    "initialDialog": {
+      "title": "Welcome to The Sansa Initiative",
+      "paragraph": "Please select your preferred language to continue:",
+      "enterButtonText": "Start Your Journey"
+    }
 
   }
 }
