@@ -101,7 +101,6 @@
   ],
     "themeConfig": {
     "fontFamily": "'Inter', sans-serif",
-    "backgroundColor": "#f0f4f8",
     "primaryColor": "#3b82f6",
     "secondaryColor": "#ddd",
     "textColor": "#1e293b",
