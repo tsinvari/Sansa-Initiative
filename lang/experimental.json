@@ -2,22 +2,43 @@
   "learnMoreLinkText": "Discover More",
   "detailPageBackButtonText": "Return to Loop",
   "cardFrontTexts": [
-    "Mission",
-    "Vision",
-    "Types of Organizations",
-    "Goals",
-    "Strategies",
-    "Why's?",
-    "Where From?"
+    "The Muse's Call",
+    "Verse of Tomorrow",
+    "Our Stanzas of Intent",
+    "Rhythms of Action",
+    "The Poet's Guild",
+    "Echoes of Inquiry",
+    "Wellspring of Rhyme"
   ],
   "cardBackContents": [
-    { "title": "Our Dynamic Aim", "p": "A purpose open to constant re-evaluation and adaptation." },
-    { "title": "Evolving Future", "p": "Imagining possibilities beyond current paradigms." },
-    { "title": "Emergent Structures", "p": "Exploring new ways to organize and collaborate." },
-    { "title": "Adaptive Targets", "p": "Objectives that shift with new insights and data." },
-    { "title": "Unconventional Methods", "p": "Embracing novel and untested approaches." },
-    { "title": "The Edge Case", "p": "Questioning foundational assumptions." },
-    { "title": "Synthetic Origins", "p": "Tracing our roots to interdisciplinary fusion." }
+    {
+      "title": "The Muse's Call",
+      "p": "Our deepest inspiration & guiding purpose;"
+    },
+    {
+      "title": "Verse of Tomorrow",
+      "p": "The future world our words will weave;"
+    },
+    {
+      "title": "Our Stanzas of Intent",
+      "p": "The crafted lines of what we'll achieve;"
+    },
+    {
+      "title": "Rhythms of Action",
+      "p": "The cadenced steps & methods we take;"
+    },
+    {
+      "title": "The Poet's Guild",
+      "p": "Our fellowship's form, for art's own sake;"
+    },
+    {
+      "title": "Echoes of Inquiry",
+      "p": "The resonant questions, why we create;"
+    },
+    {
+      "title": "Wellspring of Rhyme",
+      "p": "The fount of our stories, early & late;"
+    }
   ],
   "detailPageContent": [
     {
