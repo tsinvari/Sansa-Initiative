@@ -50,11 +50,13 @@ body {
 }
 
 #initialDialogContent {
-    background-color: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    max-width: 500px;
+    /* NEW: Styles copied from #validationDialogContent for consistency */
+    background-color: #f8fafc; /* Lighter background for distinction */
+    padding: 30px; /* Consistent padding */
+    border-radius: 10px; /* Consistent border-radius */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Consistent shadow */
+    /* END NEW */
+    max-width: 500px; /* Keep existing max-width for initial dialog */
     width: 90%; /* Responsive width */
     text-align: center;
     display: flex;
@@ -64,7 +66,7 @@ body {
 }
 
 #initialDialogContent h1 {
-    font-size: 2.2rem;
+    font-size: 1.8rem; /* Adjusted: Slightly larger than validation h2 (1.6rem), but smaller than previous 2.2rem */
     font-weight: 700;
     color: var(--theme-header-color);
     margin-bottom: 10px;
@@ -302,10 +304,8 @@ body {
 
 .card-back {
     transform: rotateY(180deg);
-    /* NEW: Set background to white for all themes */
-    background-color: white;
-    /* NEW: Set general text color to theme's text color (dark against white background) */
-    color: var(--theme-text-color);
+    background-color: white; /* This should now be consistently white */
+    color: var(--theme-text-color); /* For general text */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -314,18 +314,16 @@ body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
-/* NEW: Set h3 (title) color to theme's header color */
 .card-back h3 {
     font-size: 1.1em;
     margin-bottom: 5px;
-    color: var(--theme-header-color); /* Use theme's header color for titles */
+    color: var(--theme-header-color); /* For titles on the back */
 }
 .card-back p {
     font-size: 0.85em;
     padding: 0 5px;
     margin-bottom: 10px;
     flex-grow: 1;
-    /* The color is already inherited from .card-back's color: var(--theme-text-color) */
 }
 .card-back .learn-more-link {
     font-size: 0.8em;
@@ -337,7 +335,7 @@ body {
     display: inline-block;
 }
 .card-back .learn-more-link:hover {
-    color: var(--theme-primary-color); /* Keep primary color on hover, or dark it */
+    color: var(--theme-primary-color);
 }
 
 .card.is-hovered:not(.card-focused) .card-face {
