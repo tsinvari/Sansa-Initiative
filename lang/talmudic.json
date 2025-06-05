@@ -205,13 +205,14 @@
     }
   ],
   "themeConfig": {
-    "fontFamily": "'Inter', sans-serif",
-    "primaryColor": "#3b82f6",
-    "secondaryColor": "#ddd",
-    "textColor": "#1e293b",
-    "headerColor": "#1e293b",
-    "movementType": "twinkle",
-    "backgroundImage": "url('images/pragmatic/pragmatic.png')",
+    "fontFamily": "'Noto Serif Hebrew', serif",
+    "backgroundColor": "#f8f0e0",
+    "primaryColor": "#8b4513",
+    "secondaryColor": "#e0c090",
+    "textColor": "#2f1f00",
+    "headerColor": "#5C3A10",Add commentMore actions
+    "movementType": "centralCircle",
+    "backgroundImage": "url('images/talmudic/talmudic.jpg')",
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
       "paragraph": "Please select your preferred language to continue:",
