@@ -266,14 +266,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             const backFace = document.createElement('div');
             backFace.classList.add('card-face', 'card-back');
 
-            const backH3 = document.createElement('h3');
-            const backP = document.createElement('p');
-            const learnMoreLink = document.createElement('a');
-            learnMoreLink.classList.add('learn-more-link');
-            learnMoreLink.href = "#";
-            learnMoreLink.dataset.cardId = i;
+            // NEW: Create a button instead of an anchor for learnMoreLink
+            const learnMoreButton = document.createElement('button');
+            learnMoreButton.classList.add('learn-more-button'); // Use a class specific for the button
+            learnMoreButton.dataset.cardId = i;
 
-            backFace.append(backH3, backP, learnMoreLink);
+            backFace.append(backH3, backP, learnMoreButton); // Append the button
             flipper.append(frontFace, backFace);
             card.appendChild(flipper);
             container.appendChild(card);
@@ -281,9 +279,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             cardHoverStates.set(card, false);
 
             card.addEventListener('click', (e) => {
-                if (e.target.classList.contains('learn-more-link')) {
+                // Check if the clicked element or its parent is the new learn-more-button
+                if (e.target.closest('.learn-more-button')) { // Use closest for robustness
                     e.stopPropagation();
-                    const cardId = parseInt(e.target.dataset.cardId, 10);
+                    const cardId = parseInt(e.target.closest('.learn-more-button').dataset.cardId, 10);
                     showDetailPage(cardId);
                 } else {
                     const clickedCardId = parseInt(card.dataset.id, 10);
@@ -318,7 +317,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const backFace = card.querySelector('.card-back');
             const actualBackH3 = backFace?.querySelector('h3');
             const actualBackP = backFace?.querySelector('p');
-            const actualLink = backFace?.querySelector('.learn-more-link');
+            // NEW: Reference the button
+            const actualButton = backFace?.querySelector('.learn-more-button');
 
             const cardIdText = frontTexts[cardId - 1] || `Card ${cardId}`;
 
@@ -341,7 +341,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 actualBackH3.textContent = backContent[cardId - 1].title;
                 actualBackP.textContent = backContent[cardId - 1].p;
             }
-            if (actualLink) actualLink.textContent = learnMoreText;
+            // NEW: Set button text
+            if (actualButton) actualButton.textContent = learnMoreText;
         });
     }
 
@@ -611,7 +612,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         detailPageParagraph.classList.add('hidden');
         detailPageTableContent.classList.add('hidden');
         detailPageListContent.classList.add('hidden');
-        detailPageContainer.style.display = 'flex'; // Explicitly set display to flex
+        detailPageContainer.style.display = 'flex';
 
         const cardDetail = currentLangData.detailPageContent?.[cardId - 1];
         if (!cardDetail) {
@@ -643,8 +644,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         detailPageBackButton.textContent = currentLangData.detailPageBackButtonText || "Back";
 
-        // FIX: Ensure the hidden class is *removed* to show the detail page
-        detailPageContainer.classList.remove('hidden'); // This line was added/corrected
+        detailPageContainer.classList.remove('hidden'); // Corrected: ensure it's removed to show the page
         container.style.display = 'none';
         if (focusedCardElement) focusedCardElement.style.display = 'none';
         languageMenu.style.display = 'none';
