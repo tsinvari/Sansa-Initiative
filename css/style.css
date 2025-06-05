@@ -208,13 +208,16 @@ body {
 }
 
 .language-menu select {
+    /* NEW: Increased font size and centered text */
+    font-size: 1.1rem; /* Slightly larger */
+    text-align: center; /* Center the selected text */
+    padding: 8px 25px 8px 10px; /* Adjust padding for new font size */
+    /* END NEW */
     background-color: rgba(var(--theme-secondary-color-rgb), 0.5);
     color: var(--theme-text-color);
     border: none;
     border-radius: 5px;
-    padding: 5px 25px 5px 10px;
     outline: none;
-    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -229,9 +232,10 @@ body {
     border-color: transparent;
 }
 
+/* Specific styling for the language menu inside the initial dialog if needed */
 .language-menu-initial select {
-    font-size: 1.1rem;
-    padding: 8px 30px 8px 15px;
+    font-size: 1.1rem; /* This was already set here, keeping it for consistency */
+    padding: 8px 30px 8px 15px; /* This was already set here, keeping it for consistency */
 }
 
 
@@ -263,7 +267,6 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    /* NEW: Force hardware acceleration for smoother rendering */
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
 }
@@ -301,15 +304,14 @@ body {
     justify-content: flex-end;
     align-items: center;
     padding-bottom: 15px;
-    /* NEW: Force hardware acceleration for smoother rendering */
     transform: translateZ(1px);
     -webkit-transform: translateZ(1px);
 }
 
 .card-back {
     transform: rotateY(180deg);
-    background-color: white; /* This should now be consistently white */
-    color: var(--theme-text-color); /* For general text */
+    background-color: white;
+    color: var(--theme-text-color);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -317,14 +319,13 @@ body {
     box-sizing: border-box;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    /* NEW: Force hardware acceleration for smoother rendering */
-    transform: rotateY(180deg) translateZ(1px); /* Keep existing rotateY and add translateZ */
+    transform: rotateY(180deg) translateZ(1px);
     -webkit-transform: rotateY(180deg) translateZ(1px);
 }
 .card-back h3 {
     font-size: 1.1em;
     margin-bottom: 5px;
-    color: var(--theme-header-color); /* For titles on the back */
+    color: var(--theme-header-color);
 }
 .card-back p {
     font-size: 0.85em;
