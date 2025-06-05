@@ -266,12 +266,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             const backFace = document.createElement('div');
             backFace.classList.add('card-face', 'card-back');
 
-            // NEW: Create a button instead of an anchor for learnMoreLink
+            const backH3 = document.createElement('h3');
+            const backP = document.createElement('p');
             const learnMoreButton = document.createElement('button');
-            learnMoreButton.classList.add('learn-more-button'); // Use a class specific for the button
+            learnMoreButton.classList.add('learn-more-button');
             learnMoreButton.dataset.cardId = i;
 
-            backFace.append(backH3, backP, learnMoreButton); // Append the button
+            backFace.append(backH3, backP, learnMoreButton);
             flipper.append(frontFace, backFace);
             card.appendChild(flipper);
             container.appendChild(card);
@@ -279,8 +280,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             cardHoverStates.set(card, false);
 
             card.addEventListener('click', (e) => {
-                // Check if the clicked element or its parent is the new learn-more-button
-                if (e.target.closest('.learn-more-button')) { // Use closest for robustness
+                if (e.target.closest('.learn-more-button')) {
                     e.stopPropagation();
                     const cardId = parseInt(e.target.closest('.learn-more-button').dataset.cardId, 10);
                     showDetailPage(cardId);
@@ -317,7 +317,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             const backFace = card.querySelector('.card-back');
             const actualBackH3 = backFace?.querySelector('h3');
             const actualBackP = backFace?.querySelector('p');
-            // NEW: Reference the button
             const actualButton = backFace?.querySelector('.learn-more-button');
 
             const cardIdText = frontTexts[cardId - 1] || `Card ${cardId}`;
@@ -341,7 +340,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 actualBackH3.textContent = backContent[cardId - 1].title;
                 actualBackP.textContent = backContent[cardId - 1].p;
             }
-            // NEW: Set button text
             if (actualButton) actualButton.textContent = learnMoreText;
         });
     }
@@ -644,7 +642,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         detailPageBackButton.textContent = currentLangData.detailPageBackButtonText || "Back";
 
-        detailPageContainer.classList.remove('hidden'); // Corrected: ensure it's removed to show the page
+        detailPageContainer.classList.remove('hidden');
         container.style.display = 'none';
         if (focusedCardElement) focusedCardElement.style.display = 'none';
         languageMenu.style.display = 'none';
