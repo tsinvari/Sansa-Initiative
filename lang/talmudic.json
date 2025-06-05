@@ -210,7 +210,7 @@
     "primaryColor": "#8b4513",
     "secondaryColor": "#e0c090",
     "textColor": "#2f1f00",
-    "headerColor": "#5C3A10",Add commentMore actions
+    "headerColor": "#5C3A10",
     "movementType": "centralCircle",
     "backgroundImage": "url('images/talmudic/talmudic.jpg')",
     "initialDialog": {
