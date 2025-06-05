@@ -4,102 +4,178 @@
   "cardFrontTexts": [
     "Mission",
     "Vision",
-    "Types of Organizations",
     "Goals",
     "Strategies",
+    "Non-Profit Organization",
     "Why's?",
     "Where From?"
   ],
   "cardBackContents": [
-    { "title": "What We Aim For", "p": "Our driving purpose and core reason for existence." },
-    { "title": "Our Future State", "p": "The inspiring picture of what we aspire to become." },
-    { "title": "Org Structures", "p": "Exploring various forms organizations can take." },
-    { "title": "Our Objectives", "p": "The targets we set to achieve our broader aims." },
-    { "title": "How We Get There", "p": "The detailed plans and methods for reaching our goals." },
-    { "title": "Core Motivations", "p": "Unpacking the fundamental reasons behind our actions." },
-    { "title": "Our Roots", "p": "Understanding our origins and foundational influences." }
+    {
+      "title": "What We Aim For",
+      "p": "Our purpose and reason for existence."
+    },
+    {
+      "title": "Our Future State",
+      "p": "What we aspire to achieve."
+    },
+    {
+      "title": "Our Goals",
+      "p": "The targets we will achieve."
+    },
+    {
+      "title": "Our Strategies",
+      "p": "How we get there."
+    },
+    {
+      "title": "Non-Profit Organization",
+      "p": "The good, the bad and the ugly."
+    },
+    {
+      "title": "Why\u2019s?",
+      "p": "Unpacking the fundamental reasons behind this initiative"
+    },
+    {
+      "title": "My triggers.",
+      "p": "How/when these thought were triggered."
+    }
   ],
   "detailPageContent": [
     {
       "type": "text",
       "title": "Our Mission: Our Core Purpose",
-      "paragraph": "The Sansa Initiative's mission is to foster holistic understanding and actionable wisdom by bridging diverse philosophical and spiritual traditions. We aim to provide frameworks for individuals and organizations to navigate complex challenges with clarity and purpose."
+      "paragraph": "To retell narratives of gender, family and society by the use of storytelling and visual arts."
     },
     {
       "type": "text",
-      "title": "Our Vision: A Future of Integrated Wisdom",
-      "paragraph": "We envision a world where fragmented knowledge gives way to integrated wisdom, empowering communities to make harmonious decisions. Through accessible insights, we strive to cultivate a global ecosystem of informed, compassionate, and resilient thought leaders."
+      "title": "Our Vision: ",
+      "paragraph": "A more inclusive and pragmatic world."
     },
     {
       "type": "table",
-      "title": "Types of Organizations: A Framework",
-      "paragraph": "Understanding different organizational structures helps us contextualize various approaches to problem-solving and community building.",
+      "title": "Goals of the The Sansa Initiative",
+      "paragraph": "Our goals are designed to translate our mission and vision.",
       "tableData": {
-        "headers": ["Type", "Key Characteristic", "Sansa Application"],
+        "headers": [
+          "Goal",
+          "Description"
+        ],
         "rows": [
-          ["Hierarchical", "Clear chain of command, defined roles.", "Structured learning paths, defined research roles."],
-          ["Networked", "Decentralized, interconnected nodes.", "Collaborative research groups, global partner initiatives."],
-          ["Holacratic", "Self-organizing circles, distributed authority.", "Autonomous project teams, emergent insights."],
-          ["Community-Based", "Shared values, voluntary participation.", "Engagement programs, local outreach efforts."]
+          [
+            "Goal 1: Secure Core Resources and Launch Artistic Productions",
+            "Within the first two years, The Sansa Initiative will prioritize securing initial funding through strategic grant applications and resource development and acquiring essential production and presentation equipment. Building on this foundation, within the first three years, we will produce at least two significant, mission-driven long-term artistic project (such as a thematic series, major exhibition/festival, publications) that showcases our unique approach to retelling narratives, leveraging our founding members' expertise to ensure high-quality output and build organizational credibility."
+          ],
+          [
+            "Networked",
+            "Decentralized, Collaborative research groups..."
+          ],
+          [
+            "Holacratic",
+            "Self-organizing circles, Autonomous project teams..."
+          ],
+          [
+            "Community-Based",
+            "Shared values, Engagement programs..."
+          ]
         ]
       }
     },
     {
       "type": "table",
       "title": "Our Goals: Strategic Objectives",
-      "paragraph": "Our goals are designed to translate our mission and vision into measurable and achievable outcomes, driving continuous progress.",
+      "paragraph": "Our goals are designed to translate our mission and vision...",
       "tableData": {
-        "headers": ["Category", "Objective", "Key Result"],
+        "headers": [
+          "Category",
+          "Objective",
+          "Key Result"
+        ],
         "rows": [
-          ["Impact", "Increase global reach by 20%", "5000+ active users by 2026"],
-          ["Content", "Develop 3 new cross-disciplinary frameworks", "Launch of 'Sansa Synthesis' series"],
-          ["Community", "Establish 5 regional study groups", "Active participation in 3 continents"],
-          ["Sustainability", "Secure diversified funding streams", "Grant funding increase by 15% annually"]
+          [
+            "Impact",
+            "Increase global reach by 20%",
+            "5000+ active users..."
+          ],
+          [
+            "Content",
+            "Develop 3 frameworks",
+            "Launch of 'Sansa Synthesis'..."
+          ],
+          [
+            "Community",
+            "Establish 5 groups",
+            "Active in 3 continents..."
+          ],
+          [
+            "Sustainability",
+            "Secure funding",
+            "Grant funding increase..."
+          ]
         ]
       }
     },
     {
       "type": "table",
       "title": "Strategies: Our Path Forward",
-      "paragraph": "These are the core methodologies and approaches we employ to achieve our strategic goals effectively and sustainably.",
+      "paragraph": "These are the core methodologies...",
       "tableData": {
-        "headers": ["Strategy", "Description", "Focus Area"],
+        "headers": [
+          "Strategy",
+          "Description",
+          "Focus Area"
+        ],
         "rows": [
-          ["Content Curation", "Synthesizing ancient texts with modern thought.", "Knowledge Hub, Publications"],
-          ["Experiential Learning", "Workshops, retreats, and interactive exercises.", "Community Engagement, Education"],
-          ["Technology Integration", "Utilizing digital platforms for global access.", "Online Learning, Virtual Communities"],
-          ["Partnership Building", "Collaborating with academic and spiritual institutions.", "Research, Outreach"]
+          [
+            "Content Curation",
+            "Synthesizing ancient texts...",
+            "Knowledge Hub"
+          ],
+          [
+            "Experiential Learning",
+            "Workshops and retreats",
+            "Community Engagement"
+          ],
+          [
+            "Technology Integration",
+            "Digital platforms",
+            "Online Learning"
+          ],
+          [
+            "Partnership Building",
+            "Collaborating with institutions",
+            "Research"
+          ]
         ]
       }
     },
     {
       "type": "list",
       "title": "The 'Why's': Our Foundational Drivers",
-      "paragraph": "Exploring the deeper motivations that compel 'The Sansa Initiative' forward, inspiring our work and guiding our every step.",
+      "paragraph": "",
       "listItems": [
-        "To address societal fragmentation through integrated thought.",
-        "To unlock ancient wisdom for contemporary challenges.",
-        "To foster interdisciplinary dialogue and collaboration.",
-        "To empower individuals to find deeper meaning and purpose.",
-        "To contribute to a more balanced and enlightened global discourse.",
-        "To cultivate intellectual humility and open-mindedness."
+        "To address societal fragmentation...",
+        "To unlock ancient wisdom...",
+        "To foster interdisciplinary dialogue...",
+        "To empower individuals...",
+        "To contribute to global discourse...",
+        "To cultivate intellectual humility..."
       ]
     },
     {
       "type": "list",
       "title": "Where From?: Our Intellectual Heritage",
-      "paragraph": "Our work is built upon a rich tapestry of historical and philosophical traditions, drawing inspiration from diverse sources to create a unique synthesis.",
+      "paragraph": "",
       "listItems": [
-        "**Ancient Hellenic Philosophy:** Socratic method, Platonic ideals, Stoicism.",
-        "**Talmudic Scholarship:** Dialectical reasoning, legal exegesis, ethical discourse.",
-        "**Zoharic Mysticism:** Esoteric interpretations, spiritual symbolism, cosmic interconnectedness.",
-        "**Sephardic Intellectual Tradition:** Synthesis of rationalism, poetry, and Kabbalah.",
-        "**Modern Systems Thinking:** Interconnectedness, complexity, emergent properties.",
-        "**Contemporary Psychology:** Cognitive science, existentialism, positive psychology."
+        "Ancient Hellenic Philosophy: Socratic method, etc.",
+        "Talmudic Scholarship: Dialectical reasoning, etc.",
+        "Zoharic Mysticism: Esoteric interpretations...",
+        "Sephardic Tradition: Rationalism and Kabbalah...",
+        "Modern Systems Thinking: Interconnectedness...",
+        "Contemporary Psychology: Cognitive science..."
       ]
     }
   ],
-    "themeConfig": {
+  "themeConfig": {
     "fontFamily": "'Inter', sans-serif",
     "primaryColor": "#3b82f6",
     "secondaryColor": "#ddd",
@@ -113,7 +189,7 @@
       "enterButtonText": "Start Your Journey"
     },
     "validationDialog": {
-      "title": "Have you explored the initial concepts (cards 1-4)?",
+      "title": "Have you explored the initial concepts (cards 1\u20134)?",
       "yesButtonText": "Yes, I'm Ready",
       "noButtonText": "Not Yet, Back to Loop"
     },
