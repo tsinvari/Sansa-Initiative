@@ -7,6 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts import for Noto Serif Hebrew (example, add others if needed) -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,7 +20,7 @@
         <div id="initialDialogContent">
             <h1>Welcome to The Sansa Initiative</h1>
             <p>Please select your preferred language to continue:</p>
-            <div class="language-menu language-menu-initial"> <!-- Added a class for specific dialog styling if needed -->
+            <div class="language-menu language-menu-initial">
                 <select id="initialLanguageSelector">
                     <!-- Options will be dynamically populated by JavaScript -->
                 </select>
@@ -24,16 +29,22 @@
         </div>
     </div>
 
+    <!-- Validation Dialog Overlay (Initially Hidden) -->
+    <div id="validationDialogOverlay" class="hidden">
+        <div id="validationDialogContent">
+            <h2>Are you done with the first 4 cards?</h2>
+            <div class="dialog-buttons">
+                <button id="validationYesButton">Yes</button>
+                <button id="validationNoButton">No</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Header (Initially Hidden) -->
     <div class="header-container hidden">
         <div class="title">The Sansa Initiative</div>
-        <div class="language-menu"> <!-- Language selector is back in the header -->
+        <div class="language-menu">
             <select id="languageSelector">
-                <option value="pragmatic">Pragmatic</option>
-                <option value="talmudic">Talmudic</option>
-                <option value="zoharian">Zoharian</option>
-                <option value="sephorian">Sephorian</option>
-                <option value="experimental">Experimental</option>
             </select>
         </div>
     </div>

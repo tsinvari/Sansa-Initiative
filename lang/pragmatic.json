@@ -112,6 +112,13 @@
       "title": "Welcome to The Sansa Initiative",
       "paragraph": "Please select your preferred language to continue:",
       "enterButtonText": "Start Your Journey"
-    }
+    },
+    "validationDialog": {
+      "title": "Have you explored the initial concepts (cards 1-4)?",
+      "yesButtonText": "Yes, I'm Ready",
+      "noButtonText": "Not Yet, Back to Loop"
+    },
+    "cardFrontTextColor": "#FFFFFF",
+    "cardFrontOverlayColor": "rgba(0, 0, 0, 0.5)"
   }
 }

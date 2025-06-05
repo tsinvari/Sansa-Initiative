@@ -100,17 +100,90 @@ body {
 }
 /* --- END Initial Dialog Styles --- */
 
+/* --- Validation Dialog Styles --- */
+#validationDialogOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1600; /* Higher than initial dialog to overlay it if accidentally open */
+}
+
+#validationDialogContent {
+    background-color: #f8fafc; /* Lighter background for distinction */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+#validationDialogContent h2 {
+    font-size: 1.6rem;
+    color: var(--theme-header-color);
+    margin: 0;
+}
+
+.dialog-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+#validationDialogContent button {
+    padding: 10px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#validationYesButton {
+    background-color: var(--theme-primary-color);
+    color: white;
+    box-shadow: 0 3px 8px rgba(var(--theme-primary-color-rgb), 0.2);
+}
+
+#validationYesButton:hover {
+    background-color: var(--theme-header-color);
+    transform: translateY(-1px);
+}
+
+#validationNoButton {
+    background-color: #ef4444; /* Red for 'No' */
+    color: white;
+    box-shadow: 0 3px 8px rgba(239, 68, 68, 0.2);
+}
+
+#validationNoButton:hover {
+    background-color: #dc2626; /* Darker red on hover */
+    transform: translateY(-1px);
+}
+/* --- END Validation Dialog Styles --- */
+
 
 .header-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 60px;
-    width: 100%;
-    padding: 0 20px;
+    width: 100%; /* Keep 100% width for flex distribution */
+    padding: 0 20px; /* Reset padding here, as title will have its own */
     box-sizing: border-box;
     position: relative;
     z-index: 10;
+    /* REMOVED: background-color, backdrop-filter, box-shadow, border-radius here */
 }
 
 .title {
@@ -119,8 +192,18 @@ body {
     color: var(--theme-header-color);
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     text-align: center;
-    margin: 0;
-    margin-right: 30px;
+    margin: 0; /* Reset margin */
+    margin-right: 30px; /* Keep spacing from language menu */
+
+    /* NEW: Add semi-transparent container styles to the title itself */
+    background-color: rgba(255, 255, 255, 0.3); /* More transparent white */
+    backdrop-filter: blur(4px); /* Slightly less blur */
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Softer shadow */
+    border-radius: 8px; /* Slightly smaller border-radius */
+    padding: 10px 20px; /* Padding specifically for the title's background */
+    display: inline-block; /* Essential to make padding/background wrap content */
+    /* END NEW */
 }
 
 /* Language menu select styling, now applies to both language selectors */
@@ -148,7 +231,7 @@ body {
 
 /* Specific styling for the language menu inside the initial dialog if needed */
 .language-menu-initial select {
-    font-size: 1.1rem; /* Slightly larger in the dialog */
+    font-size: 1.1rem;
     padding: 8px 30px 8px 15px;
 }
 
@@ -363,7 +446,16 @@ body {
 }
 
 @media (max-width: 768px) {
-    .title { font-size: 2rem; margin-right: 0; margin-bottom: 0; }
+    .header-container {
+        padding: 0 20px; /* Reset header-container padding here for smaller screens */
+    }
+    .title {
+        font-size: 2rem;
+        margin-right: 0;
+        margin-bottom: 0;
+        padding: 8px 15px; /* Adjusted padding for smaller screens */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Slightly less shadow */
+    }
     .card-circle-container { width: 450px; height: 450px; }
     .card { width: 120px; height: 180px; }
     .card-face { font-size: 0.9rem; }
@@ -375,7 +467,12 @@ body {
     #detailPageContent h2 { font-size: 1.8em; }
 }
 @media (max-width: 480px) {
-    .title { font-size: 1.5rem; margin-bottom: 0; }
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+        padding: 5px 10px; /* Further adjusted padding for very small screens */
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1); /* Even less shadow */
+    }
     .card-circle-container { width: 320px; height: 320px; }
     .card { width: 80px; height: 120px; }
     .card-face { font-size: 0.7rem; padding: 0; }

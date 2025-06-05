@@ -100,7 +100,7 @@
     }
   ],
     "themeConfig": {
-    "fontFamily": "'Noto Serif Hebrew', serif", 
+    "fontFamily": "'Cinzel Decorative', serif", 
     "backgroundColor": "#f0f0f0",
     "primaryColor": "#800080", 
     "secondaryColor": "#e6e6fa", 
@@ -112,7 +112,15 @@
       "title": "Welcome to The Sansa Initiative",
       "paragraph": "Please select your preferred language to continue:",
       "enterButtonText": "Start Your Journey"
-    }
+    },
+    "validationDialog": {
+      "title": "Have you explored the initial concepts (cards 1-4)?",
+      "yesButtonText": "Yes, I'm Ready",
+      "noButtonText": "Not Yet, Back to Loop"
+    },
+    "cardFrontTextColor": "#FFFFFF",
+    "cardFrontOverlayColor": "rgba(0, 0, 0, 0.4)",
+    "headerFontFamily": "'Cinzel Decorative', serif"
 
   }
 }

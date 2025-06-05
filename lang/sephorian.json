@@ -100,19 +100,25 @@
     }
   ],
     "themeConfig": {
-    "fontFamily": "'Inter', sans-serif",
-    "backgroundColor": "#fdf5e6",
-    "primaryColor": "#a0522d", 
-    "secondaryColor": "#f5deb3", 
-    "textColor": "#5a2d0a",
-    "headerColor": "#7a3e14",
+    "fontFamily": "'Playfair Display', sans-serif",
+    "backgroundColor": "#FFFFFF",
+    "primaryColor": "#000000",
+    "secondaryColor": "#E60023",
+    "textColor": "#000000",
+    "headerColor": "#E60023",
     "movementType": "randomWiggle",
-    "backgroundImage": "url('images/sephorian/sephorian2.jpeg')",
+    "backgroundImage": "url('images/sephorian/sephorian.jpg')",
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
       "paragraph": "Please select your preferred language to continue:",
       "enterButtonText": "Start Your Journey"
-    }
-
+    },
+    "validationDialog": {
+      "title": "Have you explored the initial concepts (cards 1-4)?",
+      "yesButtonText": "Yes, I'm Ready",
+      "noButtonText": "Not Yet, Back to Loop"
+    },
+    "cardFrontTextColor": "#FFFFFF",
+    "cardFrontOverlayColor": "rgba(0, 0, 0, 0.0)"
   }
 }

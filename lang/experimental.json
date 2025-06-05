@@ -100,18 +100,25 @@
     }
   ],
     "themeConfig": {
-    "fontFamily": "'Inter', sans-serif", 
-    "backgroundColor": "#e0f2f7", 
-    "primaryColor": "#00bcd4", 
-    "secondaryColor": "#b2ebf2", 
-    "textColor": "#006064",
-    "headerColor": "#00838f",
+    "fontFamily": "'Cinzel', 'Cormorant Garamond', serif",
+    "backgroundColor": "#F4EAD5",
+    "primaryColor": "#3B2B20",
+    "secondaryColor": "#C0A060",
+    "textColor": "#3B2B20",
+    "headerColor": "#6B4226",
     "movementType": "horizontalHeartbeat",
-    "backgroundImage": "url('images/experimental/experimental.jpeg')",
+    "backgroundImage": "url('images/experimental/experimental.jpg')",
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
       "paragraph": "Please select your preferred language to continue:",
       "enterButtonText": "Start Your Journey"
-    }
+    },
+    "validationDialog": {
+      "title": "Have you explored the initial concepts (cards 1-4)?",
+      "yesButtonText": "Yes, I'm Ready",
+      "noButtonText": "Not Yet, Back to Loop"
+    },
+    "cardFrontTextColor": "#FFFFFF",
+    "cardFrontOverlayColor": "rgba(0, 0, 0, 0.2)"
   }
 }
