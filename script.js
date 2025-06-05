@@ -286,12 +286,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                     showDetailPage(cardId);
                 } else {
                     const clickedCardId = parseInt(card.dataset.id, 10);
-                    if (cardsRequiringValidation.includes(clickedCardId)) {
+                    // FIXED: Check if card is already validated to skip validation dialog
+                    if (cardsRequiringValidation.includes(clickedCardId) && card.dataset.validated !== 'true') {
                         cardToFlipAfterValidation = card;
                         validationDialogOverlay.classList.remove('hidden');
                         isAnimationGloballyPaused = true;
                         stopAllContinuousAnimations();
-                        return;
+                        return; // Interrupt further execution to prevent card flip
                     } else {
                         handleCardClick(card);
                     }
@@ -947,6 +948,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         isAnimationGloballyPaused = false;
         startCurrentContinuousAnimation();
         if (cardToFlipAfterValidation) {
+            cardToFlipAfterValidation.dataset.validated = 'true'; // Mark card as validated
             handleCardClick(cardToFlipAfterValidation);
             cardToFlipAfterValidation = null;
         }
