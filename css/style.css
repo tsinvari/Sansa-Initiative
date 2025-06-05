@@ -178,12 +178,11 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 60px;
-    width: 100%; /* Keep 100% width for flex distribution */
-    padding: 0 20px; /* Reset padding here, as title will have its own */
+    width: 100%;
+    padding: 0 20px;
     box-sizing: border-box;
     position: relative;
     z-index: 10;
-    /* REMOVED: background-color, backdrop-filter, box-shadow, border-radius here */
 }
 
 .title {
@@ -192,8 +191,8 @@ body {
     color: var(--theme-header-color);
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     text-align: center;
-    margin: 0; /* Reset margin */
-    margin-right: 30px; /* Keep spacing from language menu */
+    margin: 0;
+    margin-right: 30px;
 
     /* NEW: Add semi-transparent container styles to the title itself */
     background-color: rgba(255, 255, 255, 0.3); /* More transparent white */
@@ -303,8 +302,10 @@ body {
 
 .card-back {
     transform: rotateY(180deg);
-    background-color: var(--theme-card-back-color);
-    color: var(--theme-secondary-color);
+    /* NEW: Set background to white for all themes */
+    background-color: white;
+    /* NEW: Set general text color to theme's text color (dark against white background) */
+    color: var(--theme-text-color);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -313,15 +314,18 @@ body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
+/* NEW: Set h3 (title) color to theme's header color */
 .card-back h3 {
     font-size: 1.1em;
     margin-bottom: 5px;
+    color: var(--theme-header-color); /* Use theme's header color for titles */
 }
 .card-back p {
     font-size: 0.85em;
     padding: 0 5px;
     margin-bottom: 10px;
     flex-grow: 1;
+    /* The color is already inherited from .card-back's color: var(--theme-text-color) */
 }
 .card-back .learn-more-link {
     font-size: 0.8em;
@@ -333,7 +337,7 @@ body {
     display: inline-block;
 }
 .card-back .learn-more-link:hover {
-    color: var(--theme-primary-color);
+    color: var(--theme-primary-color); /* Keep primary color on hover, or dark it */
 }
 
 .card.is-hovered:not(.card-focused) .card-face {
@@ -447,14 +451,14 @@ body {
 
 @media (max-width: 768px) {
     .header-container {
-        padding: 0 20px; /* Reset header-container padding here for smaller screens */
+        padding: 0 20px;
     }
     .title {
         font-size: 2rem;
         margin-right: 0;
         margin-bottom: 0;
-        padding: 8px 15px; /* Adjusted padding for smaller screens */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Slightly less shadow */
+        padding: 8px 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     }
     .card-circle-container { width: 450px; height: 450px; }
     .card { width: 120px; height: 180px; }
@@ -470,8 +474,8 @@ body {
     .title {
         font-size: 1.5rem;
         margin-bottom: 0;
-        padding: 5px 10px; /* Further adjusted padding for very small screens */
-        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1); /* Even less shadow */
+        padding: 5px 10px;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
     }
     .card-circle-container { width: 320px; height: 320px; }
     .card { width: 80px; height: 120px; }
