@@ -2,22 +2,43 @@
   "learnMoreLinkText": "Uncover More",
   "detailPageBackButtonText": "Return to Sphere",
   "cardFrontTexts": [
-    "Mission",
-    "Vision",
-    "Types of Organizations",
-    "Goals",
-    "Strategies",
-    "Why's?",
-    "Where From?"
+    "Peulah Ruchanit",
+    "Chazon HaGeulah",
+    "Yedudei HaTikkun",
+    "Netivot HaOr",
+    "Heichal Tikkunim",
+    "Chakirat HaNistarot",
+    "Mekor HaNehora"
   ],
-  "cardBackContents": [
-    { "title": "The Inner Path", "p": "Our spiritual journey and ultimate objective." },
-    { "title": "Revealed Future", "p": "Glimpsing the unfolding of divine potential." },
-    { "title": "Cosmic Structures", "p": "Understanding formations in the spiritual realms." },
-    { "title": "Kabalistic Intentions", "p": "The higher purposes of our spiritual work." },
-    { "title": "Paths of Emanation", "p": "The methods by which divine influence flows." },
-    { "title": "Soul's Yearning", "p": "The deep spiritual drives behind our actions." },
-    { "title": "Ancient Sparks", "p": "Tracing our lineage to primordial light." }
+  [
+    {
+      "title": "Our Kavannah",
+      "p": "Our directed purpose and core intention;"
+    },
+    {
+      "title": "Our Tikvah",
+      "p": "Our hope for the future;"
+    },
+    {
+      "title": "The Ma'asim",
+      "p": "The great works and tangible deeds;"
+    },
+    {
+      "title": "The Derech",
+      "p": "The path and guiding methodology;"
+    },
+    {
+      "title": "Our Heqdesh",
+      "p": "Our consecrated and dedicated entity;"
+    },
+    {
+      "title": "The Kashiya",
+      "p": "The core inquiry and difficult questions;"
+    },
+    {
+      "title": "HaShorashim",
+      "p": "The roots and our origins;"
+    }
   ],
   "detailPageContent": [
     {
