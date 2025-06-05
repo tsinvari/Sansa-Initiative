@@ -611,7 +611,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         detailPageParagraph.classList.add('hidden');
         detailPageTableContent.classList.add('hidden');
         detailPageListContent.classList.add('hidden');
-        detailPageContainer.style.display = 'flex';
+        detailPageContainer.style.display = 'flex'; // Explicitly set display to flex
 
         const cardDetail = currentLangData.detailPageContent?.[cardId - 1];
         if (!cardDetail) {
@@ -643,7 +643,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         detailPageBackButton.textContent = currentLangData.detailPageBackButtonText || "Back";
 
-        detailPageContainer.classList.add('hidden');
+        // FIX: Ensure the hidden class is *removed* to show the detail page
+        detailPageContainer.classList.remove('hidden'); // This line was added/corrected
         container.style.display = 'none';
         if (focusedCardElement) focusedCardElement.style.display = 'none';
         languageMenu.style.display = 'none';
@@ -973,7 +974,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     createCards();
     initializeCardPositions();
     
-    // NEW: Populate BOTH language selectors using the centralized languageOptions array
     languageOptions.forEach(lang => {
         const option1 = document.createElement('option');
         option1.value = lang.value;
@@ -983,10 +983,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const option2 = document.createElement('option');
         option2.value = lang.value;
         option2.textContent = lang.text;
-        languageSelector.appendChild(option2); // Populate the main header selector
+        languageSelector.appendChild(option2);
     });
 
-    // Ensure the main language selector is set to the initial dialog's default value
     languageSelector.value = initialLanguageSelector.value;
 
     await loadLanguage(initialLanguageSelector.value);
