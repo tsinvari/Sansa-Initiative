@@ -101,7 +101,6 @@
   ],
     "themeConfig": {
     "fontFamily": "'Cinzel', 'Cormorant Garamond', serif",
-    "backgroundColor": "#F4EAD5",
     "primaryColor": "#3B2B20",
     "secondaryColor": "#C0A060",
     "textColor": "#3B2B20",
