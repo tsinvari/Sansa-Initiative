@@ -33,6 +33,10 @@ body {
     padding-top: 20px;
     overflow-x: hidden; /* Prevent horizontal scrolling */
     overflow-y: auto; /* Allow vertical scrolling if content overflows */
+    /* NEW: Font smoothing properties */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
 }
 
 /* --- Initial Dialog Styles --- */
@@ -50,12 +54,10 @@ body {
 }
 
 #initialDialogContent {
-    /* NEW: Styles copied from #validationDialogContent for consistency */
     background-color: #f8fafc; /* Lighter background for distinction */
     padding: 30px; /* Consistent padding */
     border-radius: 10px; /* Consistent border-radius */
     box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Consistent shadow */
-    /* END NEW */
     max-width: 500px; /* Keep existing max-width for initial dialog */
     width: 90%; /* Responsive width */
     text-align: center;
@@ -196,18 +198,15 @@ body {
     margin: 0;
     margin-right: 30px;
 
-    /* NEW: Add semi-transparent container styles to the title itself */
-    background-color: rgba(255, 255, 255, 0.3); /* More transparent white */
-    backdrop-filter: blur(4px); /* Slightly less blur */
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Softer shadow */
-    border-radius: 8px; /* Slightly smaller border-radius */
-    padding: 10px 20px; /* Padding specifically for the title's background */
-    display: inline-block; /* Essential to make padding/background wrap content */
-    /* END NEW */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 10px 20px;
+    display: inline-block;
 }
 
-/* Language menu select styling, now applies to both language selectors */
 .language-menu select {
     background-color: rgba(var(--theme-secondary-color-rgb), 0.5);
     color: var(--theme-text-color);
@@ -230,7 +229,6 @@ body {
     border-color: transparent;
 }
 
-/* Specific styling for the language menu inside the initial dialog if needed */
 .language-menu-initial select {
     font-size: 1.1rem;
     padding: 8px 30px 8px 15px;
@@ -265,6 +263,9 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* NEW: Force hardware acceleration for smoother rendering */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .card.is-flipped .card-flipper {
@@ -300,6 +301,9 @@ body {
     justify-content: flex-end;
     align-items: center;
     padding-bottom: 15px;
+    /* NEW: Force hardware acceleration for smoother rendering */
+    transform: translateZ(1px);
+    -webkit-transform: translateZ(1px);
 }
 
 .card-back {
@@ -313,6 +317,9 @@ body {
     box-sizing: border-box;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    /* NEW: Force hardware acceleration for smoother rendering */
+    transform: rotateY(180deg) translateZ(1px); /* Keep existing rotateY and add translateZ */
+    -webkit-transform: rotateY(180deg) translateZ(1px);
 }
 .card-back h3 {
     font-size: 1.1em;
