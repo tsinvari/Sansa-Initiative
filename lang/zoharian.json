@@ -2,42 +2,42 @@
   "learnMoreLinkText": "Uncover More",
   "detailPageBackButtonText": "Return to Sphere",
   "cardFrontTexts": [
-    "Peulah Ruchanit",
-    "Chazon HaGeulah",
-    "Yedudei HaTikkun",
-    "Netivot HaOr",
-    "Heichal Tikkunim",
-    "Chakirat HaNistarot",
-    "Mekor HaNehora"
+    "Keter Elyon",
+    "Ohr Chochmah",
+    "Tevunat Binah",
+    "Derech Chesed",
+    "Yesod HaKodesh",
+    "Chakirat Gevurah",
+    "Mekor HaSefirot"
   ],
   "cardBackContents": [
     {
-      "title": "Our Kavannah",
-      "p": "Our directed purpose and core intention;"
+      "title": "Keter Elyon",
+      "p": "Our supreme will & primal intent;"
     },
     {
-      "title": "Our Tikvah",
-      "p": "Our hope for the future;"
+      "title": "Ohr Chochmah",
+      "p": "The illuminating light of our vision & insight;"
     },
     {
-      "title": "The Ma'asim",
-      "p": "The great works and tangible deeds;"
+      "title": "Tevunat Binah",
+      "p": "The shaping understanding behind our goals;"
     },
     {
-      "title": "The Derech",
-      "p": "The path and guiding methodology;"
+      "title": "Derech Chesed",
+      "p": "The active path & strategies we pursue;"
     },
     {
-      "title": "Our Heqdesh",
-      "p": "Our consecrated and dedicated entity;"
+      "title": "Yesod HaKodesh",
+      "p": "The sacred foundation; our NPO structure;"
     },
     {
-      "title": "The Kashiya",
-      "p": "The core inquiry and difficult questions;"
+      "title": "Chakirat Gevurah",
+      "p": "The discerning inquiry into our 'whys';"
     },
     {
-      "title": "HaShorashim",
-      "p": "The roots and our origins;"
+      "title": "Mekor HaSefirot",
+      "p": "The wellspring & origin of our inspiration;"
     }
   ],
   "detailPageContent": [
