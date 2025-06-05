@@ -234,8 +234,8 @@ body {
 
 /* Specific styling for the language menu inside the initial dialog if needed */
 .language-menu-initial select {
-    font-size: 1.1rem; /* This was already set here, keeping it for consistency */
-    padding: 8px 30px 8px 15px; /* This was already set here, keeping it for consistency */
+    font-size: 1.1rem;
+    padding: 8px 30px 8px 15px;
 }
 
 
@@ -333,18 +333,30 @@ body {
     margin-bottom: 10px;
     flex-grow: 1;
 }
-.card-back .learn-more-link {
-    font-size: 0.8em;
+.card-back .learn-more-button { /* Changed from .learn-more-link to .learn-more-button */
+    font-size: 0.9em; /* Slightly larger font for button */
     font-weight: 600;
-    color: var(--theme-primary-color);
-    text-decoration: underline;
+    color: white; /* Button text should be white for contrast */
+    background-color: var(--theme-primary-color); /* Themed background color */
+    border: none;
+    border-radius: 6px; /* Rounded corners for button look */
+    padding: 8px 15px; /* Button-like padding */
     cursor: pointer;
-    padding: 5px;
-    display: inline-block;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: block; /* Make it a block element to center with margin auto */
+    margin: 10px auto 0 auto; /* Center the button */
+    text-decoration: none; /* Remove underline for button */
+    box-shadow: 0 2px 5px rgba(var(--theme-primary-color-rgb), 0.3); /* Add shadow */
 }
-.card-back .learn-more-link:hover {
-    color: var(--theme-primary-color);
+.card-back .learn-more-button:hover { /* Changed from .learn-more-link:hover */
+    background-color: var(--theme-header-color); /* Darker on hover */
+    transform: translateY(-1px); /* Slight lift on hover */
 }
+.card-back .learn-more-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(var(--theme-primary-color-rgb), 0.2);
+}
+
 
 .card.is-hovered:not(.card-focused) .card-face {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 10px 20px rgba(0,0,0,0.15);
@@ -486,7 +498,7 @@ body {
     .card-circle-container { width: 320px; height: 320px; }
     .card { width: 80px; height: 120px; }
     .card-face { font-size: 0.7rem; padding: 0; }
-    .language-menu select { font-size: 0.9rem; }
+    .language-menu select { font-size: 0.9rem; } /* Keep this small on very small screens */
     .card-front {
         padding-bottom: 8px;
         font-size: 0.7rem;
