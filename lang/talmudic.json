@@ -1,125 +1,228 @@
 {
-  "learnMoreLinkText": "למד עוד",
-  "detailPageBackButtonText": "חזור למעגל",
+  "learnMoreLinkText": "Learn More",
+  "detailPageBackButtonText": "Back to Circle",
   "cardFrontTexts": [
-    "משימה",
-    "חזון",
-    "סוגי ארגונים",
-    "מטרות",
-    "אסטרטגיות",
-    "למה?",
-    "מאין?"
+    "Our Kavannah",
+    "Our Tikvah",
+    "The Ma'asim",
+    "The Derech",
+    "Our Heqdesh",
+    "The Kashiya",
+    "HaShorashim"
   ],
   "cardBackContents": [
-    { "title": "מטרתנו העיקרית", "p": "הסיבה המרכזית לקיומנו." },
-    { "title": "עתידנו", "p": "התמונה המעוררת השראה של מה שאנו שואפים להיות." },
-    { "title": "מבני ארגון", "p": "חקירת צורות ארגוניות שונות." },
-    { "title": "היעדים שלנו", "p": "המטרות שאנו מציבים להשגת יעדינו הרחבים." },
-    { "title": "איך נגיע לשם", "p": "התוכניות המפורטות והשיטות להשגת יעדינו." },
-    { "title": "מניעים בסיסיים", "p": "הסיבות העמוקות שמאחורי מעשינו." },
-    { "title": "שורשינו", "p": "הבנת מקורותינו והשפעותינו הבסיסיות." }
+    {
+      "title": "Our Kavannah",
+      "p": "Our directed purpose and core intention;"
+    },
+    {
+      "title": "Our Tikvah",
+      "p": "Our hope for the future;"
+    },
+    {
+      "title": "The Ma'asim",
+      "p": "The great works and tangible deeds;"
+    },
+    {
+      "title": "The Derech",
+      "p": "The path and guiding methodology;"
+    },
+    {
+      "title": "Our Heqdesh",
+      "p": "Our consecrated and dedicated entity;"
+    },
+    {
+      "title": "The Kashiya",
+      "p": "The core inquiry and difficult questions;"
+    },
+    {
+      "title": "HaShorashim",
+      "p": "The roots and our origins;"
+    }
   ],
   "detailPageContent": [
     {
       "type": "text",
-      "title": "המשימה שלנו: לימוד ודיאלוג",
-      "paragraph": "המשימה של יוזמת סנסה היא לקדם הבנה הוליסטית וחכמה מעשית, באמצעות גישור בין מסורות פילוסופיות ורוחניות מגוונות. אנו שואפים לספק מסגרות ליחידים וארגונים להתמודד עם אתגרים מורכבים בבהירות ותכלית."
+      "title": "Our Mission: Our Core Purpose",
+      "paragraph": "To retell narratives of gender, family and society by the use of storytelling and visual arts."
     },
     {
       "type": "text",
-      "title": "החזון שלנו: עולם של חכמה משולבת",
-      "paragraph": "אנו חוזים עולם שבו ידע מקוטע מפנה את מקומו לחכמה משולבת, המעצימה קהילות לקבל החלטות הרמוניות. באמצעות תובנות נגישות, אנו שואפים לטפח מערכת אקולוגית גלובלית של מנהיגי מחשבה מושכלים, חומלים ועמידים."
+      "title": "Our Vision: ",
+      "paragraph": "A more inclusive and pragmatic world."
     },
     {
       "type": "table",
-      "title": "סוגי ארגונים: היבט תלמודי",
-      "paragraph": "מבני ארגון דרך עדשת ההלכה והקהילה.",
+      "title": "Goals of The Sansa Initiative",
+      "paragraph": "Our goals are designed to translate our mission and vision.",
       "tableData": {
-        "headers": ["סוג", "מאפיין תלמודי", "יישום סנסה"],
+        "headers": [
+          "Goal",
+          "Description"
+        ],
         "rows": [
-          ["בית מדרש", "לימוד בחברותא, דיון פתוח.", "קבוצות לימוד, סדנאות אינטראקטיביות."],
-          ["קהילה", "הסכמה כללית, אחריות הדדית.", "פורומים מקוונים, קבוצות מיקוד אזוריות."],
-          ["סנהדרין", "סמכות מרכזית, פרשנות חוקית.", "ועדת מחקר אקדמית, פאנל מומחים."],
-          ["'עיר נדחת'", "פיזור גיאוגרפי, קשר רוחני.", "קהילות וירטואליות, יוזמות בינלאומיות."]
+          [
+            "Goal 1: Secure Core Resources and Launch Artistic Productions",
+            "Prioritize funding and equipment acquisition (Years 1-2). Produce 2+ significant, mission-driven artistic projects (e.g., thematic series, exhibitions, publications) (Years 1-3) showcasing our unique narrative approach and building credibility."
+          ],
+          [
+            "Goal 2: Cultivate a Vibrant Artist Community and Launch a Pilot Residency Program.",
+            "Establish an active artist network and launch a pilot residency for 2+ artists (Years 2-3) through online engagement, networking events, and a clear program framework, laying groundwork for our art center."
+          ],
+          [
+            "Goal 3: Develop a Comprehensive Plan and Secure a Physical Hub for The Sansa Art Center.",
+            "Complete a detailed business plan for our art center (Months 12-18), guiding the search for a physical location and funding, with active steps commencing by end of Year 2."
+          ],
+          [
+            "Goal 4: Achieve Enhanced Financial Sustainability through Diversified Income Streams.",
+            "Develop 3+ distinct earned income streams (e.g., ticketed events, publications, merchandise) (Years 1-2) to reduce grant reliance and expand programs, leveraging existing content and audience."
+          ]
         ]
       }
     },
     {
       "type": "table",
-      "title": "מטרותינו: מנקודת מבט תלמודית",
-      "paragraph": "יעדים המושרשים בעקרונות לימוד, חסד וצדק.",
+      "title": "The Sansa Initiative' Strategies.",
+      "paragraph": "Achieve Your Mission, Vision & Goals",
       "tableData": {
-        "headers": ["תחום", "מטרה", "תוצאה מרכזית"],
+        "headers": [
+          "Category",
+          "Strategy",
+          "Description"
+        ],
         "rows": [
-          ["לימוד", "להעמיק את הבנת המקורות.", "פרסום מאמרים, הרחבת הסילבוס."],
-          ["חסד", "להרחיב את הנגישות לתוכן.", "הפצת חומרים לקהל רחב יותר."],
-          ["דיון", "לעודד שיח פלורליסטי.", "פתיחת במה לוויכוחים ענייניים."],
-          ["קהילה", "לחזק קשרים בין תלמידים.", "מפגשים תקופתיים, שיעורים משותפים."]
-        ]
-      }
-    },
-    {
-      "type": "table",
-      "title": "אסטרטגיות: דרך התלמוד",
-      "paragraph": "הגישות הפעילות שלנו, בהשראת מסורות הלימוד והפסיקה.",
-      "tableData": {
-        "headers": ["אסטרטגיה", "תיאור", "דגש"],
-        "rows": [
-          ["פלפול", "ניתוח מעמיק של טקסטים.", "סדנאות פרשנות, קבוצות מחקר."],
-          ["הלכה למעשה", "יישום מעשי של עקרונות.", "פרויקטים קהילתיים, ייעוץ."],
-          ["דרש", "העברת מסרים רוחניים.", "הרצאות, סיפורים, מדיטציה."],
-          ["הקדש", "הבטחת משאבים למען מטרה קדושה.", "גיוס תרומות, פיתוח קרנות."]
+          [
+            "A. Artistic Creation, Production & Curation",
+            "1: Develop Flagship Projects",
+            "Produce high-impact projects addressing core themes (Goal 1), serving as signature demonstrations of our mission. Seek collaborations to enrich creativity and expand reach."
+          ],
+          [
+            "A. Artistic Creation, Production & Curation",
+            "2: Curate and Showcase Diverse Voices",
+            "Organize exhibitions and festivals prioritizing underrepresented artists to actively amplify excluded voices, enriching public discourse and embodying inclusivity."
+          ],
+          [
+            "A. Artistic Creation, Production & Curation",
+            "3: Foster Experimental Approaches",
+            "Develop projects using innovative methods to push artistic boundaries, engage audiences in new ways, and ensure our work remains relevant and thought-provoking."
+          ],
+          [
+            "B. Artist Support & Development (Leading to our Future Center & Residencies)",
+            "Strategy 1: Skill-Building Workshops & Masterclasses",
+            "Offer robust training in artistic techniques and professional development to equip artists for sustainable careers and community contribution (Goals 2 & 4)."
+          ],
+          [
+            "B. Artist Support & Development (Leading to our Future Center & Residencies)",
+            "Strategy 2: Networking & Community Building",
+            "Host regular events and online engagements to connect artists, combat isolation, spark collaborations, and build energy for our residency program and art center (Goal 2)."
+          ],
+          [
+            "B. Artist Support & Development (Leading to our Future Center & Residencies)",
+            "Strategy 3: Resource Provision (Future Center Focus)",
+            "Conduct needs assessments and strategic planning for the art center (Goal 3), ensuring it responds to artist needs and operates on a sustainable model."
+          ],
+          [
+            "C. Community Engagement & Outreach",
+            "Strategy 1: Public Programming & Events",
+            "Organize dynamic public events (performances, talks, workshops) to make our mission tangible, foster dialogue, and create potential revenue streams (Goal 4)."
+          ],
+          [
+            "C. Community Engagement & Outreach",
+            "Strategy 2: Educational Partnerships",
+            "Collaborate with educational institutions to integrate our themes, reaching younger audiences and inspiring next-generation storytellers and artists."
+          ],
+          [
+            "C. Community Engagement & Outreach",
+            "Strategy 3: Digital Engagement & Content Creation",
+            "Develop a strong online presence for audience building, marketing, pre-center community cultivation (Goal 2), and testing content ideas (Goals 1 & 4)."
+          ],
+          [
+            "D. Organizational Development & Sustainability",
+            "Strategy 1: Formalize Legal Structure (NPO)",
+            "Establish as a registered NPO for grant access (Goals 1 & 3), governance, accountability, and public trust, ensuring long-term viability."
+          ],
+          [
+            "D. Organizational Development & Sustainability",
+            "Strategy 2: Build a Strong Board/Advisory Group",
+            "Recruit a diverse board/advisory group for strategic oversight, fundraising support, and ensuring sound financial and ethical operations."
+          ],
+          [
+            "D. Organizational Development & Sustainability",
+            "Strategy 3: Develop a Comprehensive Funding Plan",
+            "Implement a multi-faceted funding plan (grants, individual donors, earned income) to mitigate risk and enable ambitious projects (Goals 1, 3, & 4)."
+          ],
+          [
+            "D. Organizational Development & Sustainability",
+            "Strategy 4: Establish Brand & Communications",
+            "Develop a clear, compelling brand to attract artists, engage audiences, secure partnerships, and articulate our value to funders."
+          ],
+          [
+            "D. Organizational Development & Sustainability",
+            "Strategy 5: Monitoring & Evaluation (M&E)",
+            "Implement a robust M&E framework with clear KPIs to track progress, learn, adapt, and demonstrate mission impact effectively."
+          ]
         ]
       }
     },
     {
       "type": "list",
-      "title": "ה'למה' של המהלך התלמודי",
-      "paragraph": "חקירת המניעים העמוקים שביסוד הגישה התלמודית שלנו.",
+      "title": "Organizational Structure: Non-Profit (NPO)",
+      "paragraph": "The Sansa Initiative will operate as a Non-Profit Organization (NPO) to best achieve its mission.",
       "listItems": [
-        "להביא את רלוונטיות התורה לעולם המודרני.",
-        "לפתח מנהיגות רוחנית מבוססת ידע ואתיקה.",
-        "ליצור גשרים בין עבר להווה, בין מסורת לחדשנות.",
-        "לחזק את הזהות הרוחנית והאינטלקטואלית.",
-        "לעודד חשיבה ביקורתית תוך שמירה על יראת כבוד.",
-        "להגשים את עקרון 'כל ישראל ערבים זה לזה'."
+        "Mission-Centric: Legally ensures focus on public benefit, aligning with our core mission.",
+        "Optimal Grant Eligibility: Enhances competitiveness for funding essential for projects and our art center.",
+        "Tax Advantages: Maximizes resources for programs; donations often tax-deductible for contributors.",
+        "Public Trust & Accountability: Transparent governance fosters community and funder confidence.",
+        "Reinvestment of Surplus: All financial gains support artistic and community goals.",
+        "Framework for Community Support: Enables effective fundraising, volunteer engagement, and broad support."
       ]
     },
     {
       "type": "list",
-      "title": "מאין: מקורות ההשראה התלמודיים",
-      "paragraph": "השפעות היסטוריות ואינטלקטואליות שעיצבו את הגישה התלמודית של יוזמת סנסה.",
+      "title": "The 'Why's': Our Foundational Drivers",
+      "paragraph": "",
       "listItems": [
-        "**תורה שבכתב ושבעל פה:** יסוד כל הידע והדיון.",
-        "**תנאים ואמוראים:** חכמי המשנה והגמרא, מתווי הדרך.",
-        "**ראשונים ואחרונים:** פרשנים ופוסקים מימי הביניים ועד ימינו.",
-        "**הגות יהודית לדורותיה:** פילוסופיה, מוסר, קבלה.",
-        "**דיסציפלינות מודרניות:** פסיכולוגיה, סוציולוגיה (בזיקה למקורות)."
+        "To address societal fragmentation...",
+        "To unlock ancient wisdom...",
+        "To foster interdisciplinary dialogue...",
+        "To empower individuals...",
+        "To contribute to global discourse...",
+        "To cultivate intellectual humility..."
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Where From?: Our Intellectual Heritage",
+      "paragraph": "",
+      "listItems": [
+        "Ancient Hellenic Philosophy: Socratic method, etc.",
+        "Talmudic Scholarship: Dialectical reasoning, etc.",
+        "Zoharic Mysticism: Esoteric interpretations...",
+        "Sephardic Tradition: Rationalism and Kabbalah...",
+        "Modern Systems Thinking: Interconnectedness...",
+        "Contemporary Psychology: Cognitive science..."
       ]
     }
   ],
-    "themeConfig": {
-"fontFamily": "'Noto Serif Hebrew', serif",
-    "backgroundColor": "#f8f0e0",
-    "primaryColor": "#8b4513",
-    "secondaryColor": "#e0c090",
-    "textColor": "#2f1f00",
-    "headerColor": "#5C3A10",
-    "movementType": "centralCircle",
-    "backgroundImage": "url('images/talmudic/talmudic.jpg')",
+  "themeConfig": {
+    "fontFamily": "'Inter', sans-serif",
+    "primaryColor": "#3b82f6",
+    "secondaryColor": "#ddd",
+    "textColor": "#1e293b",
+    "headerColor": "#1e293b",
+    "movementType": "twinkle",
+    "backgroundImage": "url('images/pragmatic/pragmatic.png')",
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
       "paragraph": "Please select your preferred language to continue:",
       "enterButtonText": "Start Your Journey"
     },
     "validationDialog": {
-      "title": "Have you explored the initial concepts (cards 1-4)?",
+      "title": "Have you explored the initial concepts (cards 1–4)?",
       "yesButtonText": "Yes, I'm Ready",
       "noButtonText": "Not Yet, Back to Loop"
     },
-    "cardFrontOverlayColor": "rgba(0, 0, 0, 0.2)",
-    "cardFrontTextColor": "#FFFFFF"
-
-
+    "cardFrontTextColor": "#FFFFFF",
+    "cardFrontOverlayColor": "rgba(0, 0, 0, 0.5)"
   }
 }
