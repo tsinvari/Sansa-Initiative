@@ -65,7 +65,7 @@
     "headerColor": "#c9a66b",
     "movementType": "randomAppearDisappear",
     "backgroundImage": "url('images/lorderian/lorderian.jpeg')",
-    "backgroundPosition": "center center",
+    "backgroundPosition": "center top",
     "initialDialog": {
       "title": "Welcome to The Lorderian Realm",
       "paragraph": "Experience the ephemeral nature of knowledge:",
