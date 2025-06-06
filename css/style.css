@@ -8,23 +8,19 @@
     --theme-text-color: #1e293b;
     --theme-header-color: #1e293b;
     --theme-card-back-color: #1e293b;
-    --theme-font-family: 'Inter', sans-serif; /* Default font, ensure it's loaded or a common fallback */
-    /* NEW: Default background position for themes that don't specify */
+    --theme-font-family: 'Inter', sans-serif;
     --theme-background-position: center center;
 }
 
-/* --- FIX: Ensure 'hidden' class always hides elements --- */
 .hidden {
     display: none !important;
 }
-/* --- END FIX --- */
 
 body {
-    font-family: var(--theme-font-family); /* FIX: Correctly use font-family variable */
+    font-family: var(--theme-font-family);
     background-color: var(--theme-background-color);
     background-image: var(--theme-background-image);
     background-size: cover;
-    /* FIX: Use dynamic background-position for body */
     background-position: var(--theme-background-position);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -34,15 +30,13 @@ body {
     min-height: 100vh;
     margin: 0;
     padding-top: 20px;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    overflow-y: auto; /* Allow vertical scrolling if content overflows */
-    /* NEW: Font smoothing properties */
+    overflow-x: hidden;
+    overflow-y: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
 }
 
-/* --- Initial Dialog Styles --- */
 #initialDialogOverlay {
     position: fixed;
     top: 0;
@@ -106,9 +100,6 @@ body {
     box-shadow: 0 2px 5px rgba(var(--theme-primary-color-rgb), 0.2);
 }
 
-/* --- END Initial Dialog Styles --- */
-
-/* --- Validation Dialog Styles --- */
 #validationDialogOverlay {
     position: fixed;
     top: 0;
@@ -179,12 +170,95 @@ body {
     transform: translateY(-1px);
 }
 
-/* --- END Validation Dialog Styles --- */
+/* NEW: FAQ Page Styles */
+#faqPageContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--theme-background-color);
+    background-image: var(--theme-background-image);
+    background-size: cover;
+    background-position: var(--theme-background-position);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: 1400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
 
+#faqContent {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    max-width: 800px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#faqTitle {
+    font-size: 2.2em;
+    color: var(--theme-header-color);
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 700;
+}
+
+#faqQuestionsAnswers {
+    flex-grow: 1;
+}
+
+#faqQuestionsAnswers h3 {
+    font-size: 1.2em;
+    color: var(--theme-primary-color);
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#faqQuestionsAnswers p {
+    font-size: 1em;
+    color: var(--theme-text-color);
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+#faqBackButton {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    color: white;
+    background-color: var(--theme-primary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    flex-shrink: 0;
+}
+#faqBackButton:hover {
+    background-color: var(--theme-header-color);
+}
 
 .header-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 60px;
     width: 100%;
@@ -194,14 +268,43 @@ body {
     z-index: 10;
 }
 
+.header-button {
+    background-color: rgba(var(--theme-secondary-color-rgb), 0.5);
+    color: var(--theme-text-color);
+    border: none; /* Keep border: none; */
+    border-radius: 5px;
+    padding: 5px 15px;
+    outline: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    white-space: nowrap;
+    margin-right: 30px;
+}
+.header-button:hover {
+    background-color: rgba(var(--theme-secondary-color-rgb), 0.7);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+.header-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+/* FIX: Add focus style to header-button */
+.header-button:focus {
+    box-shadow: 0 0 0 2px var(--theme-primary-color); /* Primary color outline/border */
+    border-color: transparent; /* Ensure no default browser border */
+}
+/* END FIX */
+
 .title {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--theme-header-color);
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     text-align: center;
-    margin: 0;
-    margin-right: 30px;
+    margin-left: auto;
+    margin-right: auto;
 
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(4px);
@@ -210,6 +313,11 @@ body {
     border-radius: 8px;
     padding: 10px 20px;
     display: inline-block;
+}
+
+.language-menu {
+    margin-left: 30px;
+    flex-shrink: 0;
 }
 
 .language-menu select {
@@ -236,9 +344,16 @@ body {
 }
 
 /* Specific styling for the language menu inside the initial dialog if needed */
+.language-menu-initial { /* Target the container of the select */
+    margin: 0; /* Override margin-left from general .language-menu */
+    width: 100%; /* Ensure it takes full width for centering */
+    display: flex; /* Use flex to center its child (the select) */
+    justify-content: center; /* Center horizontally */
+}
 .language-menu-initial select {
     font-size: 1.1rem;
     padding: 8px 30px 8px 15px;
+    /* Removed text-align: center as flex parent handles centering */
 }
 
 
@@ -251,6 +366,7 @@ body {
     align-items: center;
     perspective: 1500px;
     margin-top: 50px;
+    /* Removed overflow: hidden; */
 }
 
 .card {
@@ -331,32 +447,37 @@ body {
     color: var(--theme-header-color);
 }
 .card-back p {
-    font-size: 0.85em;
+    /* Updated: Reduced font size for paragraph */
+    font-size: 0.8em; /* Was 0.85em */
     padding: 0 5px;
     margin-bottom: 10px;
     flex-grow: 1;
 }
 .card-back .learn-more-button {
+    /* Updated: Styled as text link */
     font-size: 0.9em;
     font-weight: 600;
-    color: white;
-    background-color: var(--theme-primary-color);
-    border: none;
-    border-radius: 6px;
-    padding: 8px 15px;
+    color: var(--theme-primary-color); /* Use primary color for the link */
+    background-color: transparent; /* No background */
+    border: none; /* No border */
+    border-radius: 0; /* No border-radius */
+    padding: 0; /* No padding */
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    transition: text-decoration 0.2s ease, color 0.2s ease; /* Transition for underline and color */
     display: block;
     margin: 10px auto 0 auto;
-    text-decoration: none;
-    box-shadow: 0 2px 5px rgba(var(--theme-primary-color-rgb), 0.3);
+    text-decoration: none; /* Default no underline */
+    box-shadow: none; /* No box shadow */
 }
 .card-back .learn-more-button:hover {
-    background-color: var(--theme-header-color);
+    color: var(--theme-header-color); /* Change color on hover */
+    text-decoration: underline; /* Underline on hover */
+    transform: none; /* Remove any transform on hover */
+    box-shadow: none; /* Ensure no box shadow on hover */
 }
 .card-back .learn-more-button:active {
-    transform: translateY(0);
-    box-shadow: 0 1px 3px rgba(var(--theme-primary-color-rgb), 0.2);
+    transform: none; /* No transform on active */
+    box-shadow: none; /* No box shadow on active */
 }
 
 
@@ -498,6 +619,15 @@ body {
         max-height: 85vh;
     }
     #detailPageContent h2 { font-size: 1.8em; }
+
+    /* FAQ Page responsiveness */
+    #faqContent {
+        padding: 25px;
+        max-height: 85vh;
+    }
+    #faqTitle { font-size: 1.8em; margin-bottom: 20px; }
+    #faqQuestionsAnswers h3 { font-size: 1.1em; }
+    #faqQuestionsAnswers p { font-size: 0.95em; }
 }
 @media (max-width: 480px) {
     .title {
@@ -534,4 +664,13 @@ body {
         padding: 10px 25px;
         font-size: 1em;
     }
+
+    /* FAQ Page responsiveness */
+    #faqContent {
+        padding: 20px;
+        max-height: 80vh;
+    }
+    #faqTitle { font-size: 1.5em; margin-bottom: 15px; }
+    #faqQuestionsAnswers h3 { font-size: 1em; }
+    #faqQuestionsAnswers p { font-size: 0.9em; }
 }

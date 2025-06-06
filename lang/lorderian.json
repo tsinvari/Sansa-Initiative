@@ -57,12 +57,12 @@
     }
   ],
   "themeConfig": {
-    "fontFamily": "'Inter', sans-serif",
-    "backgroundColor": "#222222",
-    "primaryColor": "#9d4edd",
-    "secondaryColor": "#bb86fc",
-    "textColor": "#e0e0e0",
-    "headerColor": "#bb86fc",
+    "fontFamily": "'Cinzel Decorative', serif",
+    "backgroundColor": "#1b1b1b", 
+    "primaryColor": "#8d775f",     
+    "secondaryColor": "#3e2f23",    
+    "textColor": "#e4dcc3",        
+    "headerColor": "#c9a66b",
     "movementType": "randomAppearDisappear",
     "backgroundImage": "url('images/lorderian/lorderian.jpg')",
     "backgroundPosition": "center center",

@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sansa Initiative</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts import for Noto Serif Hebrew (example, add others if needed) -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
-
-
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -40,8 +38,19 @@
         </div>
     </div>
 
+     <div id="faqPageContainer" class="hidden">
+        <div id="faqContent">
+            <h1 id="faqTitle">Frequently Asked Questions</h1>
+            <div id="faqQuestionsAnswers">
+                <!-- FAQ content will be dynamically loaded here -->
+            </div>
+            <button id="faqBackButton">Back to Home</button>
+        </div>
+    </div>
+
     <!-- Main Header (Initially Hidden) -->
     <div class="header-container hidden">
+        <button id="faqButton" class="header-button">FAQ</button>
         <div class="title">The Sansa Initiative</div>
         <div class="language-menu">
             <select id="languageSelector">

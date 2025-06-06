@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const container = document.querySelector('.card-circle-container');
     const languageSelector = document.getElementById('languageSelector');
     const headerTitleElement = document.querySelector('.title');
+    const faqButton = document.getElementById('faqButton'); // NEW: FAQ Button reference
 
     const detailPageContainer = document.getElementById('detailPageContainer');
     const detailPageTitle = document.getElementById('detailPageTitle');
@@ -28,6 +29,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const validationDialogNoButton = validationDialogContent.querySelector('#validationNoButton');
     let cardToFlipAfterValidation = null;
 
+    // NEW: FAQ Page Elements
+    const faqPageContainer = document.getElementById('faqPageContainer');
+    const faqTitleElement = document.getElementById('faqTitle');
+    const faqQuestionsAnswersContainer = document.getElementById('faqQuestionsAnswers');
+    const faqBackButton = document.getElementById('faqBackButton');
+    // END NEW
+
     let allCards = [];
     const numTotalCards = 7;
     const cardsRequiringValidation = [5, 6, 7];
@@ -42,6 +50,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const loadedLanguages = {};
 
     let currentMovementType = 'centralCircle';
+
+    // NEW: Variables to store previous theme state for FAQ page return
+    let lastThemeFontFamily = '';
+    let lastThemeBackgroundColor = '';
+    let lastThemeBackgroundImage = '';
+    let lastThemeBackgroundPosition = '';
+    let lastThemeMovementType = 'centralCircle'; // Stores the movement type to resume
+    let faqData = null; // Stores loaded FAQ content
+    let faqLoaded = false; // Flag to ensure FAQ data is loaded only once
+    // END NEW
 
     let heartbeatAnimationFrameId = null;
     let heartbeatStartTime = 0;
@@ -74,18 +92,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let containerInclinationTransform = '';
 
-    // NEW: Lorderian Animation Variables (refined for staggered behavior)
-    let lorderianSchedulerTimeoutId = null; // Used to stagger appearance/disappearance calls
-    const lorderianCardDisplayDuration = 4000; // 4 seconds visible
-    const lorderianStaggerDelay = 300; // Base delay between cards appearing/disappearing
-    const lorderianStaggerRandomness = 400; // Max random addition to stagger delay
-    const lorderianCardVisibilityState = new Map(); // Map<cardElement, 'visible'|'hidden'>
-    // END NEW
+    // Lorderian Animation Variables (reverted to simpler version for now)
+    let lorderianSchedulerTimeoutId = null;
+    const lorderianCardTimers = new Map();
+    const minLorderianVisibleCards = 2;
+    const maxLorderianVisibleCards = 5;
+    const lorderianCardDisplayDuration = 4000;
+    const lorderianStaggerDelay = 300;
+    const lorderianStaggerRandomness = 400;
+
 
     const languageOptions = [
         { value: "pragmatic", text: "Pragmatic" },
         { value: "talmudic", text: "Talmudic" },
-        { value: "lorderian", text: "Lorderian" }, // NEW LANGUAGE
+        { value: "lorderian", text: "Lorderian" },
         { value: "zoharian", text: "Zoharian" },
         { value: "sephorian", text: "Sephorian" },
         { value: "experimental", text: "Experimental" }
@@ -106,7 +126,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 'images/talmudic/card2.jpeg', 'images/talmudic/card1.jpeg', 'images/talmudic/card2.jpeg', 'images/talmudic/card1.jpeg'
             ]
         },
-        lorderian: { 
+        lorderian: {
             text: '#FFFFFF',
             imagePaths: [
                 'images/lorderian/card1.jpg', 'images/lorderian/card2.jpg', 'images/lorderian/card1.jpg',
@@ -165,21 +185,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (randomWiggleAnimationFrameId) { cancelAnimationFrame(randomWiggleAnimationFrameId); randomWiggleAnimationFrameId = null; }
         // NEW: Stop Lorderian scheduler and clear timers
         if (lorderianSchedulerTimeoutId) { clearTimeout(lorderianSchedulerTimeoutId); lorderianSchedulerTimeoutId = null; }
-        lorderianCardVisibilityState.clear(); // Clear state tracking
-
+        lorderianCardTimers.forEach(timerId => clearTimeout(timerId)); // Clear all individual card timers
+        lorderianCardTimers.clear();
+        // END NEW
+        
         // Reset all cards to hidden/non-interactive state for Lorderian, unless they are focused
         allCards.forEach(card => {
             if (card === focusedCardElement && card.classList.contains('card-focused')) {
                 // Keep focused card as is, its visibility is managed by focusCard/unfocusCard
             } else {
-                card.style.opacity = 0;
+                card.style.opacity = 0; // Set to 0 for a fade-in if Lorderian starts next
                 card.style.pointerEvents = 'none';
                 card.classList.remove('is-flipped', 'card-focused'); // Ensure other cards are unflipped
             }
         });
-        // END NEW
         // For non-Lorderian animations, ensure cards revert to full opacity and interactivity
-        // This loop will also catch cards that were previously hidden by Lorderian after it's stopped.
         if (currentMovementType !== 'randomAppearDisappear') {
             allCards.forEach(card => {
                 if (card !== focusedCardElement) { // Don't touch focused card
@@ -194,10 +214,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     function startRandomAppearDisappearAnimation() {
         stopAllContinuousAnimations(); // Clean slate, hides all cards first
 
-        // Initialize all cards as hidden (excluding focused card)
+        // Ensure all cards start hidden (excluding focused card)
         allCards.forEach(card => {
             if (card !== focusedCardElement) {
-                lorderianCardVisibilityState.set(card, 'hidden');
                 card.style.opacity = 0;
                 card.style.pointerEvents = 'none';
             }
@@ -208,15 +227,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const manageCardVisibilityCycle = () => {
             // Stop if paused or dialog is open
-            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden')) {
+            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden') || !faqPageContainer.classList.contains('hidden')) {
                 lorderianSchedulerTimeoutId = null;
                 return;
             }
 
             // Filter cards that are part of the Lorderian pool (not focused)
             const activeCards = allCards.filter(card => card !== focusedCardElement);
-            const currentlyVisibleCards = activeCards.filter(card => lorderianCardVisibilityState.get(card) === 'visible');
-            const currentlyHiddenCards = activeCards.filter(card => lorderianCardVisibilityState.get(card) === 'hidden');
+            let currentlyVisibleCards = activeCards.filter(card => parseFloat(card.style.opacity) > 0);
+            let currentlyHiddenCards = activeCards.filter(card => parseFloat(card.style.opacity) === 0);
 
             let actionTaken = false;
 
@@ -225,80 +244,70 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const cardToShow = currentlyHiddenCards[Math.floor(Math.random() * currentlyHiddenCards.length)];
                 cardToShow.style.opacity = 1;
                 cardToShow.style.pointerEvents = 'auto';
-                lorderianCardVisibilityState.set(cardToShow, 'visible');
                 actionTaken = true;
 
                 // Schedule this card to disappear
-                setTimeout(() => {
-                    if (lorderianCardVisibilityState.get(cardToShow) === 'visible') { // Only hide if still visible and not focused
+                lorderianCardTimers.set(cardToShow, setTimeout(() => {
+                    if (parseFloat(cardToShow.style.opacity) > 0 && cardToShow !== focusedCardElement) { // Only hide if still visible and not focused
                         cardToShow.style.opacity = 0;
                         cardToShow.style.pointerEvents = 'none';
-                        lorderianCardVisibilityState.set(cardToShow, 'hidden');
                     }
-                }, lorderianCardDisplayDuration);
+                    lorderianCardTimers.delete(cardToShow);
+                }, lorderianCardDisplayDuration));
             }
             // If at minimum, but below maximum, and there are hidden cards, randomly show one
             else if (currentlyVisibleCards.length < maxLorderianVisibleCards && currentlyHiddenCards.length > 0 && Math.random() < 0.6) { // 60% chance to show another
                 const cardToShow = currentlyHiddenCards[Math.floor(Math.random() * currentlyHiddenCards.length)];
                 cardToShow.style.opacity = 1;
                 cardToShow.style.pointerEvents = 'auto';
-                lorderianCardVisibilityState.set(cardToShow, 'visible');
                 actionTaken = true;
 
                 // Schedule this card to disappear
-                setTimeout(() => {
-                    if (lorderianCardVisibilityState.get(cardToShow) === 'visible') { // Only hide if still visible and not focused
+                lorderianCardTimers.set(cardToShow, setTimeout(() => {
+                    if (parseFloat(cardToShow.style.opacity) > 0 && cardToShow !== focusedCardElement) { // Only hide if still visible and not focused
                         cardToShow.style.opacity = 0;
                         cardToShow.style.pointerEvents = 'none';
-                        lorderianCardVisibilityState.set(cardToShow, 'hidden');
                     }
-                }, lorderianCardDisplayDuration);
+                    lorderianCardTimers.delete(cardToShow);
+                }, lorderianCardDisplayDuration));
             }
             // If at maximum visible cards, and there are cards that can be hidden, randomly hide one
             else if (currentlyVisibleCards.length > maxLorderianVisibleCards && currentlyVisibleCards.length > minLorderianVisibleCards && Math.random() < 0.6) { // Try to hide if above max, and still more than min
                 const cardToHide = currentlyVisibleCards[Math.floor(Math.random() * currentlyVisibleCards.length)];
                 cardToHide.style.opacity = 0;
                 cardToHide.style.pointerEvents = 'none';
-                lorderianCardVisibilityState.set(cardToHide, 'hidden');
                 actionTaken = true;
             }
-            // If we're in the desired range and no specific action was taken this tick, just let existing timers run
-            // or if no cards available to change state.
+            // If we're in the desired range and no specific action was taken this tick, just wait for next scheduled action or timer expiry
             else {
                 // No action needed this precise tick, just wait for next scheduled action or timer expiry
             }
-
 
             // Schedule the next check/action with a random stagger delay
             const randomDelay = Math.random() * lorderianStaggerRandomness + lorderianStaggerDelay;
             lorderianSchedulerTimeoutId = setTimeout(manageCardVisibilityCycle, randomDelay);
         };
 
-        // Initial population to meet minimum visible cards
+        // Initial burst to get to minimum visible cards
         const cardsToInitiallyShow = [];
-        const shuffledAllCards = [...allCards]; // Create a mutable copy
-        shuffleArray(shuffledAllCards); // Shuffle this copy
+        const shuffledAllCards = [...allCards].filter(card => card !== focusedCardElement); // Copy and exclude focused
+        shuffleArray(shuffledAllCards);
 
         for(let i = 0; i < minLorderianVisibleCards && shuffledAllCards.length > 0; i++) {
-            const card = shuffledAllCards.pop(); // Take one from the shuffled list
-            if (card === focusedCardElement) { // Skip if it's the focused card
-                i--; // Decrement i to try for another card if focused card was picked
-                continue;
-            }
+            const card = shuffledAllCards.pop();
             cardsToInitiallyShow.push(card);
         }
 
         cardsToInitiallyShow.forEach(card => {
             card.style.opacity = 1;
             card.style.pointerEvents = 'auto';
-            lorderianCardVisibilityState.set(card, 'visible');
-            setTimeout(() => {
-                if (lorderianCardVisibilityState.get(card) === 'visible' && card !== focusedCardElement) {
+            lorderianCardTimers.set(card, setTimeout(() => {
+                if (parseFloat(card.style.opacity) > 0 && card !== focusedCardElement) { // Only hide if still visible and not focused
                     card.style.opacity = 0;
                     card.style.pointerEvents = 'none';
-                    lorderianCardVisibilityState.set(card, 'hidden');
                 }
-            }, lorderianCardDisplayDuration);
+                lorderianCardTimers.delete(card);
+            }, lorderianCardDisplayDuration));
         });
 
         // Start the continuous scheduling after initial burst
@@ -336,7 +345,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const response = await fetch(`lang/${langKey}.json`);
             if (!response.ok) {
-                throw new Error(`Failed to load language file: ${langKey}.json (status: ${response.status})`);
+                throw new Error(`Failed to load language file: lang/${langKey}.json (status: ${response.status})`);
             }
             const data = await response.json();
             currentLangData = data;
@@ -351,39 +360,54 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    function updateUIWithLanguageData(currentLoadedLangKey) {
+    function updateUIWithLanguageData(currentLoadedLangKey, targetElement = document.body, isFaqPage = false) {
         if (!currentLangData || Object.keys(currentLangData).length === 0) {
             console.warn("No language data loaded to update UI.");
             return;
         }
 
-        const themeConfig = currentLangData.themeConfig;
+        // Only store current theme properties when NOT transitioning to FAQ page
+        if (!isFaqPage) {
+            lastThemeFontFamily = document.body.style.fontFamily;
+            lastThemeBackgroundColor = document.body.style.backgroundColor;
+            lastThemeBackgroundImage = document.body.style.backgroundImage;
+            lastThemeBackgroundPosition = root.style.getPropertyValue('--theme-background-position');
+            lastThemeMovementType = currentMovementType; // Store the previous movement type
+        }
+
+        const themeConfig = isFaqPage && faqData && faqData.themeConfig ? faqData.themeConfig : currentLangData.themeConfig;
+        
         if (themeConfig) {
-            document.body.style.fontFamily = themeConfig.fontFamily;
-            if (headerTitleElement) {
+            targetElement.style.fontFamily = themeConfig.fontFamily;
+            if (headerTitleElement) { // Only apply to headerTitleElement if it exists in the current context
                 headerTitleElement.style.fontFamily = themeConfig.headerFontFamily || 'inherit';
             }
 
             if (themeConfig.backgroundImage) {
-                document.body.style.backgroundImage = themeConfig.backgroundImage;
-                document.body.style.backgroundColor = 'transparent';
+                targetElement.style.backgroundImage = themeConfig.backgroundImage;
+                targetElement.style.backgroundColor = 'transparent';
             } else {
-                document.body.style.backgroundColor = themeConfig.backgroundColor;
-                document.body.style.backgroundImage = '';
+                targetElement.style.backgroundColor = themeConfig.backgroundColor;
+                targetElement.style.backgroundImage = '';
             }
 
+            // Apply CSS variables to the root element, which will cascade
             root.style.setProperty('--theme-primary-color', themeConfig.primaryColor);
             root.style.setProperty('--theme-secondary-color', themeConfig.secondaryColor);
             root.style.setProperty('--theme-text-color', themeConfig.textColor);
             root.style.setProperty('--theme-header-color', themeConfig.headerColor);
             root.style.setProperty('--theme-card-back-color', themeConfig.cardBackColor || '#1e293b');
+            root.style.setProperty('--theme-background-position', themeConfig.backgroundPosition || 'center center'); // Set dynamic background position
 
             const primaryRgb = hexToRgb(themeConfig.primaryColor);
             const secondaryRgb = hexToRgb(themeConfig.secondaryColor);
             if (primaryRgb) root.style.setProperty('--theme-primary-color-rgb', `${primaryRgb.r}, ${primaryRgb.g}, ${primaryRgb.b}`);
             if (secondaryRgb) root.style.setProperty('--theme-secondary-color-rgb', `${secondaryRgb.r}, ${secondaryRgb.g}, ${secondaryRgb.b}`);
 
-            currentMovementType = themeConfig.movementType || 'centralCircle';
+            // Only update currentMovementType if not on FAQ page, as FAQ doesn't have card animation
+            if (!isFaqPage) {
+                currentMovementType = themeConfig.movementType || 'centralCircle';
+            }
             containerInclinationTransform = '';
 
             const initialDialogData = themeConfig.initialDialog;
@@ -401,12 +425,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
 
-        const cardFrontTextColor = themeConfig.cardFrontTextColor || '#FFFFFF';
-        const cardFrontOverlayColor = themeConfig.cardFrontOverlayColor || 'rgba(0, 0, 0, 0.4)';
-
-        updateCardAppearance(currentLoadedLangKey, cardFrontTextColor, cardFrontOverlayColor);
-        updateSlotTransforms();
-        applyCardBaseTransformsAndHover(parseFloat(container.dataset.currentRotation || 0));
+        // Only update card appearance if not on the FAQ page
+        if (!isFaqPage) {
+            const cardFrontTextColor = themeConfig.cardFrontTextColor || '#FFFFFF';
+            const cardFrontOverlayColor = themeConfig.cardFrontOverlayColor || 'rgba(0, 0, 0, 0.4)';
+            updateCardAppearance(currentLoadedLangKey, cardFrontTextColor, cardFrontOverlayColor);
+            updateSlotTransforms();
+            applyCardBaseTransformsAndHover(parseFloat(container.dataset.currentRotation || 0));
+        }
     }
 
     function createCards() {
@@ -657,7 +683,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     function applyCardBaseTransformsAndHover(containerCurrentAngle = 0) {
         // If animation is globally paused AND a card is focused (and no dialogs are open),
         // we only apply transforms to non-focused cards to keep them out of the way.
-        if (isAnimationGloballyPaused && focusedCardElement && detailPageContainer.classList.contains('hidden') && validationDialogOverlay.classList.contains('hidden')) {
+        if (isAnimationGloballyPaused && focusedCardElement && detailPageContainer.classList.contains('hidden') && validationDialogOverlay.classList.contains('hidden') && faqPageContainer.classList.contains('hidden')) {
             allCards.forEach(card => {
                 if (card === focusedCardElement) return; // Skip focused card
                 card.classList.remove('is-hovered'); // Ensure hover state is removed
@@ -670,7 +696,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // If any dialog is open, or if the global animation is paused for other reasons
         // and there's no focused card (e.g., Lorderian initially hiding all),
         // we stop applying dynamic transforms.
-        if (!detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden') || (isAnimationGloballyPaused && !focusedCardElement)) {
+        if (!detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden') || !faqPageContainer.classList.contains('hidden') || (isAnimationGloballyPaused && !focusedCardElement)) {
              return;
         }
 
@@ -901,7 +927,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function handleCardClick(cardElement) {
-        if (!detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden')) return;
+        if (!detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden') || !faqPageContainer.classList.contains('hidden')) return;
         if (focusedCardElement && focusedCardElement !== cardElement) return;
 
         if (focusedCardElement === cardElement) {
@@ -958,7 +984,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         twinkleStartTime = performance.now();
 
         function animateTwinkle() {
-            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden')) {
+            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden') || !faqPageContainer.classList.contains('hidden')) {
                 twinkleAnimationFrameId = null;
                 allCards.forEach(card => card.style.opacity = 1);
                 return;
@@ -974,7 +1000,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         heartbeatStartTime = performance.now();
 
         function animateHeartbeat() {
-            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden')) {
+            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden') || !faqPageContainer.classList.contains('hidden')) {
                 heartbeatAnimationFrameId = null;
                 return;
             }
@@ -989,7 +1015,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         spiralingStartTime = performance.now();
 
         function animateSpiraling() {
-            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden')) {
+            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden') || !faqPageContainer.classList.contains('hidden')) {
                 spiralingAnimationFrameId = null;
                 return;
             }
@@ -1004,7 +1030,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         randomWiggleStartTime = performance.now();
 
         function animateRandomWiggle() {
-            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden')) {
+            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden') || !faqPageContainer.classList.contains('hidden')) {
                 randomWiggleAnimationFrameId = null;
                 return;
             }
@@ -1021,7 +1047,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             let animationFrameId;
 
             function step(currentTime) {
-                if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden')) {
+                if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden') || !faqPageContainer.classList.contains('hidden')) {
                     cancelAnimationFrame(animationFrameId);
                     resolve();
                     return;
@@ -1060,7 +1086,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (allCards.length > 0 && !allCards[0].dataset.listenersAttached) {
             allCards.forEach(card => {
                 card.addEventListener('mouseenter', () => {
-                    if (!isAnimationGloballyPaused && validationDialogOverlay.classList.contains('hidden')) cardHoverStates.set(card, true);
+                    if (!isAnimationGloballyPaused && validationDialogOverlay.classList.contains('hidden') && faqPageContainer.classList.contains('hidden')) cardHoverStates.set(card, true);
                 });
                 card.addEventListener('mouseleave', () => {
                     if (!isAnimationGloballyPaused && validationDialogOverlay.classList.contains('hidden')) cardHoverStates.set(card, false);
@@ -1074,7 +1100,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 stopAllContinuousAnimations();
                 await new Promise(resolve => {
                     const interval = setInterval(() => {
-                        if (!isAnimationGloballyPaused && validationDialogOverlay.classList.contains('hidden') && initialDialogOverlay.classList.contains('hidden')) {
+                        if (!isAnimationGloballyPaused && validationDialogOverlay.classList.contains('hidden') && initialDialogOverlay.classList.contains('hidden') && faqPageContainer.classList.contains('hidden')) {
                             clearInterval(interval);
                             resolve();
                         }
@@ -1093,7 +1119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const targetAngle = currentAngle + (360 * randomDirection);
                 await animateContainerRotation(targetAngle, cycleDuration);
 
-                if (!isAnimationGloballyPaused && validationDialogOverlay.classList.contains('hidden') && initialDialogOverlay.classList.contains('hidden')) {
+                if (!isAnimationGloballyPaused && validationDialogOverlay.classList.contains('hidden') && initialDialogOverlay.classList.contains('hidden') && faqPageContainer.classList.contains('hidden')) {
                     container.style.transition = 'none';
                     container.style.transform = `${containerInclinationTransform} rotate(0deg)`;
                     container.dataset.currentRotation = "0";
@@ -1102,15 +1128,125 @@ document.addEventListener('DOMContentLoaded', async () => {
                     await repositionAllCards();
                 }
             } else if (currentMovementType === 'randomAppearDisappear') {
-                // For Lorderian, the animation is managed by its own setInterval/setTimeout,
-                // so the main animationSequence just yields control briefly.
-                await new Promise(r => setTimeout(r, 50)); // Yield control
+                await new Promise(r => setTimeout(r, 50));
             }
-            else { // Other continuous animations (twinkle, heartbeat, randomWiggle) just yield control
+            else {
                 await new Promise(r => setTimeout(r, 50));
             }
         }
     }
+
+    // NEW: Function to load FAQ data from JSON
+    async function loadFaqData() {
+        if (faqLoaded && faqData) return; // Prevent re-loading
+
+        try {
+            const response = await fetch('lang/faq.json'); // Changed path to directly access lang/faq.json
+            if (!response.ok) {
+                throw new Error(`Failed to load FAQ file: lang/faq.json (status: ${response.status})`);
+            }
+            faqData = await response.json();
+            faqLoaded = true;
+
+            // Populate FAQ content
+            if (faqTitleElement) faqTitleElement.textContent = faqData.faqTitle || "FAQ";
+            if (faqBackButton) faqBackButton.textContent = faqData.faqBackButtonText || "Back";
+            
+            faqQuestionsAnswersContainer.innerHTML = ''; // Clear previous content
+            faqData.questionsAndAnswers.forEach(qa => {
+                const h3 = document.createElement('h3');
+                h3.textContent = qa.question;
+                const p = document.createElement('p');
+                p.textContent = qa.answer;
+                faqQuestionsAnswersContainer.append(h3, p);
+            });
+
+        } catch (error) {
+            console.error("Error loading FAQ data:", error);
+            if (faqQuestionsAnswersContainer) faqQuestionsAnswersContainer.innerHTML = '<p>Failed to load FAQ content.</p>';
+        }
+    }
+
+    // NEW: Function to show the FAQ page
+    async function showFaqPage() {
+        // Save current theme state
+        lastThemeFontFamily = document.body.style.fontFamily;
+        lastThemeBackgroundColor = document.body.style.backgroundColor;
+        lastThemeBackgroundImage = document.body.style.backgroundImage;
+        lastThemeBackgroundPosition = root.style.getPropertyValue('--theme-background-position');
+        lastThemeMovementType = currentMovementType;
+
+        // Load FAQ data (only once)
+        await loadFaqData();
+
+        // Pause main application
+        isAnimationGloballyPaused = true;
+        stopAllContinuousAnimations();
+
+        // Hide main content
+        document.querySelector('.header-container').classList.add('hidden');
+        container.classList.add('hidden');
+        detailPageContainer.classList.add('hidden');
+        languageMenu.style.display = 'none';
+
+        // Apply FAQ page specific theme from faqData.themeConfig
+        if (faqData && faqData.themeConfig) {
+            const faqThemeConfig = faqData.themeConfig;
+            
+            // Apply theme properties directly to the body and root CSS variables
+            document.body.style.fontFamily = faqThemeConfig.fontFamily || 'Inter, sans-serif';
+            document.body.style.backgroundColor = faqThemeConfig.backgroundColor || '#ffffff';
+            document.body.style.backgroundImage = faqThemeConfig.backgroundImage || 'none';
+            root.style.setProperty('--theme-background-position', faqThemeConfig.backgroundPosition || 'center center');
+
+            root.style.setProperty('--theme-primary-color', faqThemeConfig.primaryColor);
+            root.style.setProperty('--theme-secondary-color', faqThemeConfig.secondaryColor);
+            root.style.setProperty('--theme-text-color', faqThemeConfig.textColor);
+            root.style.setProperty('--theme-header-color', faqThemeConfig.headerColor);
+            root.style.setProperty('--theme-card-back-color', faqThemeConfig.cardBackColor || '#1e293b');
+            
+            const primaryRgb = hexToRgb(faqThemeConfig.primaryColor);
+            const secondaryRgb = hexToRgb(faqThemeConfig.secondaryColor);
+            if (primaryRgb) root.style.setProperty('--theme-primary-color-rgb', `${primaryRgb.r}, ${primaryRgb.g}, ${primaryRgb.b}`);
+            if (secondaryRgb) root.style.setProperty('--theme-secondary-color-rgb', `${secondaryRgb.r}, ${secondaryRgb.g}, ${secondaryRgb.b}`);
+        } else {
+            console.warn("FAQ data or themeConfig not found, applying default/previous theme to FAQ page.");
+            // Fallback to current/default theme if lang/faq.json doesn't have themeConfig
+            // This case should ideally not happen if lang/faq.json is properly formatted
+            document.body.style.fontFamily = lastThemeFontFamily;
+            document.body.style.backgroundColor = lastThemeBackgroundColor;
+            document.body.style.backgroundImage = lastThemeBackgroundImage;
+            root.style.setProperty('--theme-background-position', lastThemeBackgroundPosition);
+        }
+
+        // Show FAQ page
+        faqPageContainer.classList.remove('hidden');
+    }
+
+    // NEW: Function to hide the FAQ page
+    async function hideFaqPage() {
+        faqPageContainer.classList.add('hidden');
+
+        // Restore previous theme to body
+        document.body.style.fontFamily = lastThemeFontFamily;
+        document.body.style.backgroundColor = lastThemeBackgroundColor;
+        document.body.style.backgroundImage = lastThemeBackgroundImage;
+        root.style.setProperty('--theme-background-position', lastThemeBackgroundPosition);
+        
+        // Reload the previous full theme to apply all theme variables correctly
+        await loadLanguage(languageSelector.value); // languageSelector.value holds the current main language
+
+        // Show main content
+        document.querySelector('.header-container').classList.remove('hidden');
+        container.classList.remove('hidden');
+        languageMenu.style.display = 'block';
+
+        // Resume animations
+        isAnimationGloballyPaused = false;
+        startCurrentContinuousAnimation();
+    }
+    // END NEW FAQ PAGE LOGIC
+
 
     languageSelector.addEventListener('change', async (event) => {
         stopAllContinuousAnimations();
@@ -1134,6 +1270,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         await repositionAllCards();
     });
 
+    // NEW: FAQ Button Click Listener
+    faqButton.addEventListener('click', showFaqPage);
+    // END NEW
+
     validationYesButton.addEventListener('click', () => {
         validationDialogOverlay.classList.add('hidden');
         isAnimationGloballyPaused = false;
@@ -1153,6 +1293,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     detailPageBackButton.addEventListener('click', hideDetailPage);
+
+    faqBackButton.addEventListener('click', hideFaqPage); // Ensure FAQ back button is handled
 
     window.addEventListener('resize', () => {
         if (allCards.length === 0) {
@@ -1179,11 +1321,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     languageSelector.value = initialLanguageSelector.value;
 
+    // Load initial theme for the main app
     await loadLanguage(initialLanguageSelector.value);
+    await loadFaqData(); // Load FAQ data on initial page load
+
 
     document.querySelector('.header-container').classList.add('hidden');
     document.querySelector('.card-circle-container').classList.add('hidden');
     detailPageContainer.classList.add('hidden');
+    faqPageContainer.classList.add('hidden'); // Ensure FAQ is hidden initially
 
     animationSequence();
 });

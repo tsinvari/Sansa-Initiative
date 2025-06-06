@@ -121,7 +121,7 @@
     }
   ],
     "themeConfig": {
-    "fontFamily": "'Cinzel Decorative', serif", 
+    "fontFamily": "'Uncial Antiqua', serif",
     "backgroundColor": "#f0f0f0",
     "primaryColor": "#800080", 
     "secondaryColor": "#e6e6fa", 

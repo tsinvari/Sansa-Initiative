@@ -1,0 +1,57 @@
+{
+  "faqTitle": "Frequently Asked Questions",
+  "faqBackButtonText": "Return to Journey",
+  "questionsAndAnswers": [
+    {
+      "question": "What is The Sansa Initiative?",
+      "answer": "The Sansa Initiative is a digital exploration into interconnected knowledge across various traditions and philosophies. It aims to reveal underlying truths through diverse thematic lenses."
+    },
+    {
+      "question": "How do I navigate the different themes?",
+      "answer": "Each theme, such as Pragmatic, Talmudic, Lorderian, Zoharian, Sephorian, and Experimental, offers a unique perspective. You can switch between them using the language selector in the header."
+    },
+    {
+      "question": "What are the cards and how do they work?",
+      "answer": "The cards represent concepts or ideas within each theme. Clicking on a card's front side will reveal more information on its back. Some cards may require validation before revealing deeper content."
+    },
+    {
+      "question": "Why do some cards require validation?",
+      "answer": "Certain profound concepts (often cards 5, 6, 7) are designed to be explored after you've reflected on the foundational ideas presented in the earlier cards (1-4). This encourages a more thoughtful and mindful progression."
+    },
+    {
+      "question": "What is the 'Lorderian' movement type?",
+      "answer": "The Lorderian animation symbolizes the ephemeral and transient nature of reality and knowledge. Cards appear and disappear randomly, representing the constant flux of information and insights in the universe."
+    },
+    {
+      "question": "Is my personal data collected?",
+      "answer": "No, The Sansa Initiative respects your privacy. This application does not collect any personal user data. All interactions and progress are local to your browser session."
+    },
+    {
+      "question": "Can I contribute to this project?",
+      "answer": "We welcome contributions from scholars, artists, and enthusiasts. If you are interested in collaborating or supporting The Sansa Initiative, please look for contact details within the 'Learn More' sections of relevant cards."
+    }
+  ],
+  "themeConfig": {
+    "fontFamily": "'Cinzel Decorative', serif",
+    "backgroundColor": "#1b1b1b",
+    "primaryColor": "#8d775f",
+    "secondaryColor": "#3e2f23",
+    "textColor": "#e4dcc3",
+    "headerColor": "#c9a66b",
+    "movementType": "randomAppearDisappear",
+    "backgroundImage": "url('images/lorderian/lorderian.jpg')",
+    "backgroundPosition": "center center",
+    "initialDialog": {
+      "title": "Welcome to The Lorderian Realm",
+      "paragraph": "Experience the ephemeral nature of knowledge:",
+      "enterButtonText": "Begin the Flux"
+    },
+    "validationDialog": {
+      "title": "Are you ready to embrace the deeper currents?",
+      "yesButtonText": "Dive Deeper",
+      "noButtonText": "Resurface to the Surface"
+    },
+    "cardFrontTextColor": "#FFFFFF",
+    "cardFrontOverlayColor": "rgba(0, 0, 0, 0.2)"
+  }
+}
