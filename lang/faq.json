@@ -36,10 +36,10 @@
     "backgroundColor": "#1b1b1b",
     "primaryColor": "#8d775f",
     "secondaryColor": "#3e2f23",
-    "textColor": "#e4dcc3",
+    "textColor": "#5a4229",
     "headerColor": "#c9a66b",
     "movementType": "randomAppearDisappear",
-    "backgroundImage": "url('images/lorderian/lorderian.jpg')",
+    "backgroundImage": "url('images/faq.jpeg')",
     "backgroundPosition": "center center",
     "initialDialog": {
       "title": "Welcome to The Lorderian Realm",

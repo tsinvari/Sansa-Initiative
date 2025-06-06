@@ -127,7 +127,7 @@
     "textColor": "#3B2B20",
     "headerColor": "#6B4226",
     "movementType": "horizontalHeartbeat",
-    "backgroundImage": "url('images/experimental/experimental.jpg')",
+    "backgroundImage": "url('images/experimental/experimental.jpeg')",
     "backgroundPosition": "center center",
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",

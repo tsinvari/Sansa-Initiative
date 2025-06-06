@@ -129,8 +129,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         lorderian: {
             text: '#FFFFFF',
             imagePaths: [
-                'images/lorderian/card1.jpg', 'images/lorderian/card2.jpg', 'images/lorderian/card1.jpg',
-                'images/lorderian/card2.jpg', 'images/lorderian/card1.jpg', 'images/lorderian/card2.jpg', 'images/lorderian/card1.jpg'
+                'images/lorderian/card1.jpeg', 'images/lorderian/card2.jpeg', 'images/lorderian/card1.jpeg',
+                'images/lorderian/card2.jpeg', 'images/lorderian/card1.jpeg', 'images/lorderian/card2.jpeg', 'images/lorderian/card1.jpeg'
             ]
         },
         zoharian: {
@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     showDetailPage(cardId);
                 } else {
                     const clickedCardId = parseInt(card.dataset.id, 10);
-                    if (cardsRequiringValidation.includes(clickedCardId)) {
+                    if (cardsRequiringValidation.includes(clickedCardId) && !card.dataset.validated) {
                         cardToFlipAfterValidation = card;
                         validationDialogOverlay.classList.remove('hidden');
                         isAnimationGloballyPaused = true;
@@ -547,7 +547,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const containerWidth = container.offsetWidth || 600;
 
         let gap = 0;
-        const minOverlap = cardWidth * 0.05;
+        const minOverlap = cardWidth * 0.1;
         const maxGap = 50;
 
         if (numTotalCards > 1) {
