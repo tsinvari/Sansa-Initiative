@@ -129,6 +129,7 @@
     "headerColor": "#600060",
     "movementType": "spiraling",
     "backgroundImage": "url('images/zoharian/zoharian.jpeg')",
+    "backgroundPosition": "center center",  
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
       "paragraph": "Please select your preferred language to continue:",

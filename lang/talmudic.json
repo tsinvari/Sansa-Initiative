@@ -213,6 +213,7 @@
     "headerColor": "#5C3A10",
     "movementType": "centralCircle",
     "backgroundImage": "url('images/talmudic/talmudic.jpg')",
+    "backgroundPosition": "center center",
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
       "paragraph": "Please select your preferred language to continue:",

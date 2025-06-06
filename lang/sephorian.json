@@ -129,6 +129,7 @@
     "headerColor": "#E60023",
     "movementType": "randomWiggle",
     "backgroundImage": "url('images/sephorian/sephorian.jpg')",
+    "backgroundPosition": "center center",
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
       "paragraph": "Please select your preferred language to continue:",

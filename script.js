@@ -74,9 +74,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let containerInclinationTransform = '';
 
+    // NEW: Lorderian Animation Variables (refined for staggered behavior)
+    let lorderianSchedulerTimeoutId = null; // Used to stagger appearance/disappearance calls
+    const lorderianCardDisplayDuration = 4000; // 4 seconds visible
+    const lorderianStaggerDelay = 300; // Base delay between cards appearing/disappearing
+    const lorderianStaggerRandomness = 400; // Max random addition to stagger delay
+    const lorderianCardVisibilityState = new Map(); // Map<cardElement, 'visible'|'hidden'>
+    // END NEW
+
     const languageOptions = [
         { value: "pragmatic", text: "Pragmatic" },
         { value: "talmudic", text: "Talmudic" },
+        { value: "lorderian", text: "Lorderian" }, // NEW LANGUAGE
         { value: "zoharian", text: "Zoharian" },
         { value: "sephorian", text: "Sephorian" },
         { value: "experimental", text: "Experimental" }
@@ -95,6 +104,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             imagePaths: [
                 'images/talmudic/card1.jpeg', 'images/talmudic/card2.jpeg', 'images/talmudic/card1.jpeg',
                 'images/talmudic/card2.jpeg', 'images/talmudic/card1.jpeg', 'images/talmudic/card2.jpeg', 'images/talmudic/card1.jpeg'
+            ]
+        },
+        lorderian: { 
+            text: '#FFFFFF',
+            imagePaths: [
+                'images/lorderian/card1.jpg', 'images/lorderian/card2.jpg', 'images/lorderian/card1.jpg',
+                'images/lorderian/card2.jpg', 'images/lorderian/card1.jpg', 'images/lorderian/card2.jpg', 'images/lorderian/card1.jpg'
             ]
         },
         zoharian: {
@@ -147,8 +163,149 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (twinkleAnimationFrameId) { cancelAnimationFrame(twinkleAnimationFrameId); twinkleAnimationFrameId = null; }
         if (spiralingAnimationFrameId) { cancelAnimationFrame(spiralingAnimationFrameId); spiralingAnimationFrameId = null; }
         if (randomWiggleAnimationFrameId) { cancelAnimationFrame(randomWiggleAnimationFrameId); randomWiggleAnimationFrameId = null; }
-        allCards.forEach(card => card.style.opacity = 1);
+        // NEW: Stop Lorderian scheduler and clear timers
+        if (lorderianSchedulerTimeoutId) { clearTimeout(lorderianSchedulerTimeoutId); lorderianSchedulerTimeoutId = null; }
+        lorderianCardVisibilityState.clear(); // Clear state tracking
+
+        // Reset all cards to hidden/non-interactive state for Lorderian, unless they are focused
+        allCards.forEach(card => {
+            if (card === focusedCardElement && card.classList.contains('card-focused')) {
+                // Keep focused card as is, its visibility is managed by focusCard/unfocusCard
+            } else {
+                card.style.opacity = 0;
+                card.style.pointerEvents = 'none';
+                card.classList.remove('is-flipped', 'card-focused'); // Ensure other cards are unflipped
+            }
+        });
+        // END NEW
+        // For non-Lorderian animations, ensure cards revert to full opacity and interactivity
+        // This loop will also catch cards that were previously hidden by Lorderian after it's stopped.
+        if (currentMovementType !== 'randomAppearDisappear') {
+            allCards.forEach(card => {
+                if (card !== focusedCardElement) { // Don't touch focused card
+                    card.style.opacity = 1;
+                    card.style.pointerEvents = 'auto';
+                }
+            });
+        }
     }
+
+    // NEW: Lorderian-specific animation logic (staggered appearances/disappearances)
+    function startRandomAppearDisappearAnimation() {
+        stopAllContinuousAnimations(); // Clean slate, hides all cards first
+
+        // Initialize all cards as hidden (excluding focused card)
+        allCards.forEach(card => {
+            if (card !== focusedCardElement) {
+                lorderianCardVisibilityState.set(card, 'hidden');
+                card.style.opacity = 0;
+                card.style.pointerEvents = 'none';
+            }
+        });
+
+        const minLorderianVisibleCards = 2; // Always keep at least 2 visible
+        const maxLorderianVisibleCards = 5; // At most 5 visible
+
+        const manageCardVisibilityCycle = () => {
+            // Stop if paused or dialog is open
+            if (isAnimationGloballyPaused || !detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden')) {
+                lorderianSchedulerTimeoutId = null;
+                return;
+            }
+
+            // Filter cards that are part of the Lorderian pool (not focused)
+            const activeCards = allCards.filter(card => card !== focusedCardElement);
+            const currentlyVisibleCards = activeCards.filter(card => lorderianCardVisibilityState.get(card) === 'visible');
+            const currentlyHiddenCards = activeCards.filter(card => lorderianCardVisibilityState.get(card) === 'hidden');
+
+            let actionTaken = false;
+
+            // Prioritize showing cards if below minimum
+            if (currentlyVisibleCards.length < minLorderianVisibleCards && currentlyHiddenCards.length > 0) {
+                const cardToShow = currentlyHiddenCards[Math.floor(Math.random() * currentlyHiddenCards.length)];
+                cardToShow.style.opacity = 1;
+                cardToShow.style.pointerEvents = 'auto';
+                lorderianCardVisibilityState.set(cardToShow, 'visible');
+                actionTaken = true;
+
+                // Schedule this card to disappear
+                setTimeout(() => {
+                    if (lorderianCardVisibilityState.get(cardToShow) === 'visible') { // Only hide if still visible and not focused
+                        cardToShow.style.opacity = 0;
+                        cardToShow.style.pointerEvents = 'none';
+                        lorderianCardVisibilityState.set(cardToShow, 'hidden');
+                    }
+                }, lorderianCardDisplayDuration);
+            }
+            // If at minimum, but below maximum, and there are hidden cards, randomly show one
+            else if (currentlyVisibleCards.length < maxLorderianVisibleCards && currentlyHiddenCards.length > 0 && Math.random() < 0.6) { // 60% chance to show another
+                const cardToShow = currentlyHiddenCards[Math.floor(Math.random() * currentlyHiddenCards.length)];
+                cardToShow.style.opacity = 1;
+                cardToShow.style.pointerEvents = 'auto';
+                lorderianCardVisibilityState.set(cardToShow, 'visible');
+                actionTaken = true;
+
+                // Schedule this card to disappear
+                setTimeout(() => {
+                    if (lorderianCardVisibilityState.get(cardToShow) === 'visible') { // Only hide if still visible and not focused
+                        cardToShow.style.opacity = 0;
+                        cardToShow.style.pointerEvents = 'none';
+                        lorderianCardVisibilityState.set(cardToShow, 'hidden');
+                    }
+                }, lorderianCardDisplayDuration);
+            }
+            // If at maximum visible cards, and there are cards that can be hidden, randomly hide one
+            else if (currentlyVisibleCards.length > maxLorderianVisibleCards && currentlyVisibleCards.length > minLorderianVisibleCards && Math.random() < 0.6) { // Try to hide if above max, and still more than min
+                const cardToHide = currentlyVisibleCards[Math.floor(Math.random() * currentlyVisibleCards.length)];
+                cardToHide.style.opacity = 0;
+                cardToHide.style.pointerEvents = 'none';
+                lorderianCardVisibilityState.set(cardToHide, 'hidden');
+                actionTaken = true;
+            }
+            // If we're in the desired range and no specific action was taken this tick, just let existing timers run
+            // or if no cards available to change state.
+            else {
+                // No action needed this precise tick, just wait for next scheduled action or timer expiry
+            }
+
+
+            // Schedule the next check/action with a random stagger delay
+            const randomDelay = Math.random() * lorderianStaggerRandomness + lorderianStaggerDelay;
+            lorderianSchedulerTimeoutId = setTimeout(manageCardVisibilityCycle, randomDelay);
+        };
+
+        // Initial population to meet minimum visible cards
+        const cardsToInitiallyShow = [];
+        const shuffledAllCards = [...allCards]; // Create a mutable copy
+        shuffleArray(shuffledAllCards); // Shuffle this copy
+
+        for(let i = 0; i < minLorderianVisibleCards && shuffledAllCards.length > 0; i++) {
+            const card = shuffledAllCards.pop(); // Take one from the shuffled list
+            if (card === focusedCardElement) { // Skip if it's the focused card
+                i--; // Decrement i to try for another card if focused card was picked
+                continue;
+            }
+            cardsToInitiallyShow.push(card);
+        }
+
+        cardsToInitiallyShow.forEach(card => {
+            card.style.opacity = 1;
+            card.style.pointerEvents = 'auto';
+            lorderianCardVisibilityState.set(card, 'visible');
+            setTimeout(() => {
+                if (lorderianCardVisibilityState.get(card) === 'visible' && card !== focusedCardElement) {
+                    card.style.opacity = 0;
+                    card.style.pointerEvents = 'none';
+                    lorderianCardVisibilityState.set(card, 'hidden');
+                }
+            }, lorderianCardDisplayDuration);
+        });
+
+        // Start the continuous scheduling after initial burst
+        const initialStagger = Math.random() * lorderianStaggerRandomness + lorderianStaggerDelay;
+        lorderianSchedulerTimeoutId = setTimeout(manageCardVisibilityCycle, initialStagger);
+    }
+    // END NEW
 
     function startCurrentContinuousAnimation() {
         stopAllContinuousAnimations();
@@ -161,6 +318,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else if (currentMovementType === 'spiraling') {
             spiralingStartTime = performance.now();
             startSpiralingAnimation();
+        } else if (currentMovementType === 'randomAppearDisappear') {
+            startRandomAppearDisappearAnimation();
         } else if (currentMovementType === 'randomWiggle') {
             randomWiggleStartTime = performance.now();
             startRandomWiggleAnimation();
@@ -286,13 +445,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     showDetailPage(cardId);
                 } else {
                     const clickedCardId = parseInt(card.dataset.id, 10);
-                    // FIXED: Check if card is already validated to skip validation dialog
-                    if (cardsRequiringValidation.includes(clickedCardId) && card.dataset.validated !== 'true') {
+                    if (cardsRequiringValidation.includes(clickedCardId)) {
                         cardToFlipAfterValidation = card;
                         validationDialogOverlay.classList.remove('hidden');
                         isAnimationGloballyPaused = true;
                         stopAllContinuousAnimations();
-                        return; // Interrupt further execution to prevent card flip
+                        return;
                     } else {
                         handleCardClick(card);
                     }
@@ -481,6 +639,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             case 'randomWiggle':
                 slotTransforms = layoutRandomWiggle(effectiveRadius);
                 break;
+            case 'randomAppearDisappear':
+                slotTransforms = layoutRandomWiggle(effectiveRadius);
+                break;
             default:
                 console.warn(`Unknown movement type: ${currentMovementType}. Falling back to centralCircle.`);
                 slotTransforms = layoutCentralCircle(effectiveRadius);
@@ -494,19 +655,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function applyCardBaseTransformsAndHover(containerCurrentAngle = 0) {
-        if (isAnimationGloballyPaused && focusedCardElement && detailPageContainer.classList.contains('hidden')) {
+        // If animation is globally paused AND a card is focused (and no dialogs are open),
+        // we only apply transforms to non-focused cards to keep them out of the way.
+        if (isAnimationGloballyPaused && focusedCardElement && detailPageContainer.classList.contains('hidden') && validationDialogOverlay.classList.contains('hidden')) {
             allCards.forEach(card => {
-                if (card === focusedCardElement) return;
-                card.classList.remove('is-hovered');
+                if (card === focusedCardElement) return; // Skip focused card
+                card.classList.remove('is-hovered'); // Ensure hover state is removed
                 const baseTransform = card.dataset.slotTransform || 'translateX(0px) translateY(0px)';
                 card.style.transform = `${baseTransform} rotate(${-containerCurrentAngle}deg)`;
             });
             return;
         }
 
-        if (!detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden')) return;
+        // If any dialog is open, or if the global animation is paused for other reasons
+        // and there's no focused card (e.g., Lorderian initially hiding all),
+        // we stop applying dynamic transforms.
+        if (!detailPageContainer.classList.contains('hidden') || !validationDialogOverlay.classList.contains('hidden') || (isAnimationGloballyPaused && !focusedCardElement)) {
+             return;
+        }
+
 
         allCards.forEach((card, index) => {
+            // Skip focused card as its transform is managed by focusCard/unfocusCard
             if (card === focusedCardElement) {
                 card.classList.remove('is-hovered');
                 return;
@@ -571,12 +741,20 @@ document.addEventListener('DOMContentLoaded', async () => {
                 scale(${finalScale})
             `.replace(/\s+/g, ' ').trim();
 
-            if (currentMovementType === 'twinkle') {
+            // Handle opacity/visibility based on movement type
+            if (currentMovementType === 'randomAppearDisappear') {
+                 // Lorderian visibility (opacity and pointer-events) is managed EXCLUSIVELY by startRandomAppearDisappearAnimation
+                 // We only set the transition here to ensure smooth fades from the Lorderian scheduler.
+                 card.style.transition = 'opacity 0.5s ease-in-out, transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            } else if (currentMovementType === 'twinkle') {
                 card.style.opacity = twinkleOpacityOffset;
+                card.style.pointerEvents = 'auto'; // Ensure interactive
             } else if (currentMovementType === 'spiraling') {
                 card.style.opacity = finalOpacity;
+                card.style.pointerEvents = 'auto'; // Ensure interactive
             } else {
                 card.style.opacity = 1;
+                card.style.pointerEvents = 'auto'; // Ensure interactive
             }
         });
     }
@@ -741,6 +919,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         const currentContainerAngle = parseFloat(container.dataset.currentRotation || 0);
         const rotationZ = (currentMovementType === 'centralCircle') ? `rotateZ(${-currentContainerAngle}deg)` : '';
         cardElement.style.transform = `${rotationZ} translate(0px, 0px) scale(1.8) rotateY(0deg)`;
+        
+        // Ensure this specific card is visible and interactive while focused
+        cardElement.style.opacity = 1;
+        cardElement.style.pointerEvents = 'auto';
+
         setTimeout(() => {
             if (focusedCardElement === cardElement) {
                cardElement.classList.add('is-flipped');
@@ -762,8 +945,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (focusedCardElement === cardToUnfocus) {
                focusedCardElement = null;
-               isAnimationGloballyPaused = false;
+               isAnimationGloballyPaused = false; // Resume main animation loop
             }
+            // IMPORTANT: Let startCurrentContinuousAnimation (which means Lorderian if active)
+            // manage visibility of this card again after unfocus.
+            startCurrentContinuousAnimation();
         }, 300);
     }
 
@@ -915,7 +1101,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     await new Promise(r => setTimeout(r, 50));
                     await repositionAllCards();
                 }
-            } else {
+            } else if (currentMovementType === 'randomAppearDisappear') {
+                // For Lorderian, the animation is managed by its own setInterval/setTimeout,
+                // so the main animationSequence just yields control briefly.
+                await new Promise(r => setTimeout(r, 50)); // Yield control
+            }
+            else { // Other continuous animations (twinkle, heartbeat, randomWiggle) just yield control
                 await new Promise(r => setTimeout(r, 50));
             }
         }
@@ -948,7 +1139,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         isAnimationGloballyPaused = false;
         startCurrentContinuousAnimation();
         if (cardToFlipAfterValidation) {
-            cardToFlipAfterValidation.dataset.validated = 'true'; // Mark card as validated
+            cardToFlipAfterValidation.dataset.validated = 'true';
             handleCardClick(cardToFlipAfterValidation);
             cardToFlipAfterValidation = null;
         }

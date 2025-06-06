@@ -9,6 +9,8 @@
     --theme-header-color: #1e293b;
     --theme-card-back-color: #1e293b;
     --theme-font-family: 'Inter', sans-serif; /* Default font, ensure it's loaded or a common fallback */
+    /* NEW: Default background position for themes that don't specify */
+    --theme-background-position: center center;
 }
 
 /* --- FIX: Ensure 'hidden' class always hides elements --- */
@@ -22,7 +24,8 @@ body {
     background-color: var(--theme-background-color);
     background-image: var(--theme-background-image);
     background-size: cover;
-    background-position: center;
+    /* FIX: Use dynamic background-position for body */
+    background-position: var(--theme-background-position);
     background-repeat: no-repeat;
     background-attachment: fixed;
     display: flex;
@@ -46,29 +49,29 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1500; /* Ensure it's on top of everything */
+    z-index: 1500;
 }
 
 #initialDialogContent {
-    background-color: #f8fafc; /* Lighter background for distinction */
-    padding: 30px; /* Consistent padding */
-    border-radius: 10px; /* Consistent border-radius */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Consistent shadow */
-    max-width: 500px; /* Keep existing max-width for initial dialog */
-    width: 90%; /* Responsive width */
+    background-color: #f8fafc;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    max-width: 500px;
+    width: 90%;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Space between elements */
+    gap: 20px;
 }
 
 #initialDialogContent h1 {
-    font-size: 1.8rem; /* Adjusted: Slightly larger than validation h2 (1.6rem), but smaller than previous 2.2rem */
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--theme-header-color);
     margin-bottom: 10px;
@@ -102,6 +105,7 @@ body {
     transform: translateY(0);
     box-shadow: 0 2px 5px rgba(var(--theme-primary-color-rgb), 0.2);
 }
+
 /* --- END Initial Dialog Styles --- */
 
 /* --- Validation Dialog Styles --- */
@@ -111,15 +115,15 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1600; /* Higher than initial dialog to overlay it if accidentally open */
+    z-index: 1600;
 }
 
 #validationDialogContent {
-    background-color: #f8fafc; /* Lighter background for distinction */
+    background-color: #f8fafc;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
@@ -165,15 +169,16 @@ body {
 }
 
 #validationNoButton {
-    background-color: #ef4444; /* Red for 'No' */
+    background-color: #ef4444;
     color: white;
     box-shadow: 0 3px 8px rgba(239, 68, 68, 0.2);
 }
 
 #validationNoButton:hover {
-    background-color: #dc2626; /* Darker red on hover */
+    background-color: #dc2626;
     transform: translateY(-1px);
 }
+
 /* --- END Validation Dialog Styles --- */
 
 
@@ -208,11 +213,9 @@ body {
 }
 
 .language-menu select {
-    /* NEW: Increased font size and centered text */
-    font-size: 1.1rem; /* Slightly larger */
-    text-align: center; /* Center the selected text */
-    padding: 8px 25px 8px 10px; /* Adjust padding for new font size */
-    /* END NEW */
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 8px 25px 8px 10px;
     background-color: rgba(var(--theme-secondary-color-rgb), 0.5);
     color: var(--theme-text-color);
     border: none;
@@ -333,24 +336,23 @@ body {
     margin-bottom: 10px;
     flex-grow: 1;
 }
-.card-back .learn-more-button { /* Changed from .learn-more-link to .learn-more-button */
-    font-size: 0.9em; /* Slightly larger font for button */
+.card-back .learn-more-button {
+    font-size: 0.9em;
     font-weight: 600;
-    color: white; /* Button text should be white for contrast */
-    background-color: var(--theme-primary-color); /* Themed background color */
+    color: white;
+    background-color: var(--theme-primary-color);
     border: none;
-    border-radius: 6px; /* Rounded corners for button look */
-    padding: 8px 15px; /* Button-like padding */
+    border-radius: 6px;
+    padding: 8px 15px;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    display: block; /* Make it a block element to center with margin auto */
-    margin: 10px auto 0 auto; /* Center the button */
-    text-decoration: none; /* Remove underline for button */
-    box-shadow: 0 2px 5px rgba(var(--theme-primary-color-rgb), 0.3); /* Add shadow */
+    display: block;
+    margin: 10px auto 0 auto;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(var(--theme-primary-color-rgb), 0.3);
 }
-.card-back .learn-more-button:hover { /* Changed from .learn-more-link:hover */
-    background-color: var(--theme-header-color); /* Darker on hover */
-    transform: translateY(-1px); /* Slight lift on hover */
+.card-back .learn-more-button:hover {
+    background-color: var(--theme-header-color);
 }
 .card-back .learn-more-button:active {
     transform: translateY(0);
@@ -379,14 +381,15 @@ body {
     background-color: var(--theme-background-color);
     background-image: var(--theme-background-image);
     background-size: cover;
-    background-position: center;
+    background-position: var(--theme-background-position);
     background-repeat: no-repeat;
     background-attachment: fixed;
     z-index: 1200;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px;
+    padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
 }
@@ -398,7 +401,11 @@ body {
     max-width: 700px;
     width: 100%;
     text-align: left;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 #detailPageContent h2 {
     font-size: 2em;
@@ -462,6 +469,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    flex-shrink: 0;
 }
 #detailPageBackButton:hover {
     background-color: var(--theme-header-color);
@@ -485,7 +493,10 @@ body {
         padding-bottom: 10px;
         font-size: 0.9rem;
     }
-    #detailPageContent { padding: 20px; }
+    #detailPageContent {
+        padding: 20px;
+        max-height: 85vh;
+    }
     #detailPageContent h2 { font-size: 1.8em; }
 }
 @media (max-width: 480px) {
@@ -498,12 +509,15 @@ body {
     .card-circle-container { width: 320px; height: 320px; }
     .card { width: 80px; height: 120px; }
     .card-face { font-size: 0.7rem; padding: 0; }
-    .language-menu select { font-size: 0.9rem; } /* Keep this small on very small screens */
+    .language-menu select { font-size: 0.9rem; }
     .card-front {
         padding-bottom: 8px;
         font-size: 0.7rem;
     }
-    #detailPageContent { padding: 15px; }
+    #detailPageContent {
+        padding: 15px;
+        max-height: 80vh;
+    }
     #detailPageContent h2 { font-size: 1.5em; }
 
     #initialDialogContent {

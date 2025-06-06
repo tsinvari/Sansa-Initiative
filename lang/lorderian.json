@@ -1,0 +1,82 @@
+{
+  "learnMoreLinkText": "Uncover Details",
+  "detailPageBackButtonText": "Return to Flux",
+  "cardFrontTexts": [
+    "Echoes",
+    "Whispers",
+    "Glimmers",
+    "Flickers",
+    "Shadows",
+    "Phantoms",
+    "Auras"
+  ],
+  "cardBackContents": [
+    { "title": "Echoes of the Past", "p": "Fragments of forgotten lore shimmer into existence, briefly illuminating ancient truths." },
+    { "title": "Whispers of the Future", "p": "Subtle premonitions manifest, hinting at paths yet untraveled." },
+    { "title": "Glimmers of Insight", "p": "Sudden bursts of clarity appear, offering fleeting understanding." },
+    { "title": "Flickers of Being", "p": "Ephemeral manifestations, here for a moment, gone the next." },
+    { "title": "Shadows of Reality", "p": "Deeper, less tangible concepts emerge from the void." },
+    { "title": "Phantoms of Thought", "p": "Illusory constructs that challenge perception." },
+    { "title": "Auras of Presence", "p": "Subtle energies that resonate with unspoken knowledge." }
+  ],
+  "detailPageContent": [
+    {
+      "type": "text",
+      "title": "The Random Flux: A State of Constant Change",
+      "paragraph": "In the Lorderian perspective, reality is a continuous, unpredictable flow. Concepts are not static entities but transient manifestations, appearing and disappearing as dictated by the cosmic rhythm. Understanding comes from observing these fleeting connections."
+    },
+    {
+      "type": "text",
+      "title": "Ephemeral Manifestations: The Nature of Being",
+      "paragraph": "Every idea, every truth, every form is but a temporary condensation of universal energy. The wisdom lies not in grasping, but in witnessing the ceaseless dance of emergence and dissolution, learning to discern patterns in chaos."
+    },
+    {
+      "type": "text",
+      "title": "The Shifting Veil: Perceiving the Unseen",
+      "paragraph": "Our perception is limited by the veil of material reality. Lorderian methods encourage a state of heightened awareness, allowing us to glimpse the underlying currents that bring forms into and out of existence, even if briefly."
+    },
+    {
+      "type": "text",
+      "title": "Unpredictable Harmonies: Finding Order in Disorder",
+      "paragraph": "While seemingly random, the Lorderian flux holds its own profound order. The appearance and disappearance of concepts are part of an intricate, chaotic harmony, revealing truths through their very impermanence."
+    },
+    {
+      "type": "text",
+      "title": "The Great Dissolution: Returning to Source",
+      "paragraph": "All manifestations eventually return to their source. This cycle of appearance and disappearance is not an end, but a continuous journey back to the undifferentiated cosmic essence, only to re-emerge in new forms."
+    },
+    {
+      "type": "text",
+      "title": "Why the Flicker?: The Purpose of Transience",
+      "paragraph": "The transient nature of Lorderian concepts serves to prevent stagnation. It forces constant re-evaluation, adaptation, and a dynamic engagement with truth, preventing dogmatism and fostering continuous evolution."
+    },
+    {
+      "type": "text",
+      "title": "Origins of Flux: The Prime Mover",
+      "paragraph": "The Lorderian philosophy traces its origins to the concept of a primordial, ever-shifting source from which all existence flows. This source is not static, but a dynamic, creative void that constantly births and reabsorbs reality."
+    }
+  ],
+  "themeConfig": {
+    "fontFamily": "'Inter', sans-serif",
+    "backgroundColor": "#222222",
+    "primaryColor": "#9d4edd",
+    "secondaryColor": "#bb86fc",
+    "textColor": "#e0e0e0",
+    "headerColor": "#bb86fc",
+    "movementType": "randomAppearDisappear",
+    "backgroundImage": "url('images/lorderian/lorderian.jpg')",
+    "backgroundPosition": "center center",
+    "initialDialog": {
+      "title": "Welcome to The Lorderian Realm",
+      "paragraph": "Experience the ephemeral nature of knowledge:",
+      "enterButtonText": "Begin the Flux"
+    },
+    "validationDialog": {
+      "title": "Are you ready to embrace the deeper currents?",
+      "yesButtonText": "Dive Deeper",
+      "noButtonText": "Resurface to the Surface"
+    },
+    "cardFrontTextColor": "#FFFFFF",
+    "cardFrontOverlayColor": "rgba(0, 0, 0, 0.2)"
+  }
+}

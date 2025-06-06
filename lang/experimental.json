@@ -128,6 +128,7 @@
     "headerColor": "#6B4226",
     "movementType": "horizontalHeartbeat",
     "backgroundImage": "url('images/experimental/experimental.jpg')",
+    "backgroundPosition": "center center",
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
       "paragraph": "Please select your preferred language to continue:",
