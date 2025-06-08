@@ -1,6 +1,6 @@
 {
   "learnMoreLinkText": "Uncover Details",
-  "detailPageBackButtonText": "Return to Flux",
+  "detailPageBackButtonText": "Return to the journey",
   "cardFrontTexts": [
   "Oath",
   "Realm",
@@ -196,7 +196,7 @@
     "initialDialog": {
       "title": "Welcome to The Lorderian Realm",
       "paragraph": "Experience the ephemeral nature of journeys:",
-      "enterButtonText": "Begin yours"
+      "enterButtonText": "Begin yours."
     },
     "validationDialog": {
       "title": "Are you ready to embrace the deeper currents?",

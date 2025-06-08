@@ -1,97 +1,212 @@
 {
   "learnMoreLinkText": "Discover More",
-  "detailPageBackButtonText": "Return to Loop",
+  "detailPageBackButtonText": "Back to the experience.",
   "cardFrontTexts": [
-    "The Muse's Call",
-    "Verse of Tomorrow",
-    "Our Stanzas of Intent",
-    "Rhythms of Action",
-    "The Poet's Guild",
-    "Echoes of Inquiry",
-    "Wellspring of Rhyme"
-  ],
-  "cardBackContents": [
-    {
-      "title": "The Muse's Call",
-      "p": "Our deepest inspiration & guiding purpose;"
-    },
-    {
-      "title": "Verse of Tomorrow",
-      "p": "The future world our words will weave;"
-    },
-    {
-      "title": "Our Stanzas of Intent",
-      "p": "The crafted lines of what we'll achieve;"
-    },
-    {
-      "title": "Rhythms of Action",
-      "p": "The cadenced steps & methods we take;"
-    },
-    {
-      "title": "The Poet's Guild",
-      "p": "Our fellowship's form, for art's own sake;"
-    },
-    {
-      "title": "Echoes of Inquiry",
-      "p": "The resonant questions, why we create;"
-    },
-    {
-      "title": "Wellspring of Rhyme",
-      "p": "The fount of our stories, early & late;"
-    }
-  ],
+      "Origins",
+      "Prophecy",
+      "Rhythms of Intent",
+      "Stanzas of Action",
+      "The Poet's Guild",
+      "Echoes of a soul",
+      "Behind of Rhyme"
+    ],
+      "cardBackContents": [
+      {
+        "title": "Origins",
+        "p": "Where the song first stirred."
+      },
+      {
+        "title": "Prophecy",
+        "p": "The world we dare to imagine."
+      },
+      {
+        "title": "Movements of Intent",
+        "p": "Steps we vow to build."
+      },
+      {
+        "title": "Stanzas of Action",
+        "p": "The verses behind the story."
+      },
+      {
+        "title": "The Poet's Guild",
+        "p": "The form behind the flame."
+      },
+      {
+        "title": "Echoes of a soul",
+        "p": "The question beneath the quest."
+      },
+      {
+        "title": "Behind of Rhyme",
+        "p": "Where vision caught fire."
+      }
+    ],
   "detailPageContent": [
     {
-      "type": "text",
-      "title": "Our Mission: Probing New Frontiers",
-      "paragraph": "The Sansa Initiative's experimental mission is to continuously test the boundaries of knowledge and practice. We aim to incubate novel ideas, challenge established paradigms, and iterate rapidly to discover emergent truths and effective solutions for complex future scenarios."
-    },
-    {
-      "type": "text",
-      "title": "Our Vision: A Landscape of Continuous Discovery",
-      "paragraph": "We envision a fluid and adaptive intellectual ecosystem where learning is an ongoing experiment, failures are celebrated as data points, and innovation is a constant. Our aspiration is to foster resilient thinkers capable of thriving in uncertainty and shaping unforeseen futures."
-    },
-    {
       "type": "table",
-      "title": "Types of Organizations: Future-Forward Models",
-      "paragraph": "Exploring cutting-edge and speculative organizational models designed for agility, decentralization, and rapid learning.",
+      "title": "Origins",
+      "paragraph": "I sing not because I chose it, but because the song chose me.",
       "tableData": {
-        "headers": ["Model", "Core Principle", "Sansa Application"],
+        "headers": ["Canto", "I Sing"],
         "rows": [
-          ["DAO (Decentralized Autonomous Org)", "Blockchain-governed, community-driven.", "Decentralized research funding, community governance."],
-          ["Liquid Democracy", "Delegation of vote/authority, revocable.", "Dynamic task forces, fluid project leadership."],
-          ["Generative AI Teams", "Human-AI collaboration for ideation.", "Automated content generation, AI-assisted research."],
-          ["Swarm Intelligence", "Self-organizing, emergent behavior.", "Distributed problem-solving, collective forecasting."]
+          [
+            "Canto porque lo quiso la vida\nQuién sabe de dónde vino\nDesde hace tiempo lo traigo",
+            "I sing because life willed it\nWho knows where it came from\nI’ve carried it for a long time"
+          ],
+          [
+            "Canto andando por los caminos\nLos pueblos grandes y chicos\nQue por cantar es lo mismo",
+            "I sing walking down every road\nThrough villages large and small\nFor singing makes them all the same"
+          ],
+          [
+            "Traigo fuego a tu corazón\nTambién penas en esta canción\nTraigo los recuerdos del dolor\nY también señal de amor",
+            "I bring fire to your heart\nAnd sorrow in this song\nI carry memories of pain\nAnd also a sign of love"
+          ],
+          [
+            "Canto para que nunca te rindas\nPara que tengas aliento\nAunque sea grande la herida",
+            "I sing so you never give up\nSo you may have breath\nEven when the wound is deep"
+          ],
+          [
+            "Canto para que estemos unidos\nPorque los pueblos que cantan\nTienen un mismo latido",
+            "I sing so we may stay united\nBecause people who sing\nShare the same heartbeat"
+          ]
         ]
       }
     },
     {
       "type": "table",
-      "title": "Goals: Uncharted Objectives",
-      "paragraph": "Our goals are less about fixed destinations and more about developing adaptive capacities and exploring the unknown.",
+      "title": "Prophecy",
+      "paragraph": "A vision for the world.",
       "tableData": {
-        "headers": ["Dimension", "Objective", "Metric (Adaptive)"],
+        "headers": ["Mi Gente Buena", "My Good People"],
         "rows": [
-          ["Innovation", "Generate 5 breakthrough concepts/year.", "Number of peer-reviewed radical proposals."],
-          ["Resilience", "Successfully adapt to 2 major paradigm shifts.", "Speed of pivot, adoption of new tools."],
-          ["Collaboration", "Foster 10 cross-domain partnerships.", "Diversity of expertise in joint projects."],
-          ["Learning", "Implement continuous feedback loops.", "Frequency of retrospectives, iteration speed."]
+          [
+            "Sé que la historia no cuenta\nVidas de gente corriente\nPero ¿quién es el valiente?\nQue me dice a mí a la cara\nQue no es soldado el que lucha\nPor ser feliz en la vida\nQueriendo a los que le quieren\nSiempre con una sonrisa",
+            "I know that history forgets\nThe lives of ordinary people\nBut who among us is brave enough\nTo tell me, face to face,\nThat one is not a soldier\nWho fights simply to be happy\nLoving those who love them back\nAnd smiling through their pain"
+          ],
+          [
+            "Mi gente buena no tiene\nColor de piel ni bandera\nMiramos el mismo cielo en\nCualquier lugar de la tierra\nForjamos nuestro futuro\nDe corazón y esperanza\nTu libertad es la danza\nY la razón nuestro escudo",
+            "My good people carry no\nSkin color nor a flag\nWe all look up at the same sky\nNo matter where we stand on Earth\nWe forge our future\nWith heart and with hope\nYour freedom is the dance\nAnd reason is our shield"
+          ]
+        ]
+      }
+    },
+   {
+      "type": "table",
+      "title": "Stanzas of Intent",
+      "paragraph": "Each goal is a movement in the score — the verses that bring our purpose to life.",
+      "tableData": {
+        "headers": ["Movement", "Theme"],
+        "rows": [
+          [
+            "Movement I: Tune the Instrument",
+            "Secure the tools, resources, and fuel to strike the first chord — from grants to gear, all in service of the first notes of creation."
+          ],
+          [
+            "Movement II: Form the Ensemble",
+            "Gather voices, build harmony — launch a pilot residency and artist community that begins the chorus of many."
+          ],
+          [
+            "Movement III: Compose the Hall",
+            "Design and secure the physical space where our songs can echo. Write the plan. Find the walls. Raise the roof."
+          ],
+          [
+            "Movement IV: Let the Song Sustain Itself",
+            "Earn our rhythm — through events, merch, and media — so the music funds its own refrain, with less need for grants and more space for growth."
+          ]
         ]
       }
     },
     {
       "type": "table",
-      "title": "Strategies: Iteration & Exploration",
-      "paragraph": "Our strategies are rooted in agile methodologies, scientific experimentation, and a willingness to embrace ambiguity.",
+      "title": "Rhythms of Action",
+      "paragraph": "We follow the rhythms that move both soul and structure. Four verses, many voices.",
       "tableData": {
-        "headers": ["Strategy", "Approach", "Expected Outcome"],
+        "headers": ["Verse", "Gesture", "What It Means"],
         "rows": [
-          ["Rapid Prototyping", "Build, test, learn, repeat.", "Fast validation/invalidation of ideas."],
-          ["A/B Testing Philosophies", "Compare different intellectual frameworks.", "Data-driven insights on conceptual efficacy."],
-          ["Scenario Planning", "Anticipate multiple futures, prepare for contingencies.", "Robustness of strategies under uncertainty."],
-          ["Transdisciplinary Fusion", "Combine disparate fields for novel insights.", "Emergent intellectual breakthroughs."]
+          [
+            "Verse I: Crafting the Song",
+            "Light the First Flame",
+            "Create signature works that sing with our themes and summon wide listening."
+          ],
+          [
+            "Verse I: Crafting the Song",
+            "Lift the Hidden Voice",
+            "Curate and champion voices less heard, until silence becomes symphony."
+          ],
+          [
+            "Verse I: Crafting the Song",
+            "Break the Form",
+            "Dare the unfamiliar — let story stretch its limbs and take new shapes."
+          ],
+          [
+            "Verse II: Weaving the Circle",
+            "Sharpen the Tools",
+            "Offer spaces for skill and growth — let artists learn in safety and fire."
+          ],
+          [
+            "Verse II: Weaving the Circle",
+            "Gather the Chorus",
+            "Build the bonds that hold — in halls, in pixels, in time."
+          ],
+          [
+            "Verse II: Weaving the Circle",
+            "Dream the Home",
+            "Sketch and name the place to come — the future center that already hums."
+          ],
+          [
+            "Verse III: Opening the Gate",
+            "Sing in the Square",
+            "Bring our stories to the streetlight — open, alive, and reaching."
+          ],
+          [
+            "Verse III: Opening the Gate",
+            "Teach Through Flame",
+            "Partner with schools to pass the spark — turn curriculum into chorus."
+          ],
+          [
+            "Verse III: Opening the Gate",
+            "Echo Through the Ether",
+            "Craft our digital pulse — a presence felt even from afar."
+          ],
+          [
+            "Verse IV: Holding the Frame",
+            "Name the Vessel",
+            "Root in structure — become a nonprofit to anchor the dream."
+          ],
+          [
+            "Verse IV: Holding the Frame",
+            "Summon the Council",
+            "Gather minds to guide and watch — a constellation of wisdom."
+          ],
+          [
+            "Verse IV: Holding the Frame",
+            "Feed the Fire",
+            "Design the flow of giving — grants, gifts, and earned rhythms."
+          ],
+          [
+            "Verse IV: Holding the Frame",
+            "Shape the Voice",
+            "Carve the words, the look, the feel — our banner and our breath."
+          ],
+          [
+            "Verse IV: Holding the Frame",
+            "Tend the Flame",
+            "Track what changes, what lasts — measure not just growth, but meaning."
+          ]
         ]
       }
+    },
+    {
+      "type": "list",
+      "title": "Echoes of Inquiry",
+      "paragraph": "Every story needs a form. This is our narrative frame — structured to hold purpose, tension, and trust.",
+      "listItems": [
+        "A protagonist bound to mission — every act moves the plot of public good.",
+        "An open arc for funding — built to receive grants and cultural patronage.",
+        "Plot armor in the form of tax relief — the state supporting the quest.",
+        "A narrator you can trust — with governance as our voice of clarity.",
+        "All profits return to the plot — no side characters stealing the story.",
+        "Side quests welcomed — volunteers, patrons, readers drawn into the tale."
+      ]
     },
     {
       "type": "table",
@@ -138,21 +253,25 @@
           ]
         ]
       }
-    }
-,
-    {
-      "type": "list",
-      "title": "Where From?: Confluence of Cutting-Edge Thought",
-      "paragraph": "Our experimental framework draws from a synthesis of modern scientific, philosophical, and technological advancements.",
-      "listItems": [
-        "**Complexity Science:** Chaos theory, emergent properties, self-organization.",
-        "**Agile Methodologies:** Scrum, Kanban, Lean startup principles.",
-        "**Futures Studies:** Foresight, scenario planning, trend analysis.",
-        "**Cognitive Science:** Heuristics, biases, decision-making under uncertainty.",
-        "**Artificial Intelligence:** Machine learning, neural networks, computational creativity.",
-        "**Post-Structuralism & Deconstruction:** Challenging grand narratives and fixed meanings."
+    },
+  {
+    "type": "table",
+    "title": "Behind of Rhyme",
+    "paragraph": "Some beginnings are not loud — they shimmer. A song, a smile, and suddenly, the sky is different.",
+    "tableData": {
+      "headers": ["Poetiza", "poetess"],
+      "rows": [
+        [
+          "Tus ojos me llenan de vida, me transmiten paz\nTu risa, carita divina, me vuelve a emocionar\nY tanto que llego a imaginar\nque somos piratas en el mar",
+          "Your eyes fill me with life, they give me peace\nYour laughter, divine little face, moves me again\nSo much that I begin to imagine\nwe’re pirates on the sea"
+        ],
+        [
+          "Hay más allá de la nostalgia un lugar\nDonde eres capaz de volar entre amapolas\nY conquistar una hermosa isla de cristal\nAquí estoy contigo, no te olvido,\nrumbo al corazón del alba voy",
+          "There is a place beyond nostalgia\nWhere you can fly among poppies\nAnd conquer a beautiful island of crystal\nHere I am with you, I won’t forget you,\nI sail toward the heart of the dawn"
+        ]
       ]
     }
+  }
   ],
     "themeConfig": {
     "fontFamily": "'Cinzel', 'Cormorant Garamond', serif",
@@ -165,8 +284,8 @@
     "backgroundPosition": "center center",
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
-      "paragraph": "Please select your preferred language to continue:",
-      "enterButtonText": "Start Your Journey"
+      "paragraph": "Please select your vibe",
+      "enterButtonText": "Experience now!"
     },
     "validationDialog": {
       "title": "Have you explored the initial concepts (cards 1-4)?",

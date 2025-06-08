@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { value: "zoharian", text: "Zoharian" },
         { value: "sephorian", text: "Sephorian" },
         { value: "lorderian", text: "Lorderian" },
-        { value: "experimental", text: "Experimental" }
+        { value: "experimental", text: "Experiential" }
     ];
 
     const languageImageStyles = {
@@ -183,7 +183,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (twinkleAnimationFrameId) { cancelAnimationFrame(twinkleAnimationFrameId); twinkleAnimationFrameId = null; }
         if (spiralingAnimationFrameId) { cancelAnimationFrame(spiralingAnimationFrameId); spiralingAnimationFrameId = null; }
         if (randomWiggleAnimationFrameId) { cancelAnimationFrame(randomWiggleAnimationFrameId); randomWiggleAnimationFrameId = null; }
-        // NEW: Stop Lorderian scheduler and clear timers
         if (lorderianSchedulerTimeoutId) { clearTimeout(lorderianSchedulerTimeoutId); lorderianSchedulerTimeoutId = null; }
         lorderianCardTimers.forEach(timerId => clearTimeout(timerId)); // Clear all individual card timers
         lorderianCardTimers.clear();
