@@ -200,7 +200,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     max-width: 800px;
     width: 100%;
-    text-align: left;
+    text-align: center;
     display: flex;
     flex-direction: column;
     max-height: 90vh;
@@ -219,6 +219,14 @@ body {
 
 #faqQuestionsAnswers {
     flex-grow: 1;
+}
+
+#faqQuestionsAnswers h4 {
+    font-size: 1.2em;
+    color: var(--theme-header-color);
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
 }
 
 #faqQuestionsAnswers h3 {

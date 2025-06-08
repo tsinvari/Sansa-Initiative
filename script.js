@@ -1153,11 +1153,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             faqQuestionsAnswersContainer.innerHTML = ''; // Clear previous content
             faqData.questionsAndAnswers.forEach(qa => {
+                const h4 = document.createElement('h4');
+                h4.textContent = qa.letter;
                 const h3 = document.createElement('h3');
                 h3.textContent = qa.question;
                 const p = document.createElement('p');
                 p.textContent = qa.answer;
-                faqQuestionsAnswersContainer.append(h3, p);
+                faqQuestionsAnswersContainer.append(h4, h3, p);
             });
 
         } catch (error) {

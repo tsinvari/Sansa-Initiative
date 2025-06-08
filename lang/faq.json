@@ -1,36 +1,118 @@
 {
   "faqTitle": "Frequently Asked Questions",
-  "faqBackButtonText": "Return to Journey",
+  "faqBackButtonText": "Return",
   "questionsAndAnswers": [
-    {
-      "question": "What is The Sansa Initiative?",
-      "answer": "The Sansa Initiative is a digital exploration into interconnected knowledge across various traditions and philosophies. It aims to reveal underlying truths through diverse thematic lenses."
-    },
-    {
-      "question": "How do I navigate the different themes?",
-      "answer": "Each theme, such as Pragmatic, Talmudic, Lorderian, Zoharian, Sephorian, and Experimental, offers a unique perspective. You can switch between them using the language selector in the header."
-    },
-    {
-      "question": "What are the cards and how do they work?",
-      "answer": "The cards represent concepts or ideas within each theme. Clicking on a card's front side will reveal more information on its back. Some cards may require validation before revealing deeper content."
-    },
-    {
-      "question": "Why do some cards require validation?",
-      "answer": "Certain profound concepts (often cards 5, 6, 7) are designed to be explored after you've reflected on the foundational ideas presented in the earlier cards (1-4). This encourages a more thoughtful and mindful progression."
-    },
-    {
-      "question": "What is the 'Lorderian' movement type?",
-      "answer": "The Lorderian animation symbolizes the ephemeral and transient nature of reality and knowledge. Cards appear and disappear randomly, representing the constant flux of information and insights in the universe."
-    },
-    {
-      "question": "Is my personal data collected?",
-      "answer": "No, The Sansa Initiative respects your privacy. This application does not collect any personal user data. All interactions and progress are local to your browser session."
-    },
-    {
-      "question": "Can I contribute to this project?",
-      "answer": "We welcome contributions from scholars, artists, and enthusiasts. If you are interested in collaborating or supporting The Sansa Initiative, please look for contact details within the 'Learn More' sections of relevant cards."
-    }
-  ],
+  {
+    "letter": "א",
+    "question": "Is a llama kosher?",
+    "answer": "Why do you ask? Are you planning to eat Madame Llama? Because if so, we have bigger theological problems than dietary laws."
+  },
+  {
+    "letter": "ב",
+    "question": "Is Sansa just a dog?",
+    "answer": "No. She's the unofficial CEO, spiritual muse, and occasional nap consultant."
+  },
+  {
+    "letter": "ג",
+    "question": "What does Rotterdam have to do with Boston?",
+    "answer": "About 5,000 lines of code, shared Google Docs, and some videos of Sansa ignoring us."
+  },
+  {
+    "letter": "ד",
+    "question": "Did a stuffed animal actually come up with this idea?",
+    "answer": "Yes. Madame Llama whispered, “Start the Sansa Foundation.” We listened. You should too — she’s terrifyingly wise."
+  },
+  {
+    "letter": "ה",
+    "question": "Are there really six languages?",
+    "answer": "Yes. One for each way Miriam and Rene understand the world: through myths, mysticism, eyeliner, hobbits, unresolved childhood emotions — and the one they use to talk to 'normal' people."
+  },
+  {
+    "letter": "ו",
+    "question": "Why do you take stories so seriously?",
+    "answer": "Because stories built the world. Also because we’re Jewish and arguing with stories is our cardio."
+  },
+  {
+    "letter": "ז",
+    "question": "Can I donate Sephora points to the cause?",
+    "answer": "Emotionally? Yes. Logistically? We haven’t figured out the halachic ruling on that yet."
+  },
+  {
+    "letter": "ח",
+    "question": "Will this project make me cry?",
+    "answer": "Probably. But like, in a good, cathartic, “I just remembered who I am” kind of way. And we have tissues."
+  },
+  {
+    "letter": "ט",
+    "question": "Is there a plan, or are you winging this?",
+    "answer": "Yes."
+  },
+  {
+    "letter": "י",
+    "question": "Does Madame Llama have voting rights?",
+    "answer": "She has veto power. Which is worse."
+  },
+  {
+    "letter": "כ",
+    "question": "What’s the official halacha on digital folk tales?",
+    "answer": "Somewhere between Pirkei Avot and fan art. We’re still investigating."
+  },
+  {
+    "letter": "ל",
+    "question": "Why does this feel like a fever dream and a thesis defense at once?",
+    "answer": "Because it is. And also because you're paying attention."
+  },
+  {
+    "letter": "מ",
+    "question": "Will this help me understand my family?",
+    "answer": "No. But it might help you forgive them. Or at least re-cast them."
+  },
+  {
+    "letter": "נ",
+    "question": "What if I don’t understand any of the languages?",
+    "answer": "That’s okay. Sometimes the language understands you first."
+  },
+  {
+    "letter": "ס",
+    "question": "What does Sansa think of all this?",
+    "answer": "She's still waiting for royalties. But she approves of the poetic license."
+  },
+  {
+    "letter": "ע",
+    "question": "Are hobbits canon here?",
+    "answer": "Yes. Especially the ones who read footnotes."
+  },
+  {
+    "letter": "פ",
+    "question": "Is this a cult?",
+    "answer": "No, but we do have a shared Google Calendar and a lot of candlelight."
+  },
+  {
+    "letter": "צ",
+    "question": "Are you okay?",
+    "answer": "Define “okay.”"
+  },
+  {
+    "letter": "ק",
+    "question": "Will Rene always be this intense?",
+    "answer": "Only on days that end in “y.” But don’t worry, he comes with snacks and edits."
+  },
+  {
+    "letter": "ר",
+    "question": "What happens when Rene goes quiet?",
+    "answer": "It usually means he’s writing something dangerous. Or figuring out the perfect song lyric to say what he can’t."
+  },
+  {
+    "letter": "ש",
+    "question": "Does Rene ever stop thinking in metaphors?",
+    "answer": "No. It’s how Rene finds shape in things that would otherwise stay silent."
+  },
+  {
+    "letter": "ת",
+    "question": "What exactly did Madame Llama say to Rene?",
+    "answer": "“Your name is carved into this story. So go make it worth reading.”"
+  }
+],
   "themeConfig": {
     "fontFamily": "'Cinzel Decorative', serif",
     "backgroundColor": "#1b1b1b",
