@@ -2,208 +2,186 @@
   "learnMoreLinkText": "Learn More",
   "detailPageBackButtonText": "Back to Circle",
   "cardFrontTexts": [
-    "Our Kavannah",
-    "Our Tikvah",
-    "The Ma'asim",
-    "The Derech",
-    "Our Heqdesh",
-    "The Kashiya",
-    "HaShorashim"
-  ],
+  "The Story We Retell",
+  "The World We Envision",
+  "Steps in Sacred Time",
+  "Journeys Through the Camp",
+  "The Circle That Holds Us",
+  "Whispers of the Soul",
+  "When the Flame First Spoke"
+],
   "cardBackContents": [
-    {
-      "title": "Our Kavannah",
-      "p": "Our directed purpose and core intention;"
-    },
-    {
-      "title": "Our Tikvah",
-      "p": "Our hope for the future;"
-    },
-    {
-      "title": "The Ma'asim",
-      "p": "The great works and tangible deeds;"
-    },
-    {
-      "title": "The Derech",
-      "p": "The path and guiding methodology;"
-    },
-    {
-      "title": "Our Heqdesh",
-      "p": "Our consecrated and dedicated entity;"
-    },
-    {
-      "title": "The Kashiya",
-      "p": "The core inquiry and difficult questions;"
-    },
-    {
-      "title": "HaShorashim",
-      "p": "The roots and our origins;"
-    }
-  ],
+  {
+    "title": "The Story We Retell",
+    "p": "Our purpose, shaped in story."
+  },
+  {
+    "title": "The World We Envision",
+    "p": "The future, seen through prophecy."
+  },
+  {
+    "title": "Steps in Sacred Time",
+    "p": "What we aim to accomplish."
+  },
+  {
+    "title": "Journeys Through the Camp",
+    "p": "The path we choose to walk."
+  },
+  {
+    "title": "The Circle That Holds Us",
+    "p": "Why our structure matters deeply."
+  },
+  {
+    "title": "Whispers of the Soul",
+    "p": "Why this work lives in me."
+  },
+  {
+    "title": "When the Flame First Spoke",
+    "p": "Where the story truly began."
+  }
+],
   "detailPageContent": [
-    {
-      "type": "text",
-      "title": "Our Mission: Our Core Purpose",
-      "paragraph": "To retell narratives of gender, family and society by the use of storytelling and visual arts."
-    },
-    {
-      "type": "text",
-      "title": "Our Vision: ",
-      "paragraph": "A more inclusive and pragmatic world."
-    },
-    {
-      "type": "table",
-      "title": "Goals of The Sansa Initiative",
-      "paragraph": "Our goals are designed to translate our mission and vision.",
-      "tableData": {
-        "headers": [
-          "Goal",
-          "Description"
+  {
+    "type": "text",
+    "title": "Like the Sage Who Retold the Story Differently",
+    "paragraph": "Like Rabbi Eliezer, who retold the tale of the Oven of Achnai (Bava Metzia 59b), not to win the argument but to reveal the deeper truth beneath the surface, we too retell the stories that define family and society. Through storytelling and visual arts, we enter the space between the letters — where values are questioned, roles are reimagined, and dignity is rediscovered."
+  },
+  {
+    "type": "text",
+    "title": "Like Serach bat Asher Remembering the Tune",
+    "paragraph": "We envision a world where, like Serach bat Asher who remembered the ancient songs of Joseph (Midrash Yalkut Shimoni, Genesis 146), forgotten truths and hidden hopes resurface in harmony. Through retelling stories from the collective memory we seek to embrace the plurality of roles and affirms every voice of the human story."
+  },
+  {
+    "type": "table",
+    "title": "Building Like Bezalel, Layer by Layer",
+    "paragraph": "As Bezalel built the Mishkan with layered purpose (Exodus 35–36), so too we build with intention.",
+    "tableData": {
+      "headers": ["Goal", "Description"],
+      "rows": [
+        [
+          "Goal 1: Gather the Materials Like the Builders of the Mishkan",
+          "As the Israelites brought their gold, thread, and mirrors to the sanctuary (Exodus 35:22), we begin by gathering the resources—funding, equipment, and inspiration—to craft spaces of meaning. These first offerings will anchor our creative presence."
         ],
-        "rows": [
-          [
-            "Goal 1: Secure Core Resources and Launch Artistic Productions",
-            "Prioritize funding and equipment acquisition (Years 1-2). Produce 2+ significant, mission-driven artistic projects (e.g., thematic series, exhibitions, publications) (Years 1-3) showcasing our unique narrative approach and building credibility."
-          ],
-          [
-            "Goal 2: Cultivate a Vibrant Artist Community and Launch a Pilot Residency Program.",
-            "Establish an active artist network and launch a pilot residency for 2+ artists (Years 2-3) through online engagement, networking events, and a clear program framework, laying groundwork for our art center."
-          ],
-          [
-            "Goal 3: Develop a Comprehensive Plan and Secure a Physical Hub for The Sansa Art Center.",
-            "Complete a detailed business plan for our art center (Months 12-18), guiding the search for a physical location and funding, with active steps commencing by end of Year 2."
-          ],
-          [
-            "Goal 4: Achieve Enhanced Financial Sustainability through Diversified Income Streams.",
-            "Develop 3+ distinct earned income streams (e.g., ticketed events, publications, merchandise) (Years 1-2) to reduce grant reliance and expand programs, leveraging existing content and audience."
-          ]
-        ]
-      }
-    },
-    {
-      "type": "table",
-      "title": "The Sansa Initiative' Strategies.",
-      "paragraph": "Achieve Your Mission, Vision & Goals",
-      "tableData": {
-        "headers": [
-          "Category",
-          "Strategy",
-          "Description"
+        [
+          "Goal 2: Encircle the Camp with Voices",
+          "Like the tribes encamped around the Tabernacle, each in their place but moving as one (Numbers 2), we will build an artist community — a circle of presence — where each voice contributes to a shared center. A residency is our first tent."
         ],
-        "rows": [
-          [
-            "A. Artistic Creation, Production & Curation",
-            "1: Develop Flagship Projects",
-            "Produce high-impact projects addressing core themes (Goal 1), serving as signature demonstrations of our mission. Seek collaborations to enrich creativity and expand reach."
-          ],
-          [
-            "A. Artistic Creation, Production & Curation",
-            "2: Curate and Showcase Diverse Voices",
-            "Organize exhibitions and festivals prioritizing underrepresented artists to actively amplify excluded voices, enriching public discourse and embodying inclusivity."
-          ],
-          [
-            "A. Artistic Creation, Production & Curation",
-            "3: Foster Experimental Approaches",
-            "Develop projects using innovative methods to push artistic boundaries, engage audiences in new ways, and ensure our work remains relevant and thought-provoking."
-          ],
-          [
-            "B. Artist Support & Development (Leading to our Future Center & Residencies)",
-            "Strategy 1: Skill-Building Workshops & Masterclasses",
-            "Offer robust training in artistic techniques and professional development to equip artists for sustainable careers and community contribution (Goals 2 & 4)."
-          ],
-          [
-            "B. Artist Support & Development (Leading to our Future Center & Residencies)",
-            "Strategy 2: Networking & Community Building",
-            "Host regular events and online engagements to connect artists, combat isolation, spark collaborations, and build energy for our residency program and art center (Goal 2)."
-          ],
-          [
-            "B. Artist Support & Development (Leading to our Future Center & Residencies)",
-            "Strategy 3: Resource Provision (Future Center Focus)",
-            "Conduct needs assessments and strategic planning for the art center (Goal 3), ensuring it responds to artist needs and operates on a sustainable model."
-          ],
-          [
-            "C. Community Engagement & Outreach",
-            "Strategy 1: Public Programming & Events",
-            "Organize dynamic public events (performances, talks, workshops) to make our mission tangible, foster dialogue, and create potential revenue streams (Goal 4)."
-          ],
-          [
-            "C. Community Engagement & Outreach",
-            "Strategy 2: Educational Partnerships",
-            "Collaborate with educational institutions to integrate our themes, reaching younger audiences and inspiring next-generation storytellers and artists."
-          ],
-          [
-            "C. Community Engagement & Outreach",
-            "Strategy 3: Digital Engagement & Content Creation",
-            "Develop a strong online presence for audience building, marketing, pre-center community cultivation (Goal 2), and testing content ideas (Goals 1 & 4)."
-          ],
-          [
-            "D. Organizational Development & Sustainability",
-            "Strategy 1: Formalize Legal Structure (NPO)",
-            "Establish as a registered NPO for grant access (Goals 1 & 3), governance, accountability, and public trust, ensuring long-term viability."
-          ],
-          [
-            "D. Organizational Development & Sustainability",
-            "Strategy 2: Build a Strong Board/Advisory Group",
-            "Recruit a diverse board/advisory group for strategic oversight, fundraising support, and ensuring sound financial and ethical operations."
-          ],
-          [
-            "D. Organizational Development & Sustainability",
-            "Strategy 3: Develop a Comprehensive Funding Plan",
-            "Implement a multi-faceted funding plan (grants, individual donors, earned income) to mitigate risk and enable ambitious projects (Goals 1, 3, & 4)."
-          ],
-          [
-            "D. Organizational Development & Sustainability",
-            "Strategy 4: Establish Brand & Communications",
-            "Develop a clear, compelling brand to attract artists, engage audiences, secure partnerships, and articulate our value to funders."
-          ],
-          [
-            "D. Organizational Development & Sustainability",
-            "Strategy 5: Monitoring & Evaluation (M&E)",
-            "Implement a robust M&E framework with clear KPIs to track progress, learn, adapt, and demonstrate mission impact effectively."
-          ]
+        [
+          "Goal 3: Draw the Blueprint Like Noah",
+          "As Noah was instructed to build the ark with specific measures for the sake of life (Genesis 6), so shall we draft the plan for our future home. Not for survival, but for gathering — where creation, reflection, and resistance can dwell under one roof."
+        ],
+        [
+          "Goal 4: Plant the Fig Tree",
+          "Like those who planted fig trees for future generations to enjoy (Sanhedrin 91b), we seek sustainability: earned income, recurring support, and lasting roots — so our work may nourish others long after it’s planted."
         ]
-      }
-    },
-    {
-      "type": "list",
-      "title": "Organizational Structure: Non-Profit (NPO)",
-      "paragraph": "The Sansa Initiative will operate as a Non-Profit Organization (NPO) to best achieve its mission.",
-      "listItems": [
-        "Mission-Centric: Legally ensures focus on public benefit, aligning with our core mission.",
-        "Optimal Grant Eligibility: Enhances competitiveness for funding essential for projects and our art center.",
-        "Tax Advantages: Maximizes resources for programs; donations often tax-deductible for contributors.",
-        "Public Trust & Accountability: Transparent governance fosters community and funder confidence.",
-        "Reinvestment of Surplus: All financial gains support artistic and community goals.",
-        "Framework for Community Support: Enables effective fundraising, volunteer engagement, and broad support."
-      ]
-    },
-    {
-      "type": "list",
-      "title": "The 'Why's': Our Foundational Drivers",
-      "paragraph": "",
-      "listItems": [
-        "To address societal fragmentation...",
-        "To unlock ancient wisdom...",
-        "To foster interdisciplinary dialogue...",
-        "To empower individuals...",
-        "To contribute to global discourse...",
-        "To cultivate intellectual humility..."
-      ]
-    },
-    {
-      "type": "list",
-      "title": "Where From?: Our Intellectual Heritage",
-      "paragraph": "",
-      "listItems": [
-        "Ancient Hellenic Philosophy: Socratic method, etc.",
-        "Talmudic Scholarship: Dialectical reasoning, etc.",
-        "Zoharic Mysticism: Esoteric interpretations...",
-        "Sephardic Tradition: Rationalism and Kabbalah...",
-        "Modern Systems Thinking: Interconnectedness...",
-        "Contemporary Psychology: Cognitive science..."
       ]
     }
-  ],
+  },
+  {
+    "type": "table",
+    "title": "Paths Through the Wilderness",
+    "paragraph": "Our strategies are like the encampments of Israel (Numbers 33) — distinct movements guided by vision, grounded in place, each step carrying sacred purpose.",
+    "tableData": {
+      "headers": ["Category", "Strategy", "Description"],
+      "rows": [
+        [
+          "Artistic Creation, Production & Curation",
+          "Develop Flagship Projects",
+          "Like King Solomon composing thousands of parables (1 Kings 5:12), we create layered stories — flagship works that hold echoes for many kinds of ears."
+        ],
+        [
+          "Artistic Creation, Production & Curation",
+          "Curate Diverse Voices",
+          "As the Talmud says, 'These and those are the words of the living God' (Eruvin 13b), we make space for multiplicity, for voices often left outside the tent."
+        ],
+        [
+          "Artistic Creation, Production & Curation",
+          "Explore Experimental Approaches",
+          "Like Rabbi Meir who wrote his own scrolls from the margins (Sanhedrin 100b), we allow for new forms, bold, fragmented, unorthodox — because truth rarely stays inside straight lines."
+        ],
+        [
+          "Artist Support & Development",
+          "Workshops & Masterclasses",
+          "As a sage teaches his student not just with words but by how he walks, eats, and listens (Avot 1:1), we offer transmission of skills, resilience, and quiet courage."
+        ],
+        [
+          "Artist Support & Development",
+          "Community Building",
+          "Like the havruta pair sharpening each other as iron sharpens iron (Ta’anit 7a), we cultivate bonds between artists — a fellowship of insight and support."
+        ],
+        [
+          "Artist Support & Development",
+          "Plan Future Art Center",
+          "Like the Temple built with measurements from above (Exodus 25:9), we listen for the shape of what’s needed, and build with intention, humility, and inclusion."
+        ],
+        [
+          "Community Engagement & Outreach",
+          "Public Programs",
+          "As Hillel stood on the rooftop to hear Torah through the skylight (Yoma 35b), we make our offerings accessible — shared in plazas, festivals, gatherings where anyone may lean in."
+        ],
+        [
+          "Community Engagement & Outreach",
+          "Educational Partnerships",
+          "As children learn to shape the world by asking four questions (Pesachim 116a), we embed our work in schools — to teach inquiry, not conformity."
+        ],
+        [
+          "Community Engagement & Outreach",
+          "Digital Presence",
+          "Like letters written in the sky (Genesis Rabbah 1:1), our digital storytelling travels far — inviting new voices to join a tradition still being written."
+        ],
+        [
+          "Organizational Development & Sustainability",
+          "Formalize Non-Profit Status",
+          "As the elders sat at the gates to establish justice (Deuteronomy 21:19), we seek structure — not for power, but for trust."
+        ],
+        [
+          "Organizational Development & Sustainability",
+          "Build Board & Advisors",
+          "Like Moshe gathering seventy elders (Numbers 11:16), we call on wisdom, diversity, and shared burden."
+        ],
+        [
+          "Organizational Development & Sustainability",
+          "Develop Funding Plan",
+          "As Joseph stored grain during abundance for times of need (Genesis 41), we steward our resources with foresight and faith."
+        ],
+        [
+          "Organizational Development & Sustainability",
+          "Brand & Communications",
+          "Like a seal upon your heart and arm (Song of Songs 8:6), we shape a voice that both marks us and invites others to draw near."
+        ],
+        [
+          "Organizational Development & Sustainability",
+          "Monitoring & Evaluation",
+          "As the Menorah had cups for collecting oil (Exodus 25:31–40), we build systems to catch the light — to reflect, adjust, and shine more wisely."
+        ]
+      ]
+    }
+  },
+  {
+    "type": "list",
+    "title": "As the Sanhedrin Sat in a Circle",
+    "paragraph": "We choose the structure of a non-profit not to preserve power, but to distribute responsibility — like the Sanhedrin seated in a semi-circle (Sanhedrin 4:3), so all voices could be heard.",
+    "listItems": [
+      "Like the Ark that carried both the broken and whole tablets (Berakhot 8b), our structure honors both vision and reality.",
+      "As Moshe appointed trusted leaders to judge the people (Exodus 18:21), we aim for clarity and accountability in every decision.",
+      "Like donations brought willingly for the Mishkan, we recognize each gift not as obligation, but as holy participation (Exodus 35:21).",
+      "As the menorah was made of one piece of gold, unity does not mean uniformity — we are many parts, one purpose (Exodus 25:31).",
+      "Like the gleaning laws of the field, our structure ensures nothing is wasted and all may partake (Leviticus 23:22).",
+      "As the Temple stood at the center of the city, we aspire to be a shared center — not just of art, but of justice and imagination."
+    ]
+  },
+  {
+    "type": "text",
+    "title": "The Whisper Behind the Curtain",
+    "paragraph": "I do not know when the seed was planted — perhaps by chance, accident, or imagination. Like the wind that carried the scroll of Jeremiah across the rooftops (Jeremiah 36:23), something you said, or didn’t say, moved through me. You grew in me quietly, like the bush that burned but was not consumed (Exodus 3:2), steady and unignorable.\n\nThere is something about you that reminds my soul of dreams — not unlike Joseph’s, which were once dismissed and later returned to save nations (Genesis 37:5, 41:39). You echo the values I live by: to question, to hold, to restore. And just as Serach bat Asher remembered the song that proved Joseph was still alive (Yalkut Shimoni, Genesis 146), something in you sings what I thought was lost — and I want to keep living by that tune.\n\nSince then, when I encounter your presence — in words, gestures, even in silence — I begin to notice what is unspoken. Like Hannah who moved her lips but made no sound (1 Samuel 1:13), your content carries echoes: fatigue, joy, longing, defiance. And I hear them.\n\nTo summarize? I do not know the reason — at least not with words. Like Eliyahu, I searched in wind, quake, and fire, but only the still small voice remained (1 Kings 19:12). That voice said: “It is the right thing to do.” And I listened."
+    },
+    {
+      "type": "text",
+      "title": "Three Threads, One Flame",
+      "paragraph": "It began with three episodes: The wrong Miriam, Makkot 21, and The Song of Serach.\n\nTwo felt like the face of Rachel weeping for her children (Jeremiah 31:15), weariness worn with grace. One was like Esther on the second day — whimsical and brave.\n\nAnd then, on a run, like a fire between two letters — the fire that is mem in the word for truth, אמת — it came: “We’re missing a Sansa Foundation.” That was the beginning."
+    }
+]
+,
   "themeConfig": {
     "fontFamily": "'Noto Serif Hebrew', serif",
     "backgroundColor": "#f8f0e0",
@@ -216,13 +194,13 @@
     "backgroundPosition": "center center",
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
-      "paragraph": "Please select your preferred language to continue:",
-      "enterButtonText": "Start Your Journey"
+      "paragraph": "How do you feel today?",
+      "enterButtonText": "Let's Drash"
     },
     "validationDialog": {
-      "title": "Have you explored the initial concepts (cards 1–4)?",
+      "title": "Have you explored the initial Baraitot?",
       "yesButtonText": "Yes, I'm Ready",
-      "noButtonText": "Not Yet, Back to Loop"
+      "noButtonText": "Back to study hall"
     },
     "cardFrontTextColor": "#FFFFFF",
     "cardFrontOverlayColor": "rgba(0, 0, 0, 0.5)"

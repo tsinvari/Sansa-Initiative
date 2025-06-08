@@ -104,10 +104,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const languageOptions = [
         { value: "pragmatic", text: "Pragmatic" },
-        { value: "talmudic", text: "Talmudic" },
-        { value: "lorderian", text: "Lorderian" },
+        { value: "talmudic", text: "Aggadic" },
         { value: "zoharian", text: "Zoharian" },
         { value: "sephorian", text: "Sephorian" },
+        { value: "lorderian", text: "Lorderian" },
         { value: "experimental", text: "Experimental" }
     ];
 

@@ -34,7 +34,7 @@ body {
     overflow-y: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-smoothing: antialiased;
+    font-smooth: antialiased;
 }
 
 #initialDialogOverlay {

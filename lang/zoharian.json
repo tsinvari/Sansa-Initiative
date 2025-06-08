@@ -2,122 +2,133 @@
   "learnMoreLinkText": "Uncover More",
   "detailPageBackButtonText": "Return to Sphere",
   "cardFrontTexts": [
-    "Keter Elyon",
-    "Ohr Chochmah",
-    "Tevunat Binah",
-    "Derech Chesed",
-    "Yesod HaKodesh",
-    "Chakirat Gevurah",
-    "Mekor HaSefirot"
-  ],
+  "The Hidden Root",
+  "The Radiant End",
+  "The Path of Emanation",
+  "The Spiral of Becoming",
+  "The Vessel That Holds",
+  "The Echo Beneath",
+  "The Flame That Arose"
+],
   "cardBackContents": [
     {
-      "title": "Keter Elyon",
-      "p": "Our supreme will & primal intent;"
+      "title": "The Hidden Root",
+      "p": "Where the first light is concealed."
     },
     {
-      "title": "Ohr Chochmah",
-      "p": "The illuminating light of our vision & insight;"
+      "title": "The Radiant End",
+      "p": "That which draws all forward."
     },
     {
-      "title": "Tevunat Binah",
-      "p": "The shaping understanding behind our goals;"
+      "title": "The Path of Emanation",
+      "p": "Steps formed from divine overflow."
     },
     {
-      "title": "Derech Chesed",
-      "p": "The active path & strategies we pursue;"
+      "title": "The Spiral of Becoming",
+      "p": "The motions through inner realms."
     },
     {
-      "title": "Yesod HaKodesh",
-      "p": "The sacred foundation; our NPO structure;"
+      "title": "The Vessel That Holds",
+      "p": "Form shaped to serve the flame."
     },
     {
-      "title": "Chakirat Gevurah",
-      "p": "The discerning inquiry into our 'whys';"
+      "title": "The Echo Beneath",
+      "p": "Desire clothed in silence."
     },
     {
-      "title": "Mekor HaSefirot",
-      "p": "The wellspring & origin of our inspiration;"
+      "title": "The Flame That Arose",
+      "p": "When concealment broke into voice."
     }
   ],
   "detailPageContent": [
     {
       "type": "text",
-      "title": "Our Mission: Illuminating the Hidden",
-      "paragraph": "The Sansa Initiative's mission, through a Zoharian lens, is to reveal the interconnectedness of all existence and the hidden spiritual dimensions of reality. We seek to guide seekers towards an experiential understanding of divine emanation and cosmic harmony."
+      "title": "The Hidden Root",
+      "paragraph": "In the beginning, a whisper passed through the chambers of form — stories clothed in silence, roles woven into garments of concealment. We are called to unthread those garments, to awaken the spark within the letter, and to retell what was buried beneath structure. Through vision and image, through telling and seeing, we stir the Shekhinah from exile — not with new truths, but with remembered ones."
     },
     {
       "type": "text",
-      "title": "Our Vision: A World Transfigured by Light",
-      "paragraph": "We envision a world where every action is understood as a Tikkun (rectification), bringing forth divine light and elevating consciousness. Through mystical contemplation and ethical living, we aspire to contribute to the ultimate redemption and spiritual flourishing of humanity."
+      "title": "The Radiant End",
+      "paragraph": "At the edge of all concealment, there is a glimmer — a world not yet born but already remembered. A world where the Shekhinah is no longer scattered, where the many faces are seen and named. We do not build this world; we unveil it. Through story, through symbol, through the return of the forgotten, we draw light from the end back to the beginning."
     },
     {
       "type": "table",
-      "title": "Types of Organizations: Zoharian Archetypes",
-      "paragraph": "Exploring organizational structures through the archetypal lens of the Sefirot and spiritual formations.",
+      "title": "The Path of Emanation",
+      "paragraph": "Like branches flowing from a single root, our aims descend one into the next — each a vessel for the light above it.",
       "tableData": {
-        "headers": ["Archetype", "Kabalistic Principle", "Sansa Application"],
+        "headers": ["Emanation", "Unfolding"],
         "rows": [
-          ["Keter (Crown)", "Will, transcendent unity.", "Visionary leadership, foundational principles."],
-          ["Chokhmah (Wisdom)", "Pure insight, creative spark.", "Brainstorming, intuitive leaps in research."],
-          ["Binah (Understanding)", "Differentiated understanding, structure.", "Structured learning, analytical frameworks."],
-          ["Malkhut (Kingdom)", "Manifestation, collective embodiment.", "Community building, practical implementation."]
+          [
+            "Gathering Sparks",
+            "To bring together the tools and essence needed for creation — funding, equipment, intention."
+          ],
+          [
+            "Shaping the Circle",
+            "To form a dwelling of presence — where artists, like sefirot, reflect and amplify one another."
+          ],
+          [
+            "Drawing the Blueprint",
+            "To trace the inner design of a future space — not built yet, but already real in vision."
+          ],
+          [
+            "Sustaining the Flame",
+            "To weave steady rivers of support — flows of energy that renew themselves without end."
+          ]
         ]
       }
     },
-    {
+{
       "type": "table",
-      "title": "Goals: Pathways to Divine Union",
-      "paragraph": "Our spiritual objectives are aligned with the ascending and descending flow of divine energy, aiming for self-transformation and cosmic harmony.",
+      "title": "The Spiral of Becoming",
+      "paragraph": "The path does not run straight. It spirals through four worlds — forming, revealing, connecting, sustaining.",
       "tableData": {
-        "headers": ["Sefirah/Pathway", "Spiritual Objective", "Practice"],
+        "headers": ["Gate", "Motion", "Mystical Function"],
         "rows": [
-          ["Gevurah (Severity)", "Cultivate discipline and discernment.", "Ethical contemplation, self-restraint."],
-          ["Tiferet (Beauty)", "Integrate compassion and justice.", "Harmonious community relations, balanced study."],
-          ["Yesod (Foundation)", "Strengthen connection to vital life force.", "Mindfulness, physical well-being practices."],
-          ["Shekhinah (Divine Presence)", "Experience immanent divinity.", "Meditation, prayer, sacred music."]
-        ]
-      }
-    },
-    {
-      "type": "table",
-      "title": "Strategies: Mystical Paths and Practices",
-      "paragraph": "The methods by which we engage with spiritual knowledge and strive for personal and collective elevation.",
-      "tableData": {
-        "headers": ["Strategy", "Description", "Focus"],
-        "rows": [
-          ["Hitbodedut", "Solitary meditation and prayer.", "Inner contemplation, personal connection."],
-          ["Hevraya", "Fellowship and communal study.", "Shared revelation, mutual support."],
-          ["Tikkun Olam", "Rectification of the world through action.", "Social justice, environmental stewardship."],
-          ["Giluy Shekhinah", "Revealing Divine Presence in daily life.", "Mindful living, gratitude practices."]
+          [
+            "Creation",
+            "Develop flagship stories and images",
+            "To shape form from the formless — vessels that hold narrative light."
+          ],
+          [
+            "Revelation",
+            "Lift hidden voices to visibility",
+            "To bring what was concealed into the public eye, echoing the divine name in many tones."
+          ],
+          [
+            "Connection",
+            "Bind artists, communities, institutions",
+            "To braid sacred threads across human circles — havurot of resonance."
+          ],
+          [
+            "Sustaining",
+            "Build structure, flow, and reflection",
+            "To house the presence and renew the breath — from root to crown, a full cycle."
+          ]
         ]
       }
     },
     {
       "type": "list",
-      "title": "The 'Why's': The Soul's Imperative",
-      "paragraph": "Our deepest motivations spring from a yearning for spiritual connection and a desire to contribute to the rectification of the cosmos.",
+      "title": "The Vessel That Holds",
+      "paragraph": "Every light needs a vessel. Ours is shaped to carry intention, not control.",
       "listItems": [
-        "To mend the vessels of creation (Tikkun HaKelim).",
-        "To unite the divine names (Yihudim).",
-        "To awaken the hidden sparks within.",
-        "To experience ecstatic union with the Infinite (Deveikut).",
-        "To bring healing and harmony to fragmented existence.",
-        "To prepare the world for the ultimate redemption."
+        "To hold the light with humility, like the broken tablets in the ark.",
+        "To invite giving, as the Mishkan was filled by willing hearts.",
+        "To trace clear paths of trust, so that presence flows, not clots.",
+        "To be transparent, like the sapphire pavement under the Throne.",
+        "To turn every surplus into seed, for the sake of continuity.",
+        "To remain open at the base, like a cup ready to receive."
       ]
     },
     {
-      "type": "list",
-      "title": "Where From?: Echoes of Primordial Light",
-      "paragraph": "Our Zoharian path draws from a lineage of mystical revelation, reaching back to ancient wisdom traditions and the very fabric of creation.",
-      "listItems": [
-        "**Sefer Yetzirah:** The Book of Formation, foundational text on creation through letters and numbers.",
-        "**Heikhalot Literature:** Early Jewish mystical texts describing heavenly ascents.",
-        "**Kabbalah (Medieval & Lurianic):** The Zohar, Isaac Luria's teachings on Tzimtzum, Shevirat HaKelim, and Tikkun.",
-        "**Hasidism:** Emphasizing spiritual joy, divine immanence, and the role of the Tzaddik.",
-        "**Neoplatonism:** Concepts of emanation and the One (parallels explored in Jewish mysticism).",
-        "**Ancient Wisdom Traditions:** Shared archetypes and universal spiritual principles."
-      ]
+      "type": "text",
+      "title": "The Echo Beneath",
+      "paragraph": "There is no map for this call. It came like the sound before sound — a shimmer behind thought, a gesture remembered. Not logic. Not planning. A feeling, like water stirring below stone. And then the whisper arrived, clothed in fire, between the letters of my ordinary life: “This is the way.” And I answered: I know it by not knowing."
+    },
+    {
+      "type": "text",
+      "title": "The Flame That Arose",
+      "paragraph": "Three sparks. One hidden in fatigue. One veiled in longing. One dancing in brilliance. Each a gate. A flash of Miriam. A cry of Serach. A murmur in the gemara. And then: on a run, in motion, the fire rose between the letters — mem of אמת — and I saw what was not yet spoken: “We are missing a Sansa Foundation.” Not a thought. A revelation."
     }
   ],
     "themeConfig": {
@@ -132,13 +143,13 @@
     "backgroundPosition": "center top",  
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
-      "paragraph": "Please select your preferred language to continue:",
-      "enterButtonText": "Start Your Journey"
+      "paragraph": "How do you feel today?",
+      "enterButtonText": "Enter the Garden"
     },
     "validationDialog": {
-      "title": "Have you explored the initial concepts (cards 1-4)?",
-      "yesButtonText": "Yes, I'm Ready",
-      "noButtonText": "Not Yet, Back to Loop"
+      "title": "Is your vessel big enough for this desire?",
+      "yesButtonText": "Yes",
+      "noButtonText": "No"
     },
     "cardFrontTextColor": "#FFFFFF",
     "cardFrontOverlayColor": "rgba(0, 0, 0, 0.4)",

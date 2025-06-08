@@ -94,18 +94,52 @@
       }
     },
     {
-      "type": "list",
-      "title": "The 'Why's': The Drive to Uncover",
-      "paragraph": "The fundamental drivers behind our experimental approach, pushing us beyond conventional boundaries.",
-      "listItems": [
-        "To explore the unknown and embrace intellectual adventure.",
-        "To develop robust methodologies for future-proofing knowledge.",
-        "To foster creative problem-solving in complex systems.",
-        "To challenge assumptions and prevent cognitive stagnation.",
-        "To build adaptive intelligence for unforeseen challenges.",
-        "To contribute to a living, evolving body of wisdom."
-      ]
-    },
+      "type": "table",
+      "title": "Call",
+      "paragraph": "Some reasons can only be sung.",
+      "tableData": {
+        "headers": ["Original", "Non-Original"],
+        "rows": [
+          [
+            "Y así que me encontré, sentado aquí\nQueriéndote escribir que no hay ningún porqué\nPara olvidar los sueños.",
+            "And so I found myself, sitting here\nWanting to write to you that there is no reason\nTo forget our dreams."
+          ],
+          [
+            "Ayer me tropecé, te voy a contar\nCon una niña que, saltando en el jardín\nQuería coger la Luna.",
+            "Yesterday I stumbled — let me tell you\nUpon a little girl, jumping in the garden,\nTrying to catch the Moon."
+          ],
+          [
+            "No pude evitar quedarme allí a mirar\nCómo esa niña saltaba una y otra vez.",
+            "I couldn’t help but stay and watch\nHow that girl jumped again and again."
+          ],
+          [
+            "Sonriendo me contó que no iba a descansar\nQue con la Luna algún día podría jugar.",
+            "Smiling, she told me she wouldn’t stop\nThat one day, she would play with the Moon."
+          ],
+          [
+            "Crecí escuchando que\nHay que pensar con los pies en el suelo\nSiempre razonar:\nLa Luna está muy lejos.",
+            "I grew up hearing\nWe must keep our feet on the ground,\nAlways be reasonable:\nThe Moon is far away"
+          ],
+          [
+            "Pero me contagió sus ganas de vivir\nQue no hay fronteras, que todo puede ocurrir.",
+            "But her will to live infected me:\nThere are no borders. Anything can happen."
+          ],
+          [
+            "En la niña encontré lo que casi olvidé\n¡Dame tu mano y la Luna conseguiré!",
+            "In the girl I found what I had almost forgotten:\nGive me your hand and I will reach the Moon!"
+          ],
+          [
+            "Mírame, si con la mano casi llego ya\nSolo me falta un suspiro\nQuizás otro salto\nY el sueño será",
+            "Look at me — with my hand, I almost touch it\nAll I need is one breath,\nPerhaps one more leap,\nAnd the dream will come true."
+          ],
+          [
+            "Créeme\nQue no hay mejor manera de pasar\nLas noches de luna olvidando las penas\nQue hallando las formas de estar",
+            "Believe me,\nThere is no better way to spend\nMoonlit nights forgetting sorrow\nThan finding ways to be."
+          ]
+        ]
+      }
+    }
+,
     {
       "type": "list",
       "title": "Where From?: Confluence of Cutting-Edge Thought",

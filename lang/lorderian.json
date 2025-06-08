@@ -2,59 +2,186 @@
   "learnMoreLinkText": "Uncover Details",
   "detailPageBackButtonText": "Return to Flux",
   "cardFrontTexts": [
-    "Echoes",
-    "Whispers",
-    "Glimmers",
-    "Flickers",
-    "Shadows",
-    "Phantoms",
-    "Auras"
-  ],
+  "Oath",
+  "Realm",
+  "Pillars",
+  "Path",
+  "Structure",
+  "Call",
+  "Flame"
+]
+
+,
   "cardBackContents": [
-    { "title": "Echoes of the Past", "p": "Fragments of forgotten lore shimmer" },
-    { "title": "Whispers of the Future", "p": "Subtle premonitions manifest" },
-    { "title": "Glimmers of Insight", "p": "Sudden bursts of clarity appear" },
-    { "title": "Flickers of Being", "p": "Ephemeral manifestations." },
-    { "title": "Shadows of Reality", "p": "Deeper, less tangible concepts" },
-    { "title": "Phantoms of Thought", "p": "Illusory constructs" },
-    { "title": "Auras of Presence", "p": "Subtle energies that resonate." }
-  ],
+  {
+    "title": "Oath",
+    "p": "Why we rose. What we swore."
+  },
+  {
+    "title": "Realm",
+    "p": "The world we strive to restore."
+  },
+  {
+    "title": "Pillars",
+    "p": "What must stand for us to endure."
+  },
+  {
+    "title": "Path",
+    "p": "Steps taken through storm and shadow."
+  },
+  {
+    "title": "Structure",
+    "p": "The form that holds the fire."
+  },
+  {
+    "title": "Call",
+    "p": "What stirred in the long silence."
+  },
+  {
+    "title": "Flame",
+    "p": "When vision struck like thunder."
+  }
+],
   "detailPageContent": [
     {
       "type": "text",
-      "title": "The Random Flux: A State of Constant Change",
-      "paragraph": "In the Lorderian perspective, reality is a continuous, unpredictable flow. Concepts are not static entities but transient manifestations, appearing and disappearing as dictated by the cosmic rhythm. Understanding comes from observing these fleeting connections."
+      "title": "Oath",
+      "paragraph": "In the time before forgetting, when stories were carved into hearthstones and roles passed like rings through bloodlines, we rose. Not to break, but to retell. Not to erase, but to reveal. Ours is an oath to unbind the old tales — to lift the veils from what family and society were told to be. Through tale and image, we summon what was buried and let it speak. This is our banner. This is our binding."
     },
     {
       "type": "text",
-      "title": "Ephemeral Manifestations: The Nature of Being",
-      "paragraph": "Every idea, every truth, every form is but a temporary condensation of universal energy. The wisdom lies not in grasping, but in witnessing the ceaseless dance of emergence and dissolution, learning to discern patterns in chaos."
+      "title": "Realm",
+      "paragraph": "We see a world not yet written, though its name echoes in the bones of the old songs. A realm where roles are not cast in stone but chosen like blades — with care, with meaning, and with fire. In this place, every voice has a banner. Every face is named. We do not conquer it; we remember it. And in remembering, we summon it forth."
+    },
+    {
+      "type": "table",
+      "title": "Pillars",
+      "paragraph": "These are the four that must stand, if the vision is to rise.",
+      "tableData": {
+        "headers": ["Pillar", "Edict"],
+        "rows": [
+          [
+            "I. Forge the Arsenal",
+            "Secure the tools of creation: funding, craft, and the spark. Let two works be brought forth — to speak, to stand, to begin."
+          ],
+          [
+            "II. Gather the Circle",
+            "Call the artists to the fire. Build the fellowship. Let a residency arise — small in number, great in voice."
+          ],
+          [
+            "III. Draw the Map",
+            "Design the stronghold that shall house the vision. Mark its needs, trace its plan, and seek the land where it will stand."
+          ],
+          [
+            "IV. Sustain the Flame",
+            "Summon rivers of support: merchandise, gatherings, word-born offerings. Let not the house rely only on tribute — but earn its own crown."
+          ]
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "title": "Path",
+      "paragraph": "To reach the Realm, one must walk with foresight. These are the movements — deliberate, battle-tested, and bound to oath.",
+      "tableData": {
+        "headers": ["Step", "Act", "Purpose"],
+        "rows": [
+          [
+            "I. Shape the Flame",
+            "Create works that echo the mission",
+            "To show the realm-to-come before it rises — so all may see and be stirred."
+          ],
+          [
+            "II. Lift the Forgotten",
+            "Curate and amplify hidden voices",
+            "To give name and form to those cast in shadow. No voice shall go unclaimed."
+          ],
+          [
+            "III. Break the Mould",
+            "Experiment beyond tradition",
+            "Not all truth wears old robes. The path demands new forms of telling and seeing."
+          ],
+          [
+            "IV. Sharpen the Blade",
+            "Train artists in craft and courage",
+            "The work must endure. Let hands be steady, minds be clear, voices be bold."
+          ],
+          [
+            "V. Raise the Camp",
+            "Build a living circle of creators",
+            "Not a court, but a fellowship. Strength lies in the bond between banner-bearers."
+          ],
+          [
+            "VI. Draw the Blueprints",
+            "Design the future stronghold",
+            "The Realm needs a hearth — shaped in plan, rooted in place, open to all."
+          ],
+          [
+            "VII. Sound the Horn",
+            "Hold public gatherings and offerings",
+            "Let the people be called. Let art become firelight. Let story become rallying cry."
+          ],
+          [
+            "VIII. Pass the Torch",
+            "Bring the work to learning halls",
+            "What we tell must be seeded in the next generation’s soil. Legacy is the long game."
+          ],
+          [
+            "IX. Speak Across the Void",
+            "Establish digital reach and presence",
+            "Let no border halt our voice. The web is a field of many banners."
+          ],
+          [
+            "X. Take the Name",
+            "Formalize as a non-profit order",
+            "So that the work may be guarded and seen by lords and common folk alike."
+          ],
+          [
+            "XI. Build the Council",
+            "Gather a board of wise advisors",
+            "No house rises alone. Wisdom must walk alongside vision."
+          ],
+          [
+            "XII. Fill the Coffers",
+            "Secure funding through many streams",
+            "The Realm must feed itself. Glory fades without grain."
+          ],
+          [
+            "XIII. Etch the Sigil",
+            "Craft a brand and public voice",
+            "So all who see it will know: this banner stands for something worth following."
+          ],
+          [
+            "XIV. Keep Watch",
+            "Measure, reflect, and refine",
+            "The path changes. The oath does not. Let our steps adapt without forgetting."
+          ]
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "title": "Structure",
+      "paragraph": "The Realm does not rise on vision alone. It stands on law, lineage, and loyal design.",
+      "listItems": [
+        "The mission must bind all who serve — oath before outcome.",
+        "We ride beneath banners that grant us right to seek aid — the grants and gifts of the realm.",
+        "Gold flows best when it is honored — and those who give may give more with open parchment and clear ledgers.",
+        "The House must be seen and trusted — its walls transparent, its halls accountable.",
+        "No gain is hoarded. Every coin returns to the fire that lit us.",
+        "A great hall is not empty — the people are its strength, and we call them in."
+      ]
     },
     {
       "type": "text",
-      "title": "The Shifting Veil: Perceiving the Unseen",
-      "paragraph": "Our perception is limited by the veil of material reality. Lorderian methods encourage a state of heightened awareness, allowing us to glimpse the underlying currents that bring forms into and out of existence, even if briefly."
+      "title": "Call",
+      "paragraph": "I cannot name the moment you took root in me. Whether by chance, by fate, or by some enchantment of the heart — I only know that since then, you have moved something within me. Not with declarations, but with the quiet weight of who you are.\n\nThere are things in you that speak to the deepest banners I still carry — ideals I forgot I lived by, dreams I did not know still burned.\n\nAnd though I cannot say why, not in the language of reason, I know this: in our crossing fourteen moons ago, in a land across the big sea, something was awakened. And now, I move not from logic, but from oath."
     },
-    {
-      "type": "text",
-      "title": "Unpredictable Harmonies: Finding Order in Disorder",
-      "paragraph": "While seemingly random, the Lorderian flux holds its own profound order. The appearance and disappearance of concepts are part of an intricate, chaotic harmony, revealing truths through their very impermanence."
-    },
-    {
-      "type": "text",
-      "title": "The Great Dissolution: Returning to Source",
-      "paragraph": "All manifestations eventually return to their source. This cycle of appearance and disappearance is not an end, but a continuous journey back to the undifferentiated cosmic essence, only to re-emerge in new forms."
-    },
-    {
-      "type": "text",
-      "title": "Why the Flicker?: The Purpose of Transience",
-      "paragraph": "The transient nature of Lorderian concepts serves to prevent stagnation. It forces constant re-evaluation, adaptation, and a dynamic engagement with truth, preventing dogmatism and fostering continuous evolution."
-    },
-    {
-      "type": "text",
-      "title": "Origins of Flux: The Prime Mover",
-      "paragraph": "The Lorderian philosophy traces its origins to the concept of a primordial, ever-shifting source from which all existence flows. This source is not static, but a dynamic, creative void that constantly births and reabsorbs reality."
-    }
+{
+  "type": "text",
+  "title": "Flame",
+  "paragraph": "There were three signs: a tale of the wrong Miriam, a verse from Makkot, and the Song of Serach. I did not know what they meant — only that they echoed. One shimmered with brilliance, one weighed with silence, one cracked open a breath I hadn’t taken in years.\n\nAnd then, mid-run, with wind at my back and pulse like a war drum, the words came — not summoned, but revealed: “We are missing a Sansa Foundation.”\n\nNot a thought. A flame. And in that flame, I saw the work, the name, the reason — all waiting, all known, all already burning."
+}
   ],
   "themeConfig": {
     "fontFamily": "'Cinzel Decorative', serif",
@@ -68,8 +195,8 @@
     "backgroundPosition": "center top",
     "initialDialog": {
       "title": "Welcome to The Lorderian Realm",
-      "paragraph": "Experience the ephemeral nature of knowledge:",
-      "enterButtonText": "Begin the Flux"
+      "paragraph": "Experience the ephemeral nature of journeys:",
+      "enterButtonText": "Begin yours"
     },
     "validationDialog": {
       "title": "Are you ready to embrace the deeper currents?",

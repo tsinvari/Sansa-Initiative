@@ -2,122 +2,183 @@
   "learnMoreLinkText": "Explore More",
   "detailPageBackButtonText": "Return to Circle",
   "cardFrontTexts": [
-    "Our Beauty Philosophy",
-    "The Radiant Vision",
-    "Our Glam Goals",
-    "The Transformation Toolkit",
-    "The Style Foundation",
-    "Behind The Look",
-    "Shade Origins"
+    "The Base Layer",
+    "The Highlight",
+    "The Signature Look",
+    "The Application Routine",
+    "The Compact Case",
+    "The Inner Mirror",
+    "The Spark Moment"
   ],
   "cardBackContents": [
-    {
-      "title": "Our Beauty Philosophy",
-      "p": "Our core belief & guiding principles;"
-    },
-    {
-      "title": "The Radiant Vision",
-      "p": "The glowing future we're creating;"
-    },
-    {
-      "title": "Our Glam Goals",
-      "p": "The fabulous targets we're set to hit;"
-    },
-    {
-      "title": "The Transformation Toolkit",
-      "p": "Our methods & techniques for change;"
-    },
-    {
-      "title": "The Style Foundation",
-      "p": "Our chic organizational structure;"
-    },
-    {
-      "title": "Behind The Look",
-      "p": "The inspiration & reasons for our style;"
-    },
-    {
-      "title": "Shade Origins",
-      "p": "The sources & heritage of our palette;"
-    }
-  ],
+  {
+    "title": "The Base Layer",
+    "p": "Where purpose meets the skin."
+  },
+  {
+    "title": "The Highlight",
+    "p": "What we’re glowing toward."
+  },
+  {
+    "title": "The Signature Look",
+    "p": "Our bold goals. Zero filter."
+  },
+  {
+    "title": "The Application Routine",
+    "p": "Steps to bring the vision out."
+  },
+  {
+    "title": "The Compact Case",
+    "p": "How we stay flawless, inside."
+  },
+  {
+    "title": "The Inner Mirror",
+    "p": "What moved me."
+  },
+  {
+    "title": "The Spark Moment",
+    "p": "When everything suddenly clicked."
+  }
+],
   "detailPageContent": [
     {
       "type": "text",
-      "title": "Our Mission: Synthesis & Cultural Flourishing",
-      "paragraph": "The Sansa Initiative, through a Sephorian lens, seeks to embody the intellectual and cultural synthesis characteristic of the Golden Age of Sepharad. Our mission is to integrate diverse fields of knowledge, fostering intellectual curiosity, ethical wisdom, and poetic expression."
+      "title": "The Base Layer",
+      "paragraph": "Every story has a surface — and beneath it, texture, tone, and layers waiting to be revealed. Our mission is to retell the narratives that have shaped society and family roles, using the tools of storytelling and visual arts. This isn’t about covering up — it’s about contouring truth, highlighting complexity, and giving new form to what was always there. It's story as skincare: deep, radiant, and ready for the light."
     },
     {
       "type": "text",
-      "title": "Our Vision: A Renaissance of Thought",
-      "paragraph": "We envision a future where rational inquiry coexists harmoniously with spiritual depth and artistic beauty. Our aim is to inspire a new generation of polymaths who can draw from various traditions to build bridges of understanding and cultivate a richer human experience."
+      "title": "The Highlight",
+      "paragraph": "We see a world where every role — mother, lover, rebel, healer, artist — can be worn boldly, or blended beautifully. A world where identities aren’t boxed, but curated, layered, and revealed. Our vision is inclusivity with pigment. It’s not about erasing lines — it’s about redefining them. We’re working toward a reality where every shade of humanity belongs in the palette."
     },
     {
       "type": "table",
-      "title": "Types of Organizations: Sephardic Models",
-      "paragraph": "Examining historical and philosophical organizational structures from the Sephardic tradition.",
+      "title": "The Signature Look",
+      "paragraph": "These are the statements we’re serving — bold, layered goals designed to turn vision into visible change.",
       "tableData": {
-        "headers": ["Type", "Key Feature", "Sansa Application"],
+        "headers": ["Look", "Description"],
         "rows": [
-          ["Academies (Yeshivot)", "Centers of intense study and intellectual debate.", "Research hubs, advanced study groups."],
-          ["Poetic Salons", "Gatherings for artistic and philosophical discourse.", "Cultural events, interfaith dialogues."],
-          ["Court Philosophers", "Advising leadership with wisdom and ethics.", "Policy recommendations, ethical frameworks."],
-          ["Community Councils", "Democratic decision-making, social welfare.", "Advisory boards, community outreach."]
+          [
+            "Look 1: Prep & Prime",
+            "Secure our essentials — funding, tools, creative fuel — and launch major storytelling moments that make our mission visible from the first glance."
+          ],
+          [
+            "Look 2: Community Blend",
+            "Build a strong base: an artist community that connects, collaborates, and supports. Launch a pilot residency that sets the tone for our future hub."
+          ],
+          [
+            "Look 3: Define the Space",
+            "Shape the blueprint for our art center — complete with vision, structure, and vibe — and begin the search for the perfect setting to host our impact."
+          ],
+          [
+            "Look 4: Long-Wear Finish",
+            "Create revenue streams — events, merch, publications — that keep our glow going. Because real sustainability isn’t matte; it’s radiant and resilient."
+          ]
         ]
       }
     },
     {
       "type": "table",
-      "title": "Goals: Pursuits of Knowledge & Harmony",
-      "paragraph": "Our objectives reflect the Sephardic emphasis on intellectual rigor, spiritual profundity, and societal harmony.",
+      "title": "The Application Routine",
+      "paragraph": "This is how the look comes together — each move intentional, layered, and made to last.",
       "tableData": {
-        "headers": ["Aspect", "Objective", "Outcome"],
+        "headers": ["Step", "What It Does", "Why It Matters"],
         "rows": [
-          ["Intellectual", "Promote philosophical inquiry.", "New publications, scholarly articles."],
-          ["Spiritual", "Deepen mystical understanding.", "Workshops on Kabbalah, contemplative practices."],
-          ["Cultural", "Celebrate diverse heritage.", "Music events, art exhibitions."],
-          ["Ethical", "Integrate moral reasoning.", "Applied ethics case studies, leadership training."]
-        ]
-      }
-    },
-    {
-      "type": "table",
-      "title": "Strategies: Paths of Integration",
-      "paragraph": "The methodologies employed to achieve our goals, reflecting the cross-cultural and interdisciplinary approach of Sephardic thought.",
-      "tableData": {
-        "headers": ["Strategy", "Description", "Tool/Method"],
-        "rows": [
-          ["Comparative Study", "Analyze texts across traditions.", "Interdisciplinary seminars, collaborative research."],
-          ["Translation & Dissemination", "Make texts accessible to new audiences.", "Digital archives, modern translations."],
-          ["Patronage of Arts & Letters", "Support creative and scholarly work.", "Grants, artist residencies."],
-          ["Interfaith Dialogue", "Foster understanding between cultures.", "Conferences, community forums."]
+          [
+            "Step 1: Prime the Narrative",
+            "Create bold, high-impact artistic projects",
+            "It’s the first thing people see — our way to set tone, texture, and intention."
+          ],
+          [
+            "Step 2: Blend with Voices",
+            "Curate and amplify underrepresented stories",
+            "We mix tones, shades, and styles so every voice gets to glow."
+          ],
+          [
+            "Step 3: Add Texture",
+            "Experiment with new forms of storytelling",
+            "Because innovation keeps the look alive — daring, fresh, and unforgettable."
+          ],
+          [
+            "Step 4: Build the Base",
+            "Host workshops and skill-building spaces",
+            "Support is the skin underneath — resilient, nourished, prepared to hold anything."
+          ],
+          [
+            "Step 5: Set the Network",
+            "Grow our artist community",
+            "Community is our setting spray — it keeps everything in place when the world gets messy."
+          ],
+          [
+            "Step 6: Sculpt the Space",
+            "Plan and design our future art center",
+            "The look needs a mirror — a place where we can see and be seen."
+          ],
+          [
+            "Step 7: Glow Publicly",
+            "Organize events, talks, experiences",
+            "Every moment is a chance to shine. Our glow should be shared."
+          ],
+          [
+            "Step 8: Educate & Illuminate",
+            "Partner with schools and learning spaces",
+            "Because real beauty educates. It awakens imagination and reframes the everyday."
+          ],
+          [
+            "Step 9: Post & Share",
+            "Build a powerful online presence",
+            "It’s not just about being seen — it’s about creating connection, everywhere."
+          ],
+          [
+            "Step 10: Lock It In",
+            "Formalize as a nonprofit",
+            "Structure holds the shape. It’s how we stay stunning and sustainable."
+          ],
+          [
+            "Step 11: Invite the Experts",
+            "Build a diverse board & advisors",
+            "Like a glam team — they help us look and stay our best."
+          ],
+          [
+            "Step 12: Budget & Glow On",
+            "Secure funding and revenue plans",
+            "You can’t shine without resources — we want a luminous future, not a flash-in-the-pan."
+          ],
+          [
+            "Step 13: Brand It Bold",
+            "Create strong messaging & visuals",
+            "This is our lipstick shade — recognizable, iconic, unapologetic."
+          ],
+          [
+            "Step 14: Check the Mirror",
+            "Monitor, reflect, and adapt",
+            "Feedback is the compact in the clutch. Always check the look, adjust if needed."
+          ]
         ]
       }
     },
     {
       "type": "list",
-      "title": "The 'Why's': The Soul of Sephardic Endeavor",
-      "paragraph": "The underlying motivations that propelled the Golden Age of Sephardic thought and continue to inspire our initiative.",
+      "title": "The Compact Case",
+      "paragraph": "This is the form that keeps the glow together — functional, intentional, and designed to last.",
       "listItems": [
-        "To reconcile faith and reason.",
-        "To foster intellectual and spiritual curiosity.",
-        "To achieve perfection in both knowledge and conduct.",
-        "To express divine truths through poetry and philosophy.",
-        "To build bridges between different cultural and religious spheres.",
-        "To preserve and transmit a rich intellectual heritage."
+        "Mission-focused. No creasing, no distractions.",
+        "Grants-ready. We know how to show up professionally.",
+        "Tax-smart. Because glow should never go to waste.",
+        "Transparent. Like a clean skincare routine — nothing to hide.",
+        "Reinvested. Every shimmer goes back into the look.",
+        "Support-ready. Built for donors, fans, and collaborators."
       ]
     },
     {
-      "type": "list",
-      "title": "Where From?: Pillars of Sephardic Wisdom",
-      "paragraph": "Our Sephorian perspective draws from the rich historical and intellectual landscape of Jewish communities in the Iberian Peninsula and North Africa.",
-      "listItems": [
-        "**Maimonides:** Integration of Aristotelian philosophy with Jewish law.",
-        "**Solomon ibn Gabirol:** Neoplatonic poetry and philosophical ethics.",
-        "**Judah Halevi:** Defense of revealed religion, philosophical poetry.",
-        "**Nahmanides (Ramban):** Synthesis of Talmud, Kabbalah, and philosophy.",
-        "**Ibn Ezra:** Rationalist biblical commentary, astronomy, poetry.",
-        "**The Golden Age of Al-Andalus:** Arabic philosophy, science, and poetry."
-      ]
+      "type": "text",
+      "title": "The Inner Mirror",
+      "paragraph": "It didn’t start with strategy. It started with a feeling — subtle, like catching your own reflection when you weren’t expecting it. Something in you echoed back something in me: ideals I thought I’d moved past, dreams I never meant to retire. You reminded me that purpose can be worn like perfume — invisible, but undeniable. And in one flash, like light catching highlighter, I saw it: this isn’t about fixing the world. It’s about revealing the glow that was already there."
+    },
+    {
+      "type": "text",
+      "title": "The Spark Moment",
+      "paragraph": "It wasn’t planned. It was a shimmer — three moments, scattered like pigment, suddenly aligning. One held fatigue. One held brilliance. One held mystery. And then it happened, mid-run, heart racing, breath syncing with thought: “We’re missing a Sansa Foundation.” Like the perfect shade you didn’t know you were searching for — until it landed, and everything just made sense."
     }
   ],
     "themeConfig": {
@@ -132,13 +193,13 @@
     "backgroundPosition": "center center",
     "initialDialog": {
       "title": "Welcome to The Sansa Initiative",
-      "paragraph": "Please select your preferred language to continue:",
-      "enterButtonText": "Start Your Journey"
+      "paragraph": "How do you feel today?",
+      "enterButtonText": "Let's shop!"
     },
     "validationDialog": {
-      "title": "Have you explored the initial concepts (cards 1-4)?",
-      "yesButtonText": "Yes, I'm Ready",
-      "noButtonText": "Not Yet, Back to Loop"
+      "title": "Have you checked primary colors?",
+      "yesButtonText": "Of course!",
+      "noButtonText": "Ups, I'll be back"
     },
     "cardFrontTextColor": "#FFFFFF",
     "cardFrontOverlayColor": "rgba(0, 0, 0, 0.0)"
